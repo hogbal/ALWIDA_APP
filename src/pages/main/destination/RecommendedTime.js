@@ -75,7 +75,7 @@ const RecommendedTime = ({ navigation }) => {
 
     const onClickButton = () => {
         postTime()
-        navigation.navigate('Destination')
+        navigation.navigate('Main')
     }
 
     const TerminalPicker = ({ terminal }) => {
@@ -149,19 +149,22 @@ const RecommendedTime = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        height: '100%',
+        flex: 1,
         backgroundColor: '#FFFFFF',
-        padding: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     pickerContainer: {
-        width: '100%',
+        flex: 1,
+        width: '90%',
         flexDirection: 'row',
         borderWidth: 1,
         borderColor: '#E3E6ED',
         borderRadius: 15,
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 20,
+        padding: '2%',
+        margin: '3%',
         backgroundColor: '#FFFFFF',
     },
     markerImg: {
@@ -174,12 +177,11 @@ const styles = StyleSheet.create({
         color: '#1A1A1A',
     },
     selectTimeContainer: {
-        flex: 1,
-        justifyContent: 'center',
+        flex: 10,
     },
     timeContainer: {
         alignItems: 'center',
-        marginVertical: 25,
+        marginVertical: '2%',
     },
     time: {
         width: '100%',
@@ -190,7 +192,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: '#E3E6ED',
         borderRadius: 15,
-        padding: 20,
+        padding: "3%",
     },
     selectedTime: {
         width: '100%',
@@ -201,13 +203,13 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: '#00A8FF',
         borderRadius: 15,
-        padding: 20,
+        padding: "3%",
     },
     ampmText: {
         fontFamily: 'Pretendard-Bold',
         fontSize: 20,
         color: '#1A1A1A',
-        marginRight: 50,
+        marginRight: "10%",
     },
     timeText: {
         fontFamily: 'Pretendard-Medium',
