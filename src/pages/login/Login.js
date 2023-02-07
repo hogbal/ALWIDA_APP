@@ -194,29 +194,28 @@ const Login = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        height: '100%',
-        padding: 20,
+        flex: 1,
         backgroundColor: 'white',
         justifyContent: 'center'
     },
     imgContainer: {
         alignItems: 'center',
-        marginBottom: 30,
     },
     inputContainer: {
-        marginVertical: 10,
+        marginVertical: "3%",
+        alignItems: 'center',
     },
     input: {
+        width: "90%",
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#F5F5F5',
         borderRadius: 10,
-        marginTop: 15,
-        paddingHorizontal: 5,
-        paddingVertical: 2,
+        marginTop: "3%",
+        paddingHorizontal: "3%",
+        paddingVertical: "1%",
     },
     inputText: {
-        flex: 1,
         fontFamily: 'Pretendard-Medium',
         fontSize: 15,
     },
@@ -227,12 +226,12 @@ const styles = StyleSheet.create({
     },
     checkContainer: {
         flexDirection: 'row',
-        marginTop: 5,
-        marginBottom: 30,
+        marginTop: "1%",
+        marginBottom: "5%",
         alignItems: 'center'
     },
     checkImg: {
-        marginRight: 8,
+        marginRight: "2%",
     },
     text: {
         fontFamily: 'Pretendard-Medium',
@@ -243,12 +242,12 @@ const styles = StyleSheet.create({
         fontFamily: 'Pretendard-Medium',
         fontSize: 15,
         color: '#EAEAEA',
-        marginHorizontal: 6,
+        marginHorizontal: "3%",
     },
     etcContainer: {
         flexDirection: 'row',
         justifyContent: 'center',
-        marginVertical: 20,
+        marginVertical: "5%",
     }
 })
 
