@@ -126,7 +126,7 @@ const DA = ({ navigation }) => {
             <View style={styles.ticketContainer}>
                 <Text style={styles.terminalText}>터미널</Text>
                 <Text style={styles.terminalNameText}>{terminalName}</Text>
-                <View style={styles.listContainer}>
+                <View>
                     <ItemList title="발행일시" description={date} />
                     <ItemList title="구분" description={division} />
                     <ItemList title="컨테이너 번호" description={containerNum} />
@@ -141,15 +141,14 @@ const DA = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        height: '100%',
+        flex: 1,
         backgroundColor: '#FFFFFF',
         alignItems: 'center',
-        padding: 30,
+        justifyContent: 'center',
     },
     ticketContainer: {
-        width: '100%',
-        paddingHorizontal: 20,
-        paddingVertical: 45,
+        width: '90%',
+        padding: '10%',
         borderWidth: 1,
         borderRadius: 20,
         borderColor: '#E3E6ED',
@@ -157,7 +156,7 @@ const styles = StyleSheet.create({
     itemContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginVertical: 10,
+        marginVertical: '4%',
     },
     terminalText: {
         fontFamily: 'Pretendard-Medium',
@@ -168,10 +167,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Pretendard-Bold',
         fontSize: 20,
         color: '#000000',
-        marginBottom: 10,
-    },
-    listContainer: {
-        marginTop: 20,
+        marginBottom: "10%",
     },
     titleText: {
         fontFamily: 'Pretendard-Medium',
