@@ -5,15 +5,14 @@ import {
     Text,
     Image,
     StyleSheet,
+    Modal,
 } from 'react-native'
 
 const PickerItem = ({ index, text, dataLength, setSelected, visible, setVisible, onPress }) => {
     return (
         <TouchableOpacity
             style={
-                dataLength == index + 1
-                ? styles.lastItemContainer
-                : styles.itemContainer
+                styles.itemContainer
             }
             onPress={() => {
                 setSelected(text)
@@ -31,29 +30,33 @@ const LocalPicker = ({ DATA, localVisible, setLocalVisible, selectedLocal, setSe
         <>
             <TouchableOpacity
                 style={
-                    localVisible == true
-                    ? styles.visibleContainer
-                    : [styles.container, { marginBottom: 40, }]
+                    styles.container
                 }
                 onPress={() => setLocalVisible(!localVisible)}
             >
                 <Text style={styles.text}>{selectedLocal}</Text>
+                <Modal
+                animationType={"overFullScreen"}
+                visible={localVisible}
+                presentationStyle={"formSheet"}
+                >
+                    {
+                        localVisible &&
+                        DATA.map((value, index) => {
+                            onPress = () => {
+                                console.log('local')
+                            }
+                            return (
+                                <PickerItem key={value.index} index={index} text={value.local} dataLength={DATA.length} setSelected={setSelectedLocal} visible={localVisible} setVisible={setLocalVisible} onPress={onPress} />
+                            )
+                        })
+                    }
+                </Modal>
                 <Image
                     style={styles.arrowImg}
                     source={require('assets/img/picker_arrow.png')}
                 />
             </TouchableOpacity>
-            {
-                localVisible &&
-                DATA.map((value, index) => {
-                    onPress = () => {
-                        console.log('local')
-                    }
-                    return (
-                        <PickerItem key={value.index} index={index} text={value.local} dataLength={DATA.length} setSelected={setSelectedLocal} visible={localVisible} setVisible={setLocalVisible} onPress={onPress} />
-                    )
-                })
-            }
         </>
     )
 }
@@ -63,9 +66,7 @@ const TerminalPicker = ({ DATA, terminalVisible, setTerminalVisible, selectedTer
         return (
             <View
                 style={
-                    terminalVisible == true
-                    ? styles.visibleContainer
-                    : styles.container
+                    styles.container
                 }
                 onPress={() => setTerminalVisible(!terminalVisible)}
             >
@@ -96,81 +97,65 @@ const TerminalPicker = ({ DATA, terminalVisible, setTerminalVisible, selectedTer
                     source={require('assets/img/picker_marker.png')}
                 />
                 <Text style={styles.text}>{selectedTerminal}</Text>
+                <Modal
+                animationType={"overFullScreen"}
+                visible={terminalVisible}
+                presentationStyle={"formSheet"}
+                >
+                    {
+                        terminalVisible &&
+                        DATA.map((value, valueIndex) => {
+                            if (value.local == selectedLocal) {
+                                return (
+                                    value['terminals'].map((item, index) => {
+                                        onPress = () => {
+                                            if (setPercentage !== null) {
+                                                setPercentage(item.percentage)
+                                                setColor(item.color)
+                                                setStatus(item.status)
+                                            }
+                                        }
+                                        return (
+                                            <PickerItem key={item.index} index={index} text={item.terminal} dataLength={value['terminals'].length} setSelected={setSelectedTerminal} visible={terminalVisible} setVisible={setTerminalVisible} onPress={onPress} />
+                                        )
+                                    })
+                                )
+                            }
+                        })
+                    }
+                </Modal>
                 <Image
                     style={styles.arrowImg}
                     source={require('assets/img/picker_arrow.png')}
                 />
             </TouchableOpacity>
-            {
-                terminalVisible &&
-                DATA.map((value, valueIndex) => {
-                    if (value.local == selectedLocal) {
-                        return (
-                            value['terminals'].map((item, index) => {
-                                onPress = () => {
-                                    if (setPercentage !== null) {
-                                        setPercentage(item.percentage)
-                                        setColor(item.color)
-                                        setStatus(item.status)
-                                    }
-                                }
-                                return (
-                                    <PickerItem key={item.index} index={index} text={item.terminal} dataLength={value['terminals'].length} setSelected={setSelectedTerminal} visible={terminalVisible} setVisible={setTerminalVisible} onPress={onPress} />
-                                )
-                            })
-                        )
-                    }
-                })
-            }
         </>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
+        flex: 1,
+        width: '90%',
         flexDirection: 'row',
         borderWidth: 1,
         borderColor: '#E3E6ED',
         borderRadius: 15,
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 17,
-        backgroundColor: '#FFFFFF',
-    },
-    visibleContainer: {
-        width: '100%',
-        flexDirection: 'row',
-        borderWidth: 1,
-        borderColor: '#E3E6ED',
-        borderTopLeftRadius: 15,
-        borderTopRightRadius: 15,
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 17,
+        padding: '2%',
+        margin: '3%',
         backgroundColor: '#FFFFFF',
     },
     itemContainer: {
-        width: '100%',
+        width: '90%',
         flexDirection: 'row',
         borderWidth: 1,
         borderColor: '#E3E6ED',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 17,
-        backgroundColor: '#FFFFFF',
-    },
-    lastItemContainer: {
-        width: '100%',
-        flexDirection: 'row',
-        borderWidth: 1,
-        borderColor: '#E3E6ED',
-        borderBottomStartRadius: 15,
-        borderBottomEndRadius: 15,
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 17,
-        marginBottom: 40,
+        padding: '3%',
+        marginHorizontal: '5%',
         backgroundColor: '#FFFFFF',
     },
     text: {
@@ -180,11 +165,11 @@ const styles = StyleSheet.create({
     },
     arrowImg: {
         position: 'absolute',
-        right: '8%',
+        right: '5%',
     },
     markerImg: {
         position: 'absolute',
-        left: '10%',
+        left: '5%',
     },
 })
 

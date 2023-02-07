@@ -83,22 +83,17 @@ const Destination = ({ navigation }) => {
             <TerminalPicker DATA={DATA} terminalVisible={terminalVisible} setTerminalVisible={setTerminalVisible} selectedTerminal={selectedTerminal} setSelectedTerminal={setSelectedTerminal} selectedLocal={selectedLocal} setPercentage={setPercentage} setColor={setColor} setStatus={setStatus} />
 
             <View style={styles.chart}>
-                <View style={{alignItems: 'center', position: 'absolute', bottom: '30%',}}>
-                    <Donut percentage={percentage} color={color} />
-
-                    <Text style={[styles.statusText, {color: color}]}>{status}</Text>
-
-                    {/* 혼잡도 현황 버튼 */}
-                    <TouchableOpacity
-                        style={styles.statusInfoContainer}
-                        onPress={() => null}
-                    >
-                        <Text style={styles.infoText}>혼잡도 현황</Text>
-                        <Image source={require('assets/img/destination_info_icon.png')} />
+                <Donut percentage={percentage} color={color} />
+                <Text style={[styles.statusText, {color: color}]}>{status}</Text>
+                {/* 혼잡도 현황 버튼 */}
+                <TouchableOpacity
+                style={styles.statusInfoContainer}
+                onPress={() => null}
+                >
+                    <Text style={styles.infoText}>혼잡도 현황</Text>
+                    <Image source={require('assets/img/destination_info_icon.png')} />
                     </TouchableOpacity>
-                </View>
             </View>
-            <View style={{flex: 1,}} />
 
             { check === true
                 ? <ActiveButton onpress={() => navigation.navigate("Reservation")} text="예약 현황하기" />   
@@ -113,40 +108,15 @@ const Destination = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        height: '100%',
+        flex: 1,
         backgroundColor: '#FFFFFF',
-        padding: 20,
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    circle: {
-        width: 200,
-        height: 200,
-        borderRadius: 100,
-        borderBottomColor: 'red',
-        borderWidth: 13,
-        borderColor: 'pink',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    picker: {
-        borderWidth: 1,
-        borderColor: '#E3E6ED',
-        borderRadius: 10,
-        marginVertical: 15,
-        padding: 5,
-    },
-    pickerText: {
-        fontSize: 20,
-        color: '#1A1A1A',
     },
     chart: {
-        position: 'absolute',
-        bottom: '30%',
+        flex: 8,
         alignItems: 'center',
         justifyContent: 'center',
-        zIndex: -1,
-        backgroundColor: 'red',
     },
     statusInfoContainer: {
         flexDirection: 'row',
@@ -161,19 +131,6 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: '#B6B6B6',
         margin: 10,
-    },
-    donutValueText: {
-        fontFamily: 'Pretendard-Medium',
-        fontSize: 50,
-        color: 'rgba(0, 0, 0, 0)',
-        includeFontPadding: false,
-    },
-    numContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        position: 'absolute',
-        top: '30%',
-        alignSelf: 'center',
     },
 })
 
