@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         zIndex: -1,
         width: '100%',
         alignItems: 'center',
-        paddingVertical: '5%'
+        paddingVertical: '10%'
     },
 })
 
