@@ -96,13 +96,13 @@ const Order = ({ navigation }) => {
                     value={containerNum}
                 />
                 <Text style={styles.redText}>{containerStatus}</Text>
-                {
-                    (containerNum != '')
-                    ? <ActiveButton onpress={inquireContainer} text='조회하기' />
-                    : <InactiveButton text='조회하기' />
-                }
             </View>
-            <View>
+            {
+                (containerNum != '')
+                ? <ActiveButton onpress={inquireContainer} text='조회하기' />
+                : <InactiveButton text='조회하기' />
+            }
+            <View style={styles.inputContainer}>
                 <Text style={styles.text}>차량번호</Text>
                 <TextInput
                     style={styles.input}
@@ -125,20 +125,16 @@ const styles = StyleSheet.create({
     container: {
         height: '100%',
         backgroundColor: '#FFFFFF',
-        padding: 20,
+        alignItems: 'center',
+    },
+    inputContainer: {
+        width: '90%',
+        margin: '5%',
     },
     text: {
         fontFamily: 'Pretendard-Medium',
         fontSize: 15,
-        marginTop: 20,
-        marginBottom: 5,
         color: '#000000',
-    },
-    redText: {
-        fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
-        color: '#FF4D4D',
-        marginVertical: 3,
     },
     input: {
         fontFamily: 'Pretendard-Medium',
@@ -146,11 +142,12 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#DCDEE6',
-        marginTop: 3,
-        paddingHorizontal: 15,
+        paddingLeft: '3%'
     },
-    inputContainer: {
-        marginBottom: 50,
+    redText: {
+        fontFamily: 'Pretendard-Medium',
+        fontSize: 15,
+        color: '#FF4D4D',
     },
 })
 

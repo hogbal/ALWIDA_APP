@@ -84,9 +84,6 @@ const OrderTime = ({ navigation }) => {
                     : <TimePicker setAMPM={setAMPM} hour={hour} setHour={setHour} minute={minute} setMinute={setMinute} />
                 }
             </View>
-
-            <View style={{flex: 1}} />
-
             {
                 selectedTerminal == '터미널'
                 ? <InactiveButton text='출발' />
@@ -98,16 +95,19 @@ const OrderTime = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         height: '100%',
         backgroundColor: '#FFFFFF',
-        padding: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     timeContainer: {
-        position: 'absolute',
-        top: '40%',
+        flex: 8,
         alignSelf: 'center',
         zIndex: -1,
         width: '100%',
+        alignItems: 'center',
+        paddingVertical: '5%'
     },
 })
 

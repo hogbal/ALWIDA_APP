@@ -124,18 +124,19 @@ const NoneSelected = () => {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100%',
+        width: '90%',
         backgroundColor: '#F6F6F6',
         borderWidth: 2,
         borderColor: '#F6F6F6',
         borderRadius: 15,
-        padding: 25,
+        padding: '10%',
     },
     itemContainer: {
-        marginHorizontal: 30,
+        marginHorizontal: '5%',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -147,13 +148,13 @@ const styles = StyleSheet.create({
         fontFamily: 'Pretendard-Bold',
         fontSize: 20,
         color: '#1A1A1A',
-        marginVertical: 10,
+        marginVertical: '20%',
     },
     noneAmpmText: {
         fontFamily: 'Pretendard-Bold',
         fontSize: 20,
         color: '#ACACA9',
-        marginVertical: 10,
+        marginVertical: '20%',
     },
     timeText: {
         fontFamily: 'Pretendard-Medium',
@@ -164,7 +165,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Pretendard-Medium',
         fontSize: 60,
         color: '#ACACA9',
-        marginLeft: 50,
+        marginLeft: '10%',
     },
 })
 

@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     },
     processBar: {
         width: '85%',
-        marginVertical: 50,
+        marginVertical: '5%',
     }
 })
 

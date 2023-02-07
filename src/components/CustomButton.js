@@ -29,30 +29,32 @@ const InactiveButton = ({ text }) => {
 
 const styles = StyleSheet.create({
     activeButton: {
-        width: '100%',
+        width: '90%',
         backgroundColor: '#00A8FF',
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
+        margin: '3%',
     },
     activeText: {
         fontFamily: 'Pretendard-Medium',
         fontSize: 15,
         color: '#FFFFFF',
-        margin: 15,
+        margin: '4%',
     },
     inactiveButton: {
-        width: '100%',
+        width: '90%',
         backgroundColor: '#E9EBEC',
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
+        margin: '3%',
     },
     inactiveText: {
         fontFamily: 'Pretendard-Medium',
         fontSize: 15,
         color: '#ACACA9',
-        margin: 15,
+        margin: '4%',
     },
 })
 

@@ -70,13 +70,9 @@ const Reservation = ({ navigation }) => {
             <LocalPicker local={data.location} />
             <TerminalPicker terminal={data.terminal} />
             
-            <View style={styles.selectTimeContainer}>
-                <View style={styles.timeContainer}>
-                    <View style={styles.selectedTime}>
-                        <Text style={styles.ampmText}>{data.ampm}</Text>
-                        <Text style={styles.timeText}>{data.time}</Text>
-                    </View>
-                </View>
+            <View style={styles.selectedTime}>
+                <Text style={styles.ampmText}>{data.ampm}</Text>
+                <Text style={styles.timeText}>{data.time}</Text>
             </View>
         
         <ActiveButton onpress={() => navigation.navigate('Destination')} text='확인' />
@@ -87,52 +83,35 @@ const Reservation = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        height: '100%',
+        flex: 1,
         backgroundColor: '#FFFFFF',
-        padding: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     pickerContainer: {
-        width: '100%',
+        width: '90%',
         flexDirection: 'row',
         borderWidth: 1,
         borderColor: '#E3E6ED',
         borderRadius: 15,
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 20,
+        padding: '4%',
+        margin: '3%',
         backgroundColor: '#FFFFFF',
-        marginBottom: 20,
     },
     markerImg: {
         position: 'absolute',
-        left: '10%',
+        left: '5%',
     },
     pickerText: {
         fontFamily: 'Pretendard-Medium',
         fontSize: 20,
         color: '#1A1A1A',
     },
-    selectTimeContainer: {
-        flex: 1,
-        justifyContent: 'center',
-    },
-    timeContainer: {
-        alignItems: 'center',
-        marginVertical: 25,
-    },
-    time: {
-        width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#F6F6F6',
-        borderWidth: 2,
-        borderColor: '#E3E6ED',
-        borderRadius: 15,
-        padding: 20,
-    },
     selectedTime: {
-        width: '100%',
+        flex: 8,
+        width: '90%',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
@@ -140,7 +119,8 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: '#00A8FF',
         borderRadius: 15,
-        padding: 20,
+        padding: "5%",
+        margin: "10%",
     },
     ampmText: {
         fontFamily: 'Pretendard-Bold',

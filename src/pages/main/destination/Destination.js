@@ -94,14 +94,13 @@ const Destination = ({ navigation }) => {
                     <Image source={require('assets/img/destination_info_icon.png')} />
                     </TouchableOpacity>
             </View>
-
-            { check === true
-                ? <ActiveButton onpress={() => navigation.navigate("Reservation")} text="예약 현황하기" />   
+            { 
+                check === true
+                ? <ActiveButton onpress={() => navigation.navigate("Reservation")} text="예약 현황 확인" />   
                 : selectedTerminal == '터미널'
                     ? <InactiveButton text="운송오더 신청" />
                     : <ActiveButton onpress={() => navigation.navigate("Order")} text="운송오더 신청" />
             }
-        
         </SafeAreaView>
     )
 }
