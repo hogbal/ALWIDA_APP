@@ -29,7 +29,6 @@ const InactiveButton = ({ text }) => {
 
 const styles = StyleSheet.create({
     activeButton: {
-        width: '90%',
         backgroundColor: '#00A8FF',
         borderRadius: 10,
         alignItems: 'center',
@@ -43,7 +42,6 @@ const styles = StyleSheet.create({
         margin: '4%',
     },
     inactiveButton: {
-        width: '90%',
         backgroundColor: '#E9EBEC',
         borderRadius: 10,
         alignItems: 'center',

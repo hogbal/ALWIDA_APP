@@ -252,11 +252,11 @@ const Login = ({ navigation }) => {
             {
                 (id !== '' && pw !== '')
                 ?
-                <ActiveButton style={styles.loginButton}
+                <ActiveButton
                     onpress={() => loginOnClick()}
                     text="로그인"
                 />
-                : <InactiveButton style={styles.loginButton} text='로그인' />
+                : <InactiveButton text='로그인' />
             }
             {/* 아이디&비밀번호 찾기 및 회원가입 */}
             <View style={styles.etcContainer}>
@@ -308,10 +308,6 @@ const styles = StyleSheet.create({
         marginTop: "1%",
         marginBottom: "5%",
         alignItems: 'flex-start',
-    },
-    loginButton: {
-        flex:1,
-        alignItems: 'center',
     },
     etcContainer: {
         flex:1,
