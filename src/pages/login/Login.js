@@ -323,7 +323,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginTop: "3%",
         paddingHorizontal: "3%",
-        paddingVertical: "1%",
+        paddingVertical: "3%",
     },
     inputText: {
         fontFamily: 'Pretendard-Medium',
