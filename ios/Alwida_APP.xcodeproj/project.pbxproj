@@ -8,21 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* Alwida_APPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* Alwida_APPTests.m */; };
+		03B3401A282C4BEE9885C93A /* Pretendard-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE217954BCC4966B83B6323 /* Pretendard-Medium.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-Alwida_APP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-Alwida_APP.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-Alwida_APP-Alwida_APPTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Alwida_APP-Alwida_APPTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		7DEB409613524E019D7AC994 /* Pretendard-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 215BE00E74BC4606B0DAA6F0 /* Pretendard-Black.ttf */; };
-		9E4C48AF0E754788B41B9914 /* Pretendard-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C001C85E2604A3193D1C27F /* Pretendard-Bold.ttf */; };
+		2BCD1F7854C940C8A97C36B7 /* Pretendard-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AD58A72134A49F880257FE8 /* Pretendard-Thin.ttf */; };
+		4885E827299296F000673BA9 /* hermes.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4885E825299296DE00673BA9 /* hermes.xcframework */; };
+		4885E828299296F000673BA9 /* hermes.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4885E825299296DE00673BA9 /* hermes.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48D8D90C29928F3000D9F62A /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 48D8D90B29928F3000D9F62A /* Fonts */; };
+		48D8D90E2992904400D9F62A /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 48D8D90D2992904400D9F62A /* Fonts */; };
 		614E31F3081D4395A6056C6D /* Pretendard-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99788717295B4D3DB331B379 /* Pretendard-ExtraBold.ttf */; };
 		68B381B751AB41AD90FD3ACC /* Pretendard-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10948531A6DA4B42B51D055F /* Pretendard-ExtraLight.ttf */; };
-		C35C7EE8F9884A9B81466A11 /* Pretendard-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15C0A17B62ED4EB384394A33 /* Pretendard-Light.ttf */; };
-		03B3401A282C4BEE9885C93A /* Pretendard-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE217954BCC4966B83B6323 /* Pretendard-Medium.ttf */; };
-		DBC8CF1C41E341D9B507AD4E /* Pretendard-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CD9FD6CDAFB4575B18CD48A /* Pretendard-Regular.ttf */; };
+		7699B88040F8A987B510C191 /* libPods-Alwida_APP-Alwida_APPTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Alwida_APP-Alwida_APPTests.a */; };
+		7DEB409613524E019D7AC994 /* Pretendard-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 215BE00E74BC4606B0DAA6F0 /* Pretendard-Black.ttf */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8B31CF479C9343ED8039E8AC /* Pretendard-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3145010BBFEB4AD1B2D8D908 /* Pretendard-SemiBold.ttf */; };
-		2BCD1F7854C940C8A97C36B7 /* Pretendard-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AD58A72134A49F880257FE8 /* Pretendard-Thin.ttf */; };
+		9E4C48AF0E754788B41B9914 /* Pretendard-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C001C85E2604A3193D1C27F /* Pretendard-Bold.ttf */; };
+		C35C7EE8F9884A9B81466A11 /* Pretendard-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15C0A17B62ED4EB384394A33 /* Pretendard-Light.ttf */; };
+		DBC8CF1C41E341D9B507AD4E /* Pretendard-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CD9FD6CDAFB4575B18CD48A /* Pretendard-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,33 +39,50 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4885E829299296F000673BA9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4885E828299296F000673BA9 /* hermes.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		00E356EE1AD99517003FC87E /* Alwida_APPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Alwida_APPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* Alwida_APPTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Alwida_APPTests.m; sourceTree = "<group>"; };
+		10948531A6DA4B42B51D055F /* Pretendard-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-ExtraLight.ttf"; path = "../src/assets/fonts/Pretendard-ExtraLight.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Alwida_APP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alwida_APP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Alwida_APP/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = Alwida_APP/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Alwida_APP/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Alwida_APP/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Alwida_APP/main.m; sourceTree = "<group>"; };
+		15C0A17B62ED4EB384394A33 /* Pretendard-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Light.ttf"; path = "../src/assets/fonts/Pretendard-Light.ttf"; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-Alwida_APP-Alwida_APPTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Alwida_APP-Alwida_APPTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CD9FD6CDAFB4575B18CD48A /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Regular.ttf"; path = "../src/assets/fonts/Pretendard-Regular.ttf"; sourceTree = "<group>"; };
+		215BE00E74BC4606B0DAA6F0 /* Pretendard-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Black.ttf"; path = "../src/assets/fonts/Pretendard-Black.ttf"; sourceTree = "<group>"; };
+		2CE217954BCC4966B83B6323 /* Pretendard-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Medium.ttf"; path = "../src/assets/fonts/Pretendard-Medium.ttf"; sourceTree = "<group>"; };
+		3145010BBFEB4AD1B2D8D908 /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-SemiBold.ttf"; path = "../src/assets/fonts/Pretendard-SemiBold.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-Alwida_APP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alwida_APP.debug.xcconfig"; path = "Target Support Files/Pods-Alwida_APP/Pods-Alwida_APP.debug.xcconfig"; sourceTree = "<group>"; };
+		4885E825299296DE00673BA9 /* hermes.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = hermes.xcframework; path = "Pods/hermes-engine/destroot/Library/Frameworks/universal/hermes.xcframework"; sourceTree = "<group>"; };
+		48D8D90B29928F3000D9F62A /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
+		48D8D90D2992904400D9F62A /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Alwida_APP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alwida_APP.release.xcconfig"; path = "Target Support Files/Pods-Alwida_APP/Pods-Alwida_APP.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Alwida_APP-Alwida_APPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alwida_APP-Alwida_APPTests.debug.xcconfig"; path = "Target Support Files/Pods-Alwida_APP-Alwida_APPTests/Pods-Alwida_APP-Alwida_APPTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-Alwida_APP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Alwida_APP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AD58A72134A49F880257FE8 /* Pretendard-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Thin.ttf"; path = "../src/assets/fonts/Pretendard-Thin.ttf"; sourceTree = "<group>"; };
+		7C001C85E2604A3193D1C27F /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Bold.ttf"; path = "../src/assets/fonts/Pretendard-Bold.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Alwida_APP/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Alwida_APP-Alwida_APPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alwida_APP-Alwida_APPTests.release.xcconfig"; path = "Target Support Files/Pods-Alwida_APP-Alwida_APPTests/Pods-Alwida_APP-Alwida_APPTests.release.xcconfig"; sourceTree = "<group>"; };
+		99788717295B4D3DB331B379 /* Pretendard-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-ExtraBold.ttf"; path = "../src/assets/fonts/Pretendard-ExtraBold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		215BE00E74BC4606B0DAA6F0 /* Pretendard-Black.ttf */ = {isa = PBXFileReference; name = "Pretendard-Black.ttf"; path = "../src/assets/fonts/Pretendard-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		7C001C85E2604A3193D1C27F /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; name = "Pretendard-Bold.ttf"; path = "../src/assets/fonts/Pretendard-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		99788717295B4D3DB331B379 /* Pretendard-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Pretendard-ExtraBold.ttf"; path = "../src/assets/fonts/Pretendard-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		10948531A6DA4B42B51D055F /* Pretendard-ExtraLight.ttf */ = {isa = PBXFileReference; name = "Pretendard-ExtraLight.ttf"; path = "../src/assets/fonts/Pretendard-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		15C0A17B62ED4EB384394A33 /* Pretendard-Light.ttf */ = {isa = PBXFileReference; name = "Pretendard-Light.ttf"; path = "../src/assets/fonts/Pretendard-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		2CE217954BCC4966B83B6323 /* Pretendard-Medium.ttf */ = {isa = PBXFileReference; name = "Pretendard-Medium.ttf"; path = "../src/assets/fonts/Pretendard-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		1CD9FD6CDAFB4575B18CD48A /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; name = "Pretendard-Regular.ttf"; path = "../src/assets/fonts/Pretendard-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		3145010BBFEB4AD1B2D8D908 /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; name = "Pretendard-SemiBold.ttf"; path = "../src/assets/fonts/Pretendard-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		6AD58A72134A49F880257FE8 /* Pretendard-Thin.ttf */ = {isa = PBXFileReference; name = "Pretendard-Thin.ttf"; path = "../src/assets/fonts/Pretendard-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +99,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C80B921A6F3F58F76C31292 /* libPods-Alwida_APP.a in Frameworks */,
+				4885E827299296F000673BA9 /* hermes.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +139,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4885E825299296DE00673BA9 /* hermes.xcframework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5DCACB8F33CDC322A6C60F78 /* libPods-Alwida_APP.a */,
 				19F6CBCC0A4E27FBF8BF4A61 /* libPods-Alwida_APP-Alwida_APPTests.a */,
@@ -134,6 +157,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				48D8D90B29928F3000D9F62A /* Fonts */,
+				48D8D90D2992904400D9F62A /* Fonts */,
 				13B07FAE1A68108700A75B9A /* Alwida_APP */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* Alwida_APPTests */,
@@ -168,7 +193,7 @@
 			sourceTree = "<group>";
 		};
 		FF60016914144429B05CD4FB /* Resources */ = {
-			isa = "PBXGroup";
+			isa = PBXGroup;
 			children = (
 				215BE00E74BC4606B0DAA6F0 /* Pretendard-Black.ttf */,
 				7C001C85E2604A3193D1C27F /* Pretendard-Bold.ttf */,
@@ -182,7 +207,6 @@
 			);
 			name = Resources;
 			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -220,6 +244,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				4885E829299296F000673BA9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -281,7 +306,9 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				7DEB409613524E019D7AC994 /* Pretendard-Black.ttf in Resources */,
+				48D8D90C29928F3000D9F62A /* Fonts in Resources */,
 				9E4C48AF0E754788B41B9914 /* Pretendard-Bold.ttf in Resources */,
+				48D8D90E2992904400D9F62A /* Fonts in Resources */,
 				614E31F3081D4395A6056C6D /* Pretendard-ExtraBold.ttf in Resources */,
 				68B381B751AB41AD90FD3ACC /* Pretendard-ExtraLight.ttf in Resources */,
 				C35C7EE8F9884A9B81466A11 /* Pretendard-Light.ttf in Resources */,
@@ -478,6 +505,7 @@
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-Alwida_APP-Alwida_APPTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = V84G4MVFJH;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -506,6 +534,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = V84G4MVFJH;
 				INFOPLIST_FILE = Alwida_APPTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -531,6 +560,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V84G4MVFJH;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Alwida_APP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -557,6 +587,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V84G4MVFJH;
 				INFOPLIST_FILE = Alwida_APP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -607,7 +638,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -641,6 +672,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -678,7 +710,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -704,6 +736,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

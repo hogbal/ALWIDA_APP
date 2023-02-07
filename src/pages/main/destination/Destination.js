@@ -94,6 +94,7 @@ const Destination = ({ navigation }) => {
                     <Image source={require('assets/img/destination_info_icon.png')} />
                     </TouchableOpacity>
             </View>
+            <View style={styles.button}>
             { 
                 check === true
                 ? <ActiveButton onpress={() => navigation.navigate("Reservation")} text="예약 현황 확인" />   
@@ -101,6 +102,7 @@ const Destination = ({ navigation }) => {
                     ? <InactiveButton text="운송오더 신청" />
                     : <ActiveButton onpress={() => navigation.navigate("Order")} text="운송오더 신청" />
             }
+            </View>
         </SafeAreaView>
     )
 }
@@ -131,6 +133,9 @@ const styles = StyleSheet.create({
         color: '#B6B6B6',
         margin: 10,
     },
+    button: {
+        width:'90%'
+    }
 })
 
 export default Destination

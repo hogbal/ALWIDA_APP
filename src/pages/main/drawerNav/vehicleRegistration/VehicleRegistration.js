@@ -94,38 +94,46 @@ const VehicleRegistration = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             {/* 기본 정보 */}
-            <View>
+            <View style={styles.info}>
                 <Text style={styles.text}>기본 정보</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder='이름'
-                    onChangeText={onChangeName}
-                    value={name}
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="번호 ('-' 제외)"
-                    onChangeText={onChangePhoneNum}
-                    value={phoneNum}
-                    keyboardType='numeric'
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder='주소'
-                    onChangeText={onChangeAddress}
-                    value={address}
-                />
+                <View style={styles.infoInput}>
+                    <TextInput
+                        style={styles.input}
+                        placeholder='이름'
+                        placeholderTextColor="#B9B9B9"
+                        onChangeText={onChangeName}
+                        value={name}
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="번호 ('-' 제외)"
+                        placeholderTextColor="#B9B9B9"
+                        onChangeText={onChangePhoneNum}
+                        value={phoneNum}
+                        keyboardType='numeric'
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder='주소'
+                        placeholderTextColor="#B9B9B9"
+                        onChangeText={onChangeAddress}
+                        value={address}
+                    />
+                </View>
             </View>
 
             {/* 차량번호 */}
-            <View style={{marginTop: 20,}}>
+            <View style={styles.num}>
                 <Text style={styles.text}>차량번호</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder='차량번호를 입력해주세요'
-                    onChangeText={onChangeCarNum}
-                    value={carNum}
-                />
+                <View style={styles.numInput}>
+                    <TextInput
+                        style={styles.input}
+                        placeholder='차량번호를 입력해주세요'
+                        placeholderTextColor="#B9B9B9"
+                        onChangeText={onChangeCarNum}
+                        value={carNum}
+                    />
+                </View>
             </View>
 
             {/* blank view */}
@@ -144,25 +152,40 @@ const VehicleRegistration = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        height: '100%',
+        flex:1,
         backgroundColor: '#FFFFFF',
-        padding: 20,
+    },
+    info: {
+        flex:1.5,
+        justifyContent: 'center'
+    },
+    infoInput: {
+        alignItems: 'center',
+    },
+    num: {
+        flex:1,
+        justifyContent: 'center'
+    },
+    numInput: {
+        alignItems: 'center',
     },
     text: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
-        marginTop: 20,
-        marginBottom: 5,
+        fontSize: 20,
+        marginTop: "3%",
+        marginLeft: "5%",
+        marginBottom: "1%",
         color: '#000000',
     },
     input: {
+        width:'90%',
         fontFamily: 'Pretendard-Medium',
         fontSize: 15,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#DCDEE6',
-        marginVertical: 5,
-        paddingHorizontal: 15,
+        marginVertical: "1%",
+        padding:'5%'
     },
 })
 
