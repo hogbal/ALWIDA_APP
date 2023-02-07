@@ -6,20 +6,61 @@ import {
     StyleSheet,
 } from 'react-native'
 
+import { createPOSTObject } from 'api/API'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 import * as Progress from 'react-native-progress'
 
 const DestLoading = ({ navigation }) => {
+    const [id, setId] = useState('')
     const [loading, setLoading] = useState(0)
+    const [check, setCheck] = useState(false)
+    const [data, setData] = useState([{"ampm": "-", "hour": "00", "minute": "00"}, {"ampm": "-", "hour": "00", "minute": "00"}, {"ampm": "-", "hour": "00", "minute": "00"}])
+
+    const getID = async () => {
+        try {
+            const value = await AsyncStorage.getItem('id')
+            if (value !== null) {
+                setId(value)
+            }
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    const recommandState = async () => {
+        let formdata = new FormData()
+        formdata.append("id", id)
+                
+        await createPOSTObject('dest/recommend', formdata)
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => {
+            if (data.result !== false && data.result !== "error") {
+                setData(data)
+                setCheck(true)
+            }
+        })
+        .catch((e) => console.error(e))
+    }
+
+    useEffect(() => {
+        getID()
+    }, [])
+
 
     useEffect(() => {
         const interval = setInterval(() => {
             setLoading(loading + 1)
+            recommandState()
         }, 500)
 
-        if(loading >= 10){
+        if(check) {
             clearInterval(interval)
             navigation.navigate('RecommendedTime')
         }
+
         return () => {
             clearInterval(interval)
         }
