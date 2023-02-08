@@ -4,6 +4,7 @@ import {
     Text,
     Animated,
     StyleSheet,
+    Dimensions
 } from 'react-native'
 import Svg, { G, Circle } from 'react-native-svg'
 
@@ -11,9 +12,9 @@ import Svg, { G, Circle } from 'react-native-svg'
 const AnimatedCircle = Animated.createAnimatedComponent(Circle)
 
 const Donut = ({
-    percentage = 75,
-    radius = 100,
-    strokeWidth = 15,
+    percentage = 0,
+    radius = Dimensions.get('window').width/3,
+    strokeWidth = radius/10,
     duration = 800,
     color,
     max = 100
@@ -47,7 +48,7 @@ const Donut = ({
     })
 
     return (
-        <View>
+        <View style={styles.circle}>
             <Svg
                 width={radius * 2}
                 height={radius * 2}
@@ -77,18 +78,27 @@ const Donut = ({
                     />
                 </G>
             </Svg>
-            <Text style={[StyleSheet.absoluteFillObject, styles.numText]}>{percentage == 0 ? '00' : percentage}<Text style={styles.text}>대</Text></Text>
+            <Text style={[styles.numText]}>
+                {
+                    percentage == 0 ? '00' : percentage
+                }
+                <Text style={styles.text}>대</Text>
+            </Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+    circle: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     numText: {
+        position: 'absolute',
         fontFamily: 'Pretendard-Medium',
         fontSize: 50,
-        color: '#1A1A1A',
-        textAlign: 'center',
-        textAlignVertical: 'center',
+        color: '#1A1A1A'
     },
     text: {
         fontFamily: 'Pretendard-Bold',

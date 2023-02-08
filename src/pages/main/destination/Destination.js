@@ -79,20 +79,45 @@ const Destination = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <LocalPicker DATA={DATA} localVisible={localVisible} setLocalVisible={setLocalVisible} selectedLocal={selectedLocal} setSelectedLocal={setSelectedLocal} />
-            <TerminalPicker DATA={DATA} terminalVisible={terminalVisible} setTerminalVisible={setTerminalVisible} selectedTerminal={selectedTerminal} setSelectedTerminal={setSelectedTerminal} selectedLocal={selectedLocal} setPercentage={setPercentage} setColor={setColor} setStatus={setStatus} />
+            <View style={styles.info}>
+                <LocalPicker 
+                    DATA={DATA} 
+                    localVisible={localVisible} 
+                    setLocalVisible={setLocalVisible} 
+                    selectedLocal={selectedLocal} 
+                    setSelectedLocal={setSelectedLocal} 
+                    setSelectedTerminal={setSelectedTerminal} 
+                    setPercentage={setPercentage} 
+                    setColor={setColor} 
+                    setStatus={setStatus} 
+                />
+                <TerminalPicker 
+                    DATA={DATA} 
+                    terminalVisible={terminalVisible} 
+                    setTerminalVisible={setTerminalVisible} 
+                    selectedTerminal={selectedTerminal} 
+                    setSelectedTerminal={setSelectedTerminal} 
+                    selectedLocal={selectedLocal} 
+                    setPercentage={setPercentage} 
+                    setColor={setColor} 
+                    setStatus={setStatus} 
+                />
 
-            <View style={styles.chart}>
-                <Donut percentage={percentage} color={color} />
-                <Text style={[styles.statusText, {color: color}]}>{status}</Text>
-                {/* 혼잡도 현황 버튼 */}
-                <TouchableOpacity
-                style={styles.statusInfoContainer}
-                onPress={() => null}
-                >
-                    <Text style={styles.infoText}>혼잡도 현황</Text>
-                    <Image source={require('assets/img/destination_info_icon.png')} />
-                    </TouchableOpacity>
+                <View style={styles.chart}>
+                    <Donut 
+                        percentage={percentage} 
+                        color={color} 
+                    />
+                    <Text style={[styles.statusText, {color: color}]}>{status}</Text>
+                    {/* 혼잡도 현황 버튼 */}
+                    <TouchableOpacity
+                    style={styles.statusInfoContainer}
+                    onPress={() => null}
+                    >
+                        <Text style={styles.infoText}>혼잡도 현황</Text>
+                        <Image source={require('assets/img/destination_info_icon.png')} />
+                        </TouchableOpacity>
+                </View>
             </View>
             <View style={styles.button}>
             { 
@@ -111,13 +136,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFFFFF',
-        alignItems: 'center',
-        justifyContent: 'center',
+    },
+    info:{
+        flex: 1,
+        justifyContent: 'flex-start'
     },
     chart: {
-        flex: 8,
         alignItems: 'center',
-        justifyContent: 'center',
     },
     statusInfoContainer: {
         flexDirection: 'row',
@@ -134,7 +159,8 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     button: {
-        width:'90%'
+        flex: 1,
+        justifyContent: 'flex-end',
     }
 })
 

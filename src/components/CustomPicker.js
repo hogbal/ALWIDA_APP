@@ -8,12 +8,29 @@ import {
     Modal,
 } from 'react-native'
 
-const PickerItem = ({ index, text, dataLength, setSelected, visible, setVisible, onPress }) => {
+const LocalPickerItem = ({ index, text, dataLength, setSelectedLocal, setSelectedTerminal, visible, setVisible, onPress, setPercentage, setColor, setStatus}) => {
     return (
         <TouchableOpacity
-            style={
-                styles.itemContainer
-            }
+            style={ styles.itemContainer }
+            onPress={() => {
+                setSelectedLocal(text)
+                setSelectedTerminal('터미널')
+                setVisible(!visible)
+                setPercentage(0)
+                setColor('')
+                setStatus('')
+                onPress()
+            }}
+        >
+            <Text style={styles.text}>{text}</Text>
+        </TouchableOpacity>
+    )
+}
+
+const TerminalPickerItem = ({ index, text, dataLength, setSelected, visible, setVisible, onPress }) => {
+    return (
+        <TouchableOpacity
+            style={ styles.itemContainer }
             onPress={() => {
                 setSelected(text)
                 setVisible(!visible)
@@ -25,39 +42,46 @@ const PickerItem = ({ index, text, dataLength, setSelected, visible, setVisible,
     )
 }
 
-const LocalPicker = ({ DATA, localVisible, setLocalVisible, selectedLocal, setSelectedLocal }) => {
+const LocalPicker = ({ DATA, localVisible, setLocalVisible, selectedLocal, setSelectedLocal, setSelectedTerminal, setPercentage, setColor, setStatus}) => {
     return (
-        <>
-            <TouchableOpacity
-                style={
-                    styles.container
-                }
-                onPress={() => setLocalVisible(!localVisible)}
-            >
-                <Text style={styles.text}>{selectedLocal}</Text>
-                <Modal
-                animationType={"overFullScreen"}
+        <TouchableOpacity
+            style={ styles.container }
+            onPress={() => setLocalVisible(!localVisible)}
+        >
+            <Text style={styles.text}>{selectedLocal}</Text>
+            <Modal
+                animationType={"slide"}
                 visible={localVisible}
                 presentationStyle={"formSheet"}
-                >
-                    {
-                        localVisible &&
-                        DATA.map((value, index) => {
-                            onPress = () => {
-                                console.log('local')
-                            }
-                            return (
-                                <PickerItem key={value.index} index={index} text={value.local} dataLength={DATA.length} setSelected={setSelectedLocal} visible={localVisible} setVisible={setLocalVisible} onPress={onPress} />
-                            )
-                        })
-                    }
-                </Modal>
-                <Image
-                    style={styles.arrowImg}
-                    source={require('assets/img/picker_arrow.png')}
-                />
-            </TouchableOpacity>
-        </>
+                onRequestClose={() => setLocalVisible(!localVisible)}
+            >
+                {
+                    localVisible &&
+                    DATA.map((value, index) => {
+                        return (
+                            <LocalPickerItem 
+                                key={value.index} 
+                                index={index} 
+                                text={value.local} 
+                                dataLength={DATA.length} 
+                                setSelectedLocal={setSelectedLocal} 
+                                setSelectedTerminal={setSelectedTerminal}
+                                visible={localVisible} 
+                                setVisible={setLocalVisible} 
+                                onPress={onPress}
+                                setPercentage={setPercentage}
+                                setColor={setColor}
+                                setStatus={setStatus}
+                            />
+                        )
+                    })
+                }
+            </Modal>
+            <Image
+                style={styles.arrowImg}
+                source={require('assets/img/picker_arrow.png')}
+            />
+        </TouchableOpacity>
     )
 }
 
@@ -65,9 +89,7 @@ const TerminalPicker = ({ DATA, terminalVisible, setTerminalVisible, selectedTer
     if (selectedLocal == '지역') {
         return (
             <View
-                style={
-                    styles.container
-                }
+                style={ styles.container }
                 onPress={() => setTerminalVisible(!terminalVisible)}
             >
                 <Image
@@ -83,72 +105,76 @@ const TerminalPicker = ({ DATA, terminalVisible, setTerminalVisible, selectedTer
         )
     }
     return (
-        <>
-            <TouchableOpacity
-                style={
-                    terminalVisible == true
-                    ? styles.visibleContainer
-                    : styles.container
-                }
-                onPress={() => setTerminalVisible(!terminalVisible)}
-            >
-                <Image
-                    style={styles.markerImg}
-                    source={require('assets/img/picker_marker.png')}
-                />
-                <Text style={styles.text}>{selectedTerminal}</Text>
-                <Modal
+        <TouchableOpacity
+            style={
+                terminalVisible == true
+                ? styles.visibleContainer
+                : styles.container
+            }
+            onPress={() => setTerminalVisible(!terminalVisible)}
+        >
+            <Image
+                style={styles.markerImg}
+                source={require('assets/img/picker_marker.png')}
+            />
+            <Text style={styles.text}>{selectedTerminal}</Text>
+            <Modal
                 animationType={"overFullScreen"}
                 visible={terminalVisible}
                 presentationStyle={"formSheet"}
-                >
-                    {
-                        terminalVisible &&
-                        DATA.map((value, valueIndex) => {
-                            if (value.local == selectedLocal) {
-                                return (
-                                    value['terminals'].map((item, index) => {
-                                        onPress = () => {
-                                            if (setPercentage !== null) {
-                                                setPercentage(item.percentage)
-                                                setColor(item.color)
-                                                setStatus(item.status)
-                                            }
+                onRequestClose={() => setTerminalVisible(!terminalVisible)}
+            >
+                {
+                    terminalVisible &&
+                    DATA.map((value, valueIndex) => {
+                        if (value.local == selectedLocal) {
+                            return (
+                                value['terminals'].map((item, index) => {
+                                    onPress = () => {
+                                        if (setPercentage !== null) {
+                                            setPercentage(item.percentage)
+                                            setColor(item.color)
+                                            setStatus(item.status)
                                         }
-                                        return (
-                                            <PickerItem key={item.index} index={index} text={item.terminal} dataLength={value['terminals'].length} setSelected={setSelectedTerminal} visible={terminalVisible} setVisible={setTerminalVisible} onPress={onPress} />
-                                        )
-                                    })
-                                )
-                            }
-                        })
-                    }
-                </Modal>
-                <Image
-                    style={styles.arrowImg}
-                    source={require('assets/img/picker_arrow.png')}
-                />
-            </TouchableOpacity>
-        </>
+                                    }
+                                    return (
+                                        <TerminalPickerItem 
+                                            key={item.index} 
+                                            index={index} 
+                                            text={item.terminal} 
+                                            dataLength={value['terminals'].length} 
+                                            setSelected={setSelectedTerminal} 
+                                            visible={terminalVisible} setVisible={setTerminalVisible} 
+                                            onPress={onPress} 
+                                        />
+                                    )
+                                })
+                            )
+                        }
+                    })
+                }
+            </Modal>
+            <Image
+                style={styles.arrowImg}
+                source={require('assets/img/picker_arrow.png')}
+            />
+        </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        width: '90%',
         flexDirection: 'row',
         borderWidth: 1,
         borderColor: '#E3E6ED',
         borderRadius: 15,
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '2%',
+        padding: '7%',
         margin: '3%',
         backgroundColor: '#FFFFFF',
     },
     itemContainer: {
-        width: '90%',
         flexDirection: 'row',
         borderWidth: 1,
         borderColor: '#E3E6ED',
