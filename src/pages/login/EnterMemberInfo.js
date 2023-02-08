@@ -12,6 +12,7 @@ import { useRecoilState } from 'recoil'
 
 import { signUpInfo } from 'hooks/Atoms'
 import { ActiveButton, InactiveButton } from 'components/CustomButton'
+import { Font } from 'api/Font'
 
 const EnterMemberInfo = ({ navigation }) => {
     const [name, onChangeName] = useState("")
@@ -123,7 +124,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes18,
         marginLeft: "5%",
         marginTop: "10%",
         marginBottom: "1%",
@@ -138,12 +139,12 @@ const styles = StyleSheet.create({
     input: {
         width: "90%",
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes12,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#DCDEE6',
         marginVertical: "1%",
-        padding:'5%'
+        padding:'4%'
     },
     button: {
         flex: 1,

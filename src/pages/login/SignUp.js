@@ -16,6 +16,7 @@ import { useRecoilState } from 'recoil'
 import { signUpInfo } from 'hooks/Atoms'
 import { ActiveButton, InactiveButton } from 'components/CustomButton'
 import { createPOSTObject } from 'api/API'
+import { Font } from 'api/Font'
 
 const SignUp = ({ navigation }) => {
     const [id, onChangeId] = useState("")
@@ -308,7 +309,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes18,
         marginLeft: "5%",
         marginTop: "7%",
         marginBottom: "1%",
@@ -317,7 +318,7 @@ const styles = StyleSheet.create({
     input: {
         width: "90%",
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes14,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#DCDEE6',
@@ -327,7 +328,7 @@ const styles = StyleSheet.create({
     inputBtn: {
         width: "65%",
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes14,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#DCDEE6',
@@ -338,7 +339,7 @@ const styles = StyleSheet.create({
     redInput: {
         width: "65%",
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes14,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#F63232',
@@ -349,13 +350,13 @@ const styles = StyleSheet.create({
     },
     inputText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 10,
+        fontSize: Font.fontSizes.fontSizes10,
         color: '#ABABA8',
         paddingLeft: '5%'
     },
     redInputText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 10,
+        fontSize: Font.fontSizes.fontSizes10,
         color: '#F63232',
         paddingLeft: '5%'
     },
@@ -370,7 +371,7 @@ const styles = StyleSheet.create({
     },
     smallButtonText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes14,
         color: '#FFFFFF',
     },
     inActiveSmallButton: {
@@ -384,13 +385,13 @@ const styles = StyleSheet.create({
     },
     inActiveSmallText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes14,
         color: '#ACACA9',
     },
     pwInput: {
         width: '90%',
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes14,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#DCDEE6',
@@ -401,7 +402,7 @@ const styles = StyleSheet.create({
         width: '90%',
         fontFamily: 'Pretendard-Medium',
         backgroundColor: '#FFF1F1',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes14,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#F63232',
@@ -410,7 +411,7 @@ const styles = StyleSheet.create({
     },
     modalText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 12,
+        fontSize: Font.fontSizes.fontSizes12,
         color: '#00A8FF',
         textDecorationLine: 'underline'
     },
