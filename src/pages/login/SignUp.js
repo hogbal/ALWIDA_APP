@@ -96,170 +96,172 @@ const SignUp = ({ navigation }) => {
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <SafeAreaView style={styles.container}>
-                    <View style={styles.info}>
-                        <Text style={styles.text}>기본 정보</Text>
-                        <View style={styles.id}>
+                <View style={styles.info}>
+                    <Text style={styles.text}>기본 정보</Text>
+                    <View style={styles.id}>
+                        <TextInput
+                            style={idCheck === '이미 사용중인 아이디입니다.' && id !== "" ? styles.redInput : styles.inputBtn}
+                            placeholder='아이디를 입력해주세요'
+                            placeholderTextColor="#E0E0E0"
+                            onChangeText={text => onChangeId(text)}
+                            value={id}
+                            autoCapitalize='none'
+                        />
+                        {
+                            (id != "")
+                            ?
+                            <TouchableOpacity
+                                style={styles.smallButton}
+                                onPress={() => isExistID()}
+                            >
+                                <Text style={styles.smallButtonText}>중복 확인</Text>
+                            </TouchableOpacity>
+                            :
+                            <View
+                                style={styles.inActiveSmallButton}
+                            >
+                                <Text style={styles.inActiveSmallText}>중복 확인</Text>
+                            </View>
+                        }
+                    </View>
+                    <Text style={idCheck === '사용가능한 아이디입니다' ? styles.inputText : styles.redInputText}>{idCheck}</Text>
+                    <Text style={styles.text}>비밀번호</Text>
+                    <View style={styles.pw}>
+                        <TextInput
+                            style={styles.pwInput}
+                            placeholder='비밀번호 입력해주세요.'
+                            placeholderTextColor="#E0E0E0"
+                            onChangeText={onChangePw}
+                            value={pw}
+                            secureTextEntry
+                            returnKeyType='next'
+                            onSubmitEditing={() => {
+                                this.reInput.focus()
+                            }}
+                            bulrOnSubmit={false}
+                            autoCapitalize='none'
+                        />
+                        <TextInput
+                            style={pw !== rePw && rePw !== "" ? styles.redPwInput : styles.pwInput}
+                            placeholder='비밀번호 재입력해주세요.'
+                            placeholderTextColor="#E0E0E0"
+                            onChangeText={onChangeRePw}
+                            secureTextEntry
+                            value={rePw}
+                            returnKeyType='next'
+                            onSubmitEditing={() => {
+                                this.phoneNumInput.focus()
+                            }}
+                            bulrOnSubmit={false}
+                            ref={(input) => {
+                                this.reInput = input
+                            }}
+                            autoCapitalize='none'
+                        />
+                    </View>
+                    {
+                        pw !== rePw && rePw !== "" &&
+                        <Text style={styles.redInputText}>비밀번호가 일치하지 않습니다.</Text>
+                    }
+                    <Text style={styles.text}>인증</Text>
+                    <View style={styles.auth}>
+                        <View style={styles.authPhone}>
                             <TextInput
-                                style={idCheck === '이미 사용중인 아이디입니다.' && id !== "" ? styles.redInput : styles.inputBtn}
-                                placeholder='아이디를 입력해주세요'
+                                style={styles.inputBtn}
+                                placeholder='휴대폰 번호'
                                 placeholderTextColor="#E0E0E0"
-                                onChangeText={text => onChangeId(text)}
-                                value={id}
-                                autoCapitalize='none'
+                                onChangeText={onChangePhoneNum}
+                                value={phoneNum}
+                                keyboardType='numeric'
+                                ref={(input) => {
+                                    this.phoneNumInput = input
+                                }}
                             />
                             {
-                                (id != "")
+                                (phoneNum != "")
                                 ?
                                 <TouchableOpacity
                                     style={styles.smallButton}
-                                    onPress={() => isExistID()}
+                                    onPress={() => null}
                                 >
-                                    <Text style={styles.smallButtonText}>중복 확인</Text>
+                                <Text style={styles.smallButtonText}>전송</Text>
                                 </TouchableOpacity>
                                 :
                                 <View
                                     style={styles.inActiveSmallButton}
                                 >
-                                    <Text style={styles.inActiveSmallText}>중복 확인</Text>
+                                    <Text style={styles.inActiveSmallText}>전송</Text>
                                 </View>
                             }
                         </View>
-                        <Text style={idCheck === '사용가능한 아이디입니다' ? styles.inputText : styles.redInputText}>{idCheck}</Text>
-                        <Text style={styles.text}>비밀번호</Text>
-                        <View style={styles.pw}>
+                        <View style={styles.authNum}>
                             <TextInput
-                                style={styles.pwInput}
-                                placeholder='비밀번호 입력해주세요.'
-                                placeholderTextColor="#E0E0E0"
-                                onChangeText={onChangePw}
-                                value={pw}
-                                secureTextEntry
-                                returnKeyType='next'
-                                onSubmitEditing={() => {
-                                    this.reInput.focus()
-                                }}
-                                bulrOnSubmit={false}
-                                autoCapitalize='none'
+                            style={styles.inputBtn}
+                            placeholder='인증 번호'
+                            placeholderTextColor="#E0E0E0"
+                            onChangeText={onChangeCertificationNum}
+                            value={certificationNum}
+                            keyboardType='numeric'
                             />
-                            <TextInput
-                                style={pw !== rePw && rePw !== "" ? styles.redPwInput : styles.pwInput}
-                                placeholder='비밀번호 재입력해주세요.'
-                                placeholderTextColor="#E0E0E0"
-                                onChangeText={onChangeRePw}
-                                secureTextEntry
-                                value={rePw}
-                                returnKeyType='next'
-                                onSubmitEditing={() => {
-                                    this.phoneNumInput.focus()
-                                }}
-                                bulrOnSubmit={false}
-                                ref={(input) => {
-                                    this.reInput = input
-                                }}
-                                autoCapitalize='none'
-                            />
-                        </View>
-                        {
-                            pw !== rePw && rePw !== "" &&
-                            <Text style={styles.redInputText}>비밀번호가 일치하지 않습니다.</Text>
-                        }
-                        <Text style={styles.text}>인증</Text>
-                        <View style={styles.auth}>
-                            <View style={styles.authPhone}>
-                                <TextInput
-                                    style={styles.inputBtn}
-                                    placeholder='휴대폰 번호'
-                                    placeholderTextColor="#E0E0E0"
-                                    onChangeText={onChangePhoneNum}
-                                    value={phoneNum}
-                                    keyboardType='numeric'
-                                    ref={(input) => {
-                                        this.phoneNumInput = input
-                                    }}
-                                />
-                                {
-                                    (phoneNum != "")
-                                    ?
-                                    <TouchableOpacity
-                                        style={styles.smallButton}
-                                        onPress={() => null}
-                                    >
-                                        <Text style={styles.smallButtonText}>전송</Text>
-                                    </TouchableOpacity>
-                                    :
-                                    <View
-                                        style={styles.inActiveSmallButton}
-                                    >
-                                        <Text style={styles.inActiveSmallText}>전송</Text>
-                                    </View>
-                                }
-                            </View>
-                            <View style={styles.authNum}>
-                                <TextInput
-                                style={styles.inputBtn}
-                                placeholder='인증 번호'
-                                placeholderTextColor="#E0E0E0"
-                                onChangeText={onChangeCertificationNum}
-                                value={certificationNum}
-                                keyboardType='numeric'
-                                />
-                                {
-                                    (certificationNum != "")
-                                    ?
-                                    <TouchableOpacity
-                                        style={styles.smallButton}
-                                        onPress={() => setCertificationChecked(!certificationChecked)}
-                                    >
-                                        <Text style={styles.smallButtonText}>확인</Text>
-                                    </TouchableOpacity>
-                                    :
-                                    <View
-                                        style={styles.inActiveSmallButton}
-                                    >
-                                        <Text style={styles.inActiveSmallText}>확인</Text>
-                                    </View>
-                                }
-                            </View>
-                        </View>
-                        <View style={styles.agree}>
-                            <TouchableOpacity
-                                style={{flexDirection: 'row', alignItems: 'center'}}
-                                onPress={() => {
-                                    setAgreeCheck(!agreeCheck)
-                                }}
-                            >
-                                <Image
-                                    source={
-                                        agreeCheck
-                                        ? require('assets/img/login_check.png')
-                                        : require('assets/img/login_none_check.png')
-                                    }
-                                />
-                                <Text style={styles.agreeText}>가입약관에 동의합니다.</Text>
-                            </TouchableOpacity>
-                            <View>
+                            {
+                                (certificationNum != "")
+                                ?
                                 <TouchableOpacity
-                                    style={styles.touchableText}
-                                    onPress={() => null}
+                                    style={styles.smallButton}
+                                    onPress={() => setCertificationChecked(!certificationChecked)}
                                 >
-                                    <Text style={styles.modalText}>내용보기</Text>
+                                    <Text style={styles.smallButtonText}>확인</Text>
                                 </TouchableOpacity>
-                            </View>
+                                :
+                                <View
+                                    style={styles.inActiveSmallButton}
+                                >
+                                    <Text style={styles.inActiveSmallText}>확인</Text>
+                                </View>
+                            }
                         </View>
                     </View>
-                    {
-                        // phoneNum != null && certificationNum != null &&
-                        (idCheck === '사용가능한 아이디입니다' && pw != null && rePw != null && pw == rePw && agreeCheck)
-                        ?
-                        <ActiveButton
-                            onpress={() => {
-                                userInfoSubmit()
-                                signUpOnClick()
+                    <View style={styles.agree}>
+                        <TouchableOpacity
+                            style={{flexDirection: 'row', alignItems: 'center'}}
+                            onPress={() => {
+                                setAgreeCheck(!agreeCheck)
                             }}
-                            text='가입 완료'
-                        />
-                        : <InactiveButton text='가입 완료' />
-                    }
+                        >
+                            <Image
+                                source={
+                                    agreeCheck
+                                    ? require('assets/img/login_check.png')
+                                    : require('assets/img/login_none_check.png')
+                                }
+                            />
+                            <Text style={styles.agreeText}>가입약관에 동의합니다.</Text>
+                        </TouchableOpacity>
+                        <View>
+                            <TouchableOpacity
+                                style={styles.touchableText}
+                                onPress={() => null}
+                            >
+                            <Text style={styles.modalText}>내용보기</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <View style={styles.button}>
+                        {
+                            // phoneNum != null && certificationNum != null &&
+                            (idCheck === '사용가능한 아이디입니다' && pw != null && rePw != null && pw == rePw && agreeCheck)
+                            ?
+                            <ActiveButton
+                                onpress={() => {
+                                    userInfoSubmit()
+                                    signUpOnClick()
+                                }}
+                                text='가입 완료'
+                            />
+                            : <InactiveButton text='가입 완료' />
+                        }
+                    </View>
+                </View>
             </SafeAreaView>
         </TouchableWithoutFeedback>
     )
@@ -299,6 +301,10 @@ const styles = StyleSheet.create({
         marginVertical: "3%",
         paddingLeft: "5%",
         paddingRight: "5%"
+    },
+    button: {
+        flex: 1,
+        justifyContent: 'flex-end'
     },
     text: {
         fontFamily: 'Pretendard-Medium',

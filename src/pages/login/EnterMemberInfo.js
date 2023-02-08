@@ -171,21 +171,21 @@ const EnterMemberInfo = ({ navigation }) => {
                             }}
                         />
                     </View>
-                </View>
-
-                {
-                    name != "" && phoneNum != "" && address != "" && carNum != ""
-                    ?
-                    <ActiveButton
-                        onpress={() => {
-                            userInfoSubmit()
-                            navigation.navigate('SignUp')}
+                    <View style={styles.button}>
+                        {
+                            name != "" && phoneNum != "" && address != "" && carNum != ""
+                            ?
+                            <ActiveButton
+                                onpress={() => {
+                                    userInfoSubmit()
+                                    navigation.navigate('SignUp')}
+                                }
+                                text='확인'
+                            />
+                            : <InactiveButton text='확인' />
                         }
-                        text='확인'
-                    />
-                    : <InactiveButton text='확인' />
-                }
-
+                    </View>
+                </View>
             </SafeAreaView>
         </TouchableWithoutFeedback>
     )
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     },
     info: {
         flex: 1,
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
     },
     text: {
         fontFamily: 'Pretendard-Medium',
@@ -225,8 +225,8 @@ const styles = StyleSheet.create({
         padding:'5%'
     },
     button: {
-        width: '90%',
-        alignItems: 'center'
+        flex: 1,
+        justifyContent: 'flex-end'
     }
 })
 export default EnterMemberInfo
