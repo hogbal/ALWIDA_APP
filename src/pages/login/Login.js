@@ -8,6 +8,8 @@ import {
     StyleSheet,
     TouchableOpacity,
     Alert,
+    TouchableWithoutFeedback,
+    Keyboard
 } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
@@ -93,100 +95,111 @@ const Login = ({ navigation }) => {
         .catch(err => console.error(err))
     }
 
+    // return (
+    //     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    //         <SafeAreaView style={styles.container}>
+    //             {/* 로고 이미지 */}
+                // <View style={styles.imgContainer}>
+                //     <Image source={require('assets/img/logo.png')} />
+                // </View>
+    //             {/* 아이디&비밀번호 입력 */}
+    //             <View style={styles.inputContainer}>
+    //                 <View style={styles.input}>
+    //                     <Image source={require('assets/img/login_id.png')} />
+    //                     <TextInput
+    //                         style={styles.inputText}
+    //                         placeholder="아이디"
+    //                         placeholderTextColor="#E0E0E0"
+    //                         onChangeText={onChangeId}
+    //                         value={id}
+    //                         returnKeyType='next'
+    //                         onSubmitEditing={() => {
+    //                             this.pwInput.focus()
+    //                         }}
+    //                         bulrOnSubmit={false}
+    //                         autoCapitalize='none'
+    //                     />
+    //                 </View>
+    //                 <View style={styles.input}>
+    //                     <Image source={require('assets/img/login_pw.png')} />
+    //                     <TextInput
+    //                         style={styles.inputText}
+    //                         placeholder="비밀번호"
+    //                         placeholderTextColor="#E0E0E0"
+    //                         onChangeText={onChangePw}
+    //                         value={pw}
+    //                         secureTextEntry={true}
+    //                         ref={(input) => {
+    //                             this.pwInput = input
+    //                         }}
+    //                         autoCapitalize='none'
+    //                     />
+    //                 </View>
+    //                 {
+    //                     id !== '' && pw !== '' && loginCheck &&
+    //                     <Text style={styles.redInputText}>아이디 또는 비밀번호가 일치하지않습니다.</Text>
+    //                 }
+    //             </View>
+
+    //             {/* 로그인 유지 체크박스 */}
+    //             <TouchableOpacity
+    //                 style={styles.checkContainer}
+    //                 onPress={() => setChecked(!checked)}    
+    //             >
+    //                 <Image
+    //                     style={styles.checkImg}
+    //                     source={
+    //                         checked
+    //                         ? require('assets/img/login_check.png')
+    //                         : require('assets/img/login_none_check.png')}
+    //                 />
+    //                 <Text style={styles.text}>로그인 유지하기</Text>
+    //             </TouchableOpacity>
+
+    //             {/* 로그인 버튼 */}
+    //             {
+    //                 (id !== '' && pw !== '')
+    //                 ?
+    //                 <ActiveButton
+    //                     onpress={() => loginOnClick()}
+    //                     text="로그인"
+    //                 />
+    //                 : <InactiveButton text='로그인' />
+    //             }
+    //             {/* 아이디&비밀번호 찾기 및 회원가입 */}
+    //             <View style={styles.etcContainer}>
+    //                     <TouchableOpacity
+    //                         style={styles.touchableEtc}
+    //                         onPress={() => null}
+    //                     >
+    //                         <Text style={styles.text}>아이디 찾기</Text>
+    //                     </TouchableOpacity>
+    //                     <Text style={styles.barText}> | </Text>
+    //                     <TouchableOpacity
+    //                         style={styles.touchableEtc}
+    //                         onPress={() => null}
+    //                     >
+    //                         <Text style={styles.text}>비밀번호 찾기</Text>
+    //                     </TouchableOpacity>
+    //                     <Text style={styles.barText}> | </Text>
+    //                     <TouchableOpacity
+    //                         style={styles.touchableEtc}
+    //                         onPress={() => navigation.navigate('EnterMemberInfo')}
+    //                     >
+    //                         <Text style={styles.text}>회원가입</Text>
+    //                     </TouchableOpacity>
+    //                 </View>
+    //         </SafeAreaView>
+    //     </TouchableWithoutFeedback>
+    // )
     return (
-        <SafeAreaView style={styles.container}>
-            {/* 로고 이미지 */}
-            <View style={styles.imgContainer}>
-                <Image source={require('assets/img/logo.png')} />
-            </View>
-            {/* 아이디&비밀번호 입력 */}
-            <View style={styles.inputContainer}>
-                <View style={styles.input}>
-                    <Image source={require('assets/img/login_id.png')} />
-                    <TextInput
-                        style={styles.inputText}
-                        placeholder="아이디"
-                        placeholderTextColor="#E0E0E0"
-                        onChangeText={onChangeId}
-                        value={id}
-                        returnKeyType='next'
-                        onSubmitEditing={() => {
-                            this.pwInput.focus()
-                        }}
-                        bulrOnSubmit={false}
-                        autoCapitalize='none'
-                    />
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <SafeAreaView style={styles.container}>
+                <View style={styles.imgContainer}>
+                    <Image source={require('assets/img/logo.png')} />
                 </View>
-                <View style={styles.input}>
-                    <Image source={require('assets/img/login_pw.png')} />
-                    <TextInput
-                        style={styles.inputText}
-                        placeholder="비밀번호"
-                        placeholderTextColor="#E0E0E0"
-                        onChangeText={onChangePw}
-                        value={pw}
-                        secureTextEntry={true}
-                        ref={(input) => {
-                            this.pwInput = input
-                        }}
-                        autoCapitalize='none'
-                    />
-                </View>
-                {
-                    id !== '' && pw !== '' && loginCheck &&
-                    <Text style={styles.redInputText}>아이디 또는 비밀번호가 일치하지않습니다.</Text>
-                }
-            </View>
-
-            {/* 로그인 유지 체크박스 */}
-            <TouchableOpacity
-                style={styles.checkContainer}
-                onPress={() => setChecked(!checked)}    
-            >
-                <Image
-                    style={styles.checkImg}
-                    source={
-                        checked
-                        ? require('assets/img/login_check.png')
-                        : require('assets/img/login_none_check.png')}
-                />
-                <Text style={styles.text}>로그인 유지하기</Text>
-            </TouchableOpacity>
-
-            {/* 로그인 버튼 */}
-            {
-                (id !== '' && pw !== '')
-                ?
-                <ActiveButton
-                    onpress={() => loginOnClick()}
-                    text="로그인"
-                />
-                : <InactiveButton text='로그인' />
-            }
-            {/* 아이디&비밀번호 찾기 및 회원가입 */}
-            <View style={styles.etcContainer}>
-                    <TouchableOpacity
-                        style={styles.touchableEtc}
-                        onPress={() => null}
-                    >
-                        <Text style={styles.text}>아이디 찾기</Text>
-                    </TouchableOpacity>
-                    <Text style={styles.barText}> | </Text>
-                    <TouchableOpacity
-                        style={styles.touchableEtc}
-                        onPress={() => null}
-                    >
-                        <Text style={styles.text}>비밀번호 찾기</Text>
-                    </TouchableOpacity>
-                    <Text style={styles.barText}> | </Text>
-                    <TouchableOpacity
-                        style={styles.touchableEtc}
-                        onPress={() => navigation.navigate('EnterMemberInfo')}
-                    >
-                        <Text style={styles.text}>회원가입</Text>
-                    </TouchableOpacity>
-                </View>
-        </SafeAreaView>
+            </SafeAreaView>
+        </TouchableWithoutFeedback>
     )
 }
 
@@ -199,7 +212,6 @@ const styles = StyleSheet.create({
     imgContainer: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'flex-end',
     },
     inputContainer: {
         flex: 1,
