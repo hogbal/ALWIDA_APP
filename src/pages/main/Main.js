@@ -90,7 +90,7 @@ const Main = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         height: '100%',
-        padding: 20,
+        padding: "3%",
         backgroundColor: '#FAFAFA',
     },
     headerContainer: {

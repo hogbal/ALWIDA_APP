@@ -107,13 +107,13 @@ const styles = StyleSheet.create({
     itmeOddContainer: {
         width: '100%',
         flexDirection: 'row',
-        paddingVertical: 15,
+        paddingVertical: '3%',
         backgroundColor: '#F9F9F9',
     },
     itmeEvenContainer: {
         width: '100%',
         flexDirection: 'row',
-        paddingVertical: 15,
+        paddingVertical: '3%',
         backgroundColor: '#FFFFFF',
     },
     titleText: {

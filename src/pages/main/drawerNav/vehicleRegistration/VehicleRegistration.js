@@ -6,6 +6,8 @@ import {
     TextInput,
     StyleSheet,
     Alert,
+    TouchableWithoutFeedback,
+    Keyboard
 } from 'react-native'
 
 import { createPOSTObject } from 'api/API'
@@ -92,61 +94,57 @@ const VehicleRegistration = ({ navigation }) => {
     }
 
     return (
-        <SafeAreaView style={styles.container}>
-            {/* 기본 정보 */}
-            <View style={styles.info}>
-                <Text style={styles.text}>기본 정보</Text>
-                <View style={styles.infoInput}>
-                    <TextInput
-                        style={styles.input}
-                        placeholder='이름'
-                        placeholderTextColor="#B9B9B9"
-                        onChangeText={onChangeName}
-                        value={name}
-                    />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="번호 ('-' 제외)"
-                        placeholderTextColor="#B9B9B9"
-                        onChangeText={onChangePhoneNum}
-                        value={phoneNum}
-                        keyboardType='numeric'
-                    />
-                    <TextInput
-                        style={styles.input}
-                        placeholder='주소'
-                        placeholderTextColor="#B9B9B9"
-                        onChangeText={onChangeAddress}
-                        value={address}
-                    />
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <SafeAreaView style={styles.container}>
+                {/* 기본 정보 */}
+                <View style={styles.info}>
+                    <Text style={styles.text}>기본 정보</Text>
+                    <View style={styles.infoInput}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder='이름'
+                            placeholderTextColor="#B9B9B9"
+                            onChangeText={onChangeName}
+                            value={name}
+                        />
+                        <TextInput
+                            style={styles.input}
+                            placeholder="번호 ('-' 제외)"
+                            placeholderTextColor="#B9B9B9"
+                            onChangeText={onChangePhoneNum}
+                            value={phoneNum}
+                            keyboardType='numeric'
+                        />
+                        <TextInput
+                            style={styles.input}
+                            placeholder='주소'
+                            placeholderTextColor="#B9B9B9"
+                            onChangeText={onChangeAddress}
+                            value={address}
+                        />
+                    </View>
+                    <Text style={styles.text}>차량번호</Text>
+                    <View style={styles.numInput}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder='차량번호를 입력해주세요'
+                            placeholderTextColor="#B9B9B9"
+                            onChangeText={onChangeCarNum}
+                            value={carNum}
+                        />
+                    </View>
+                    <View style={styles.button}>
+                        {/* 등록하기 버튼 */}
+                        {
+                            (name != null && phoneNum != null && address != null && carNum != null)
+                            ? <ActiveButton onpress={() => getPostID()} text='변경하기' />
+                            : <InactiveButton text='변경하기' />
+                        }
+                        {/* <ToastMessage description='변경이 완료되었습니다' /> */}
+                    </View>
                 </View>
-            </View>
-
-            {/* 차량번호 */}
-            <View style={styles.num}>
-                <Text style={styles.text}>차량번호</Text>
-                <View style={styles.numInput}>
-                    <TextInput
-                        style={styles.input}
-                        placeholder='차량번호를 입력해주세요'
-                        placeholderTextColor="#B9B9B9"
-                        onChangeText={onChangeCarNum}
-                        value={carNum}
-                    />
-                </View>
-            </View>
-
-            {/* blank view */}
-            <View style={{flex: 1,}}></View>
-
-            {/* 등록하기 버튼 */}
-            {
-                (name != null && phoneNum != null && address != null && carNum != null)
-                ? <ActiveButton onpress={() => getPostID()} text='변경하기' />
-                : <InactiveButton text='변경하기' />
-            }
-            {/* <ToastMessage description='변경이 완료되었습니다' /> */}
-        </SafeAreaView>
+            </SafeAreaView>
+        </TouchableWithoutFeedback>
     )
 }
 
@@ -156,15 +154,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
     },
     info: {
-        flex:1.5,
-        justifyContent: 'center'
+        flex:1,
+        justifyContent: 'flex-start'
     },
     infoInput: {
         alignItems: 'center',
-    },
-    num: {
-        flex:1,
-        justifyContent: 'center'
     },
     numInput: {
         alignItems: 'center',
@@ -172,7 +166,7 @@ const styles = StyleSheet.create({
     text: {
         fontFamily: 'Pretendard-Medium',
         fontSize: 20,
-        marginTop: "3%",
+        marginTop: "10%",
         marginLeft: "5%",
         marginBottom: "1%",
         color: '#000000',
@@ -187,6 +181,10 @@ const styles = StyleSheet.create({
         marginVertical: "1%",
         padding:'5%'
     },
+    button: {
+        flex: 1,
+        justifyContent: 'flex-end'
+    }
 })
 
 export default VehicleRegistration
