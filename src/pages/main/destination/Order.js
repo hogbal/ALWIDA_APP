@@ -5,6 +5,8 @@ import {
     Text,
     TextInput,
     StyleSheet,
+    TouchableWithoutFeedback,
+    Keyboard
 } from 'react-native'
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -86,68 +88,94 @@ const Order = ({ navigation }) => {
     }
 
     return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.inputContainer}>
-                <Text style={styles.text}>컨테이너 번호</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder='컨테이너 번호를 입력해주세요'
-                    onChangeText={onChangeContainerNum}
-                    value={containerNum}
-                />
-                <Text style={styles.redText}>{containerStatus}</Text>
-            </View>
-            {
-                (containerNum != '')
-                ? <ActiveButton onpress={inquireContainer} text='조회하기' />
-                : <InactiveButton text='조회하기' />
-            }
-            <View style={styles.inputContainer}>
-                <Text style={styles.text}>차량번호</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder='차량번호를 입력해주세요'
-                    onChangeText={onChangeCarNum}
-                    value={carNum}
-                />
-            </View>
-            <View style={{flex: 1,}}></View>
-            {
-                (next && carNum != '')
-                ? <ActiveButton onpress={() => onClickButton()} text='다음' />
-                : <InactiveButton text='다음' />
-            }
-        </SafeAreaView>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <SafeAreaView style={styles.container}>
+                <View style={styles.info}>
+                    <Text style={styles.text}>컨테이너 번호</Text>
+                    <View style={styles.containerNum}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder='컨테이너 번호를 입력해주세요'
+                            placeholderTextColor="#E0E0E0"
+                            onChangeText={onChangeContainerNum}
+                            value={containerNum}
+                        />
+                    </View>
+                    <Text style={styles.redText}>{containerStatus}</Text>
+                    <View style={styles.conatinerButton}>
+                    {
+                        (containerNum != '')
+                        ? <ActiveButton onpress={inquireContainer} text='조회하기' />
+                        : <InactiveButton text='조회하기' />
+                    }
+                    </View>
+                    <Text style={styles.text}>차량번호</Text>
+                    <View style={styles.carNum}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder='차량번호를 입력해주세요'
+                            onChangeText={onChangeCarNum}
+                            value={carNum}
+                        />
+                    </View>
+                    <View style={styles.button}>
+                        {
+                            (next && carNum != '')
+                            ? <ActiveButton onpress={() => onClickButton()} text='다음' />
+                            : <InactiveButton text='다음' />
+                        }
+                    </View>
+                </View>
+            </SafeAreaView>
+        </TouchableWithoutFeedback>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        height: '100%',
+        flex: 1,
         backgroundColor: '#FFFFFF',
-        alignItems: 'center',
     },
-    inputContainer: {
-        width: '90%',
-        margin: '5%',
+    info: {
+        flex: 1,
+        justifyContent: 'flex-start'
     },
-    text: {
-        fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
-        color: '#000000',
+    containerNum: {
+        alignItems: 'center'
+    },
+    carNum: {
+        alignItems: 'center'
+    },
+    conatinerButton: {
+        
+    },
+    button: {
+        flex:1,
+        justifyContent: 'flex-end'
     },
     input: {
+        width: "90%",
         fontFamily: 'Pretendard-Medium',
         fontSize: 15,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#DCDEE6',
-        paddingLeft: '3%'
+        marginVertical: "1%",
+        padding:'5%'
+    },
+    text: {
+        fontFamily: 'Pretendard-Medium',
+        fontSize: 20,
+        color: '#000000',
+        marginLeft: "5%",
+        marginTop: "7%",
+        marginBottom: "1%",
     },
     redText: {
         fontFamily: 'Pretendard-Medium',
         fontSize: 15,
         color: '#FF4D4D',
+        marginLeft: "5%"
     },
 })
 

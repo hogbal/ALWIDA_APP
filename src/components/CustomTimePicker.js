@@ -124,11 +124,9 @@ const NoneSelected = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        width: '90%',
         backgroundColor: '#F6F6F6',
         borderWidth: 2,
         borderColor: '#F6F6F6',

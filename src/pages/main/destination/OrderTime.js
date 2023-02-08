@@ -73,22 +73,38 @@ const OrderTime = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <LocalPicker DATA={DATA} localVisible={localVisible} setLocalVisible={setLocalVisible} selectedLocal={selectedLocal} setSelectedLocal={setSelectedLocal} />
-            <TerminalPicker DATA={DATA} terminalVisible={terminalVisible} setTerminalVisible={setTerminalVisible}  selectedTerminal={selectedTerminal} setSelectedTerminal={setSelectedTerminal} selectedLocal={selectedLocal} />
-
-            {/* 시간 */}
-            <View style={styles.timeContainer}>
-                {
-                    selectedTerminal == '터미널'
-                    ? <NoneSelected />
-                    : <TimePicker setAMPM={setAMPM} hour={hour} setHour={setHour} minute={minute} setMinute={setMinute} />
-                }
+            <View style={styles.info}>
+                <LocalPicker 
+                    DATA={DATA} 
+                    localVisible={localVisible} 
+                    setLocalVisible={setLocalVisible} 
+                    selectedLocal={selectedLocal} 
+                    setSelectedLocal={setSelectedLocal} 
+                    setSelectedTerminal={setSelectedTerminal}
+                />
+                <TerminalPicker 
+                    DATA={DATA} 
+                    terminalVisible={terminalVisible} 
+                    setTerminalVisible={setTerminalVisible} 
+                    selectedTerminal={selectedTerminal} 
+                    setSelectedTerminal={setSelectedTerminal} 
+                    selectedLocal={selectedLocal}
+                />
+                <View style={styles.timeContainer}>
+                    {
+                        selectedTerminal == '터미널'
+                        ? <NoneSelected />
+                        : <TimePicker setAMPM={setAMPM} hour={hour} setHour={setHour} minute={minute} setMinute={setMinute} />
+                    }
+                </View>
+                <View style={styles.button}>
+                    {
+                        selectedTerminal == '터미널'
+                        ? <InactiveButton text='출발' />
+                        : <ActiveButton onpress={() => onClickButton()} text='출발' />
+                    }
+                </View>
             </View>
-            {
-                selectedTerminal == '터미널'
-                ? <InactiveButton text='출발' />
-                : <ActiveButton onpress={() => onClickButton()} text='출발' />
-            }
         </SafeAreaView>
     )
 }
@@ -96,19 +112,21 @@ const OrderTime = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        height: '100%',
-        backgroundColor: '#FFFFFF',
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: '#FFFFFF'
+    },
+    info: {
+        flex: 1,
+        justifyContent: 'flex-start'
     },
     timeContainer: {
-        flex: 8,
         alignSelf: 'center',
-        zIndex: -1,
-        width: '100%',
         alignItems: 'center',
         paddingVertical: '10%'
     },
+    button: {
+        flex: 1,
+        justifyContent: 'flex-end',
+    }
 })
 
 export default OrderTime

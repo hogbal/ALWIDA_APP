@@ -16,10 +16,11 @@ const LocalPickerItem = ({ index, text, dataLength, setSelectedLocal, setSelecte
                 setSelectedLocal(text)
                 setSelectedTerminal('터미널')
                 setVisible(!visible)
-                setPercentage(0)
-                setColor('')
-                setStatus('')
-                onPress()
+                if(setPercentage !== null) {
+                    setPercentage(0)
+                    setColor('')
+                    setStatus('')
+                }
             }}
         >
             <Text style={styles.text}>{text}</Text>
@@ -34,7 +35,6 @@ const TerminalPickerItem = ({ index, text, dataLength, setSelected, visible, set
             onPress={() => {
                 setSelected(text)
                 setVisible(!visible)
-                onPress()
             }}
         >
             <Text style={styles.text}>{text}</Text>
@@ -42,7 +42,7 @@ const TerminalPickerItem = ({ index, text, dataLength, setSelected, visible, set
     )
 }
 
-const LocalPicker = ({ DATA, localVisible, setLocalVisible, selectedLocal, setSelectedLocal, setSelectedTerminal, setPercentage, setColor, setStatus}) => {
+const LocalPicker = ({ DATA, localVisible, setLocalVisible, selectedLocal, setSelectedLocal, setSelectedTerminal, setPercentage=null, setColor=null, setStatus=null}) => {
     return (
         <TouchableOpacity
             style={ styles.container }
@@ -68,7 +68,7 @@ const LocalPicker = ({ DATA, localVisible, setLocalVisible, selectedLocal, setSe
                                 setSelectedTerminal={setSelectedTerminal}
                                 visible={localVisible} 
                                 setVisible={setLocalVisible} 
-                                onPress={onPress}
+                                
                                 setPercentage={setPercentage}
                                 setColor={setColor}
                                 setStatus={setStatus}
@@ -145,7 +145,6 @@ const TerminalPicker = ({ DATA, terminalVisible, setTerminalVisible, selectedTer
                                             dataLength={value['terminals'].length} 
                                             setSelected={setSelectedTerminal} 
                                             visible={terminalVisible} setVisible={setTerminalVisible} 
-                                            onPress={onPress} 
                                         />
                                     )
                                 })

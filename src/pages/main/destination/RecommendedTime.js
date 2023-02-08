@@ -59,7 +59,7 @@ const RecommendedTime = ({ navigation }) => {
         formdata.append('ampm', data[selectedTime].ampm)
         formdata.append('hour', data[selectedTime].hour)
         formdata.append('minute', data[selectedTime].minute)
-        console.log(formdata)
+        
         await createPOSTObject('dest/accept', formdata)
         .then((response) => {
             return response.json()
@@ -95,7 +95,6 @@ const RecommendedTime = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <TerminalPicker terminal={orderData.terminal} />
-            
             <View style={styles.selectTimeContainer}>
                 <View style={styles.timeContainer}>
                     <TouchableOpacity
@@ -145,7 +144,62 @@ const RecommendedTime = ({ navigation }) => {
             }
         </SafeAreaView>
     )
+
+    // return (
+    //     <SafeAreaView style={styles.container}>
+    //         <View style={styles.info}>
+    //             <TerminalPicker terminal={orderData.terminal} />
+    //             <View style={styles.timeContainer}>
+    //                 <TouchableOpacity
+    //                     style={
+    //                         (selectedTime == 0)
+    //                         ? styles.selectedTime
+    //                         : styles.time
+    //                     }
+    //                     onPress={() => setSelectedTime(0)}
+    //                 >
+    //                     <Text style={styles.ampmText}>{data[0].ampm}</Text>
+    //                     <Text style={styles.timeText}>{data[0].hour}:{data[0].minute}</Text>
+    //                 </TouchableOpacity>
+    //             </View>
+    //         </View>
+    //     </SafeAreaView>
+    // )
 }
+
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         backgroundColor: '#FFFFFF',
+//     },
+//     info: {
+//         flex: 1,
+//         justifyContent: 'flex-start'
+//     },
+//     timeContainer: {
+//         alignItems: 'center',
+//     },
+//     selectedTime: {
+//         flexDirection: 'row',
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//         backgroundColor: '#F6F6F6',
+//         borderWidth: 2,
+//         borderColor: '#00A8FF',
+//         borderRadius: 15,
+//         padding: "3%",
+//     },
+//     time: {
+//         flexDirection: 'row',
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//         backgroundColor: '#F6F6F6',
+//         borderWidth: 2,
+//         borderColor: '#E3E6ED',
+//         borderRadius: 15,
+//         padding: "3%",
+//     }
+// })
 
 const styles = StyleSheet.create({
     container: {
