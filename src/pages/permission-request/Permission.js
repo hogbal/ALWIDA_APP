@@ -15,7 +15,6 @@ const Permission = ({ navigation }) => {
 
     const toggleModal = () => {
         setModalVisible(!modalVisible)
-        console.log(modalVisible)
     }
 
     return (

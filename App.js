@@ -1,24 +1,45 @@
 import 'react-native-gesture-handler'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import SplashScreen from 'react-native-splash-screen'
 
 import { RecoilRoot } from 'recoil'
 import { NavigationContainer } from '@react-navigation/native'
 
-import StackNav from 'navigation/StackNav'
+import { StackPermissonNav, StackNav } from 'navigation/StackNav'
+import { check, PERMISSIONS, RESULTS } from "react-native-permissions"
 
 const App = () => {
+    const [checkPermisson, setCheckPermisson] = useState(false)
+
+    const permissionCheck = async () => {
+        if(Platform.OS !== "ios" && Platform.OS !== "android") return
+        const platformPermissions = Platform.OS === "ios" ? PERMISSIONS.IOS.ACCESS_BACKGROUND_LOCATION : PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION
+        
+        check(platformPermissions).then((statuses) => {
+            if(statuses == RESULTS.GRANTED) {
+                setCheckPermisson(true)
+            }
+            else {
+                setCheckPermisson(false)
+            }
+        })
+    }
 
     useEffect(() => {
         setTimeout(() => {
-            SplashScreen.hide();
+            permissionCheck()
+            SplashScreen.hide()
         }, 1000)
     }, [])
 
     return (
         <RecoilRoot>
             <NavigationContainer>
-                <StackNav />
+                {
+                    checkPermisson == true
+                    ? <StackNav />
+                    : <StackPermissonNav />
+                }
             </NavigationContainer>
         </RecoilRoot>
     )

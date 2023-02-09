@@ -6,6 +6,7 @@ import {
     TouchableOpacity,
     StyleSheet,
     Platform,
+    Linking
 } from 'react-native'
 
 import { PERMISSIONS, RESULTS, request } from "react-native-permissions"
@@ -13,14 +14,17 @@ import { PERMISSIONS, RESULTS, request } from "react-native-permissions"
 const PermmisionModal = ({ navigation, modalVisible, setModalVisible }) => {
     const permissionCheck = async () => {
         if(Platform.OS !== "ios" && Platform.OS !== "android") return
-        const platformPermissions = Platform.OS === "ios" ? PERMISSIONS.IOS.LOCATION_ALWAYS : PERMISSIONS.ANDROID.LOCATION_ALWAYS
-        try {
-            const result = await request(platformPermissions)
-            console.log(result)
-        }
-        catch(err){
-            console.log("test")
-        }
+        const platformPermissions = Platform.OS === "ios" ? PERMISSIONS.IOS.ACCESS_BACKGROUND_LOCATION : PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION
+        
+        request(platformPermissions).then((statuses) => {
+            console.log('Location', statuses)
+            if(statuses == RESULTS.GRANTED) {
+                navigation.navigate('Login')
+            }
+            else {
+                Linking.openSettings()
+            }
+        })
     }
 
     return (
@@ -44,9 +48,8 @@ const PermmisionModal = ({ navigation, modalVisible, setModalVisible }) => {
                         <TouchableOpacity
                             style={styles.button}
                             onPress={() => {
-                                permissionCheck()
                                 setModalVisible(false)
-                                // navigation.navigate('Login')
+                                permissionCheck()
                                 }
                             }
                         >
