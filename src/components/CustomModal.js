@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'rgba(172, 172, 169, 0.26)',
     },
     modalContainer: {
         backgroundColor: '#FFFFFF',
