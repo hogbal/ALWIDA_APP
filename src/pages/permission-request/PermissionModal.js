@@ -1,13 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
     Modal,
     View,
     Text,
     TouchableOpacity,
     StyleSheet,
+    Platform,
 } from 'react-native'
 
+import { PERMISSIONS, RESULTS, request } from "react-native-permissions"
+
 const PermmisionModal = ({ navigation, modalVisible, setModalVisible }) => {
+    const permissionCheck = async () => {
+        if(Platform.OS !== "ios" && Platform.OS !== "android") return
+        const platformPermissions = Platform.OS === "ios" ? PERMISSIONS.IOS.LOCATION_ALWAYS : PERMISSIONS.ANDROID.LOCATION_ALWAYS
+        try {
+            const result = await request(platformPermissions)
+            console.log(result)
+        }
+        catch(err){
+            console.log("test")
+        }
+    }
+
     return (
         <Modal
             animationType='slide'
@@ -29,8 +44,10 @@ const PermmisionModal = ({ navigation, modalVisible, setModalVisible }) => {
                         <TouchableOpacity
                             style={styles.button}
                             onPress={() => {
+                                permissionCheck()
                                 setModalVisible(false)
-                                navigation.navigate('Login')}
+                                // navigation.navigate('Login')
+                                }
                             }
                         >
                             <Text style={styles.buttonText}>확인</Text>

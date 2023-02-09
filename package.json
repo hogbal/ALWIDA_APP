@@ -26,6 +26,7 @@
     "react-native-screens": "^3.18.2",
     "react-native-splash-screen": "^3.3.0",
     "react-native-svg": "^13.5.0",
+    "react-native-vision-camera": "^2.15.4",
     "recoil": "^0.7.6"
   },
   "devDependencies": {
