@@ -21,6 +21,7 @@ const LocalPickerItem = ({ index, text, dataLength, setSelectedLocal, setSelecte
                     setColor('')
                     setStatus('')
                 }
+                onPress()
             }}
         >
             <Text style={styles.text}>{text}</Text>
@@ -35,6 +36,7 @@ const TerminalPickerItem = ({ index, text, dataLength, setSelected, visible, set
             onPress={() => {
                 setSelected(text)
                 setVisible(!visible)
+                onPress()
             }}
         >
             <Text style={styles.text}>{text}</Text>
@@ -68,7 +70,7 @@ const LocalPicker = ({ DATA, localVisible, setLocalVisible, selectedLocal, setSe
                                 setSelectedTerminal={setSelectedTerminal}
                                 visible={localVisible} 
                                 setVisible={setLocalVisible} 
-                                
+                                onPress={onPress}
                                 setPercentage={setPercentage}
                                 setColor={setColor}
                                 setStatus={setStatus}
@@ -143,7 +145,8 @@ const TerminalPicker = ({ DATA, terminalVisible, setTerminalVisible, selectedTer
                                             index={index} 
                                             text={item.terminal} 
                                             dataLength={value['terminals'].length} 
-                                            setSelected={setSelectedTerminal} 
+                                            setSelected={setSelectedTerminal}
+                                            onPress={onPress}
                                             visible={terminalVisible} setVisible={setTerminalVisible} 
                                         />
                                     )

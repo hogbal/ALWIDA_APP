@@ -22,7 +22,6 @@ const Destination = ({ navigation }) => {
     const [selectedTerminal, setSelectedTerminal] = useState('터미널')
     const [localVisible, setLocalVisible] = useState(false)
     const [terminalVisible, setTerminalVisible] = useState(false)
-
     const [percentage, setPercentage] = useState(0)
     const [color, setColor] = useState('')
     const [status, setStatus] = useState('')
@@ -72,10 +71,6 @@ const Destination = ({ navigation }) => {
     useEffect(() => {
         getID()
     }, [])
-
-    useEffect(() => {
-        console.log('reload')
-    }, [percentage, color, status])
 
     return (
         <SafeAreaView style={styles.container}>

@@ -65,21 +65,6 @@ const Reservation = ({ navigation }) => {
         .catch((e) => console.error(e))
     }
     
-    // return (
-    //     <SafeAreaView style={styles.container}>
-    //         <LocalPicker local={data.location} />
-    //         <TerminalPicker terminal={data.terminal} />
-            
-            // <View style={styles.selectedTime}>
-            //     <Text style={styles.ampmText}>{data.ampm}</Text>
-            //     <Text style={styles.timeText}>{data.time}</Text>
-            // </View>
-        
-        // <ActiveButton onpress={() => navigation.navigate('Destination')} text='확인' />
-
-    //     </SafeAreaView>
-    // )
-
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.info}>
