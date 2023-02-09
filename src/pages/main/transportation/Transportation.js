@@ -38,6 +38,7 @@ const Transportation = ({ navigation }) => {
 
         getID(loadData)
         getID(coordinate)
+        getID(loadChat)
     }, [])
 
     // id 불러오기
@@ -65,6 +66,18 @@ const Transportation = ({ navigation }) => {
         })
         .catch((err) => console.log(err))
     }
+
+    const loadChat = async (id) => {
+        let formdata = new FormData()
+        formdata.append('id', id)
+        await createPOSTObject('msg/all', formdata)
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => {
+            setBubbles(data)
+        })
+    }
     
     // 목적지 혼잡도 불러오기
     const loadCongestion = async (id) => {
@@ -79,10 +92,7 @@ const Transportation = ({ navigation }) => {
             return response.json()
         })
         .then((data) => {
-            console.log(data)
-            if (data.result === true) {
-                addBubble('left', data.description, data.hour, data.min)
-            }
+            addBubble('left', data.description, data.hour, data.min)
         })
         .catch((err) => console.log(err))
     }
@@ -177,7 +187,6 @@ const Transportation = ({ navigation }) => {
             return response.json()
         })
         .then((data) => {
-            console.log(data)
             setLatitude(data.latitude)
             setLongitude(data.longitude)
         })
@@ -191,10 +200,7 @@ const Transportation = ({ navigation }) => {
             "min": min,
         }
 
-        setBubbles([
-            ...bubbles,
-            newBubble,
-        ])
+        setBubbles(bubbles => [...bubbles, newBubble])
     }
 
     const LeftBubble = ({text, hour, min}) => {
@@ -228,118 +234,6 @@ const Transportation = ({ navigation }) => {
     const handleSheetChanges = useCallback((index) => {
       console.log('handleSheetChanges', index);
     }, []);
-
-    // return (
-    //     <GestureHandlerRootView style={{ flex: 1, }}>
-    //         <SafeAreaView style={styles.container}>
-    //             <View>
-    //                 {/* header */}
-    //                 <View style={styles.headerContainer}>
-                        // <TouchableOpacity
-                        //     onPress={() => navigation.navigate('Main')}
-                        // >
-                        //     <Image
-                        //         source={require('assets/img/back_icon.png')}
-                        //     />
-                        // </TouchableOpacity>
-                        // <View style={styles.boxContainer}>
-                        //     <Text style={styles.boxText}>VBS</Text>
-                        // </View>
-                        // <View>
-                        //     <Text style={styles.headerTitleText}>{info.terminalName}</Text>
-                        //     <Text style={styles.headerDescriptionText}>[{info.terminalAbb}] {info.scale} {info.deviceLocation}</Text>
-                        // </View>
-    //                 </View>
-
-    //                 {/* subHeader */}
-                    // <View style={styles.subHeaderContainer}>
-                    //     <Image
-                    //         style={styles.icon}
-                    //         source={require('assets/img/transportation_icon.png')}
-                    //     />
-                    //     <Text style={styles.subHeaderText}>{info.containerNum}</Text>
-                    // </View>
-
-    //                 {/* buttons */}
-                    // <View style={styles.buttonContainer}>
-                    //     <TouchableOpacity
-                    //         style={styles.button}
-                    //         onPress={() => setReservationModalVisible(!reservationModalVisible)}
-                    //     >
-                    //         <Text style={styles.buttonText}>예약변경</Text>
-                    //     </TouchableOpacity>
-                    //     <TouchableOpacity
-                    //         style={styles.button}
-                    //         onPress={() => setDepartModalVisible(!departModalVisible)}
-                    //     >
-                    //         <Text style={styles.buttonText}>출발취소</Text>
-                    //     </TouchableOpacity>
-                    //     <TouchableOpacity
-                    //         style={styles.button}
-                    //         onPress={() => setGateModalVisible(!gateModalVisible)}
-                    //     >
-                    //         <Text style={styles.buttonText}>게이트 진입요청</Text>
-                    //     </TouchableOpacity>
-                    // </View>
-                    
-                    // <View style={styles.possibleContainer}>
-                    //     <Text style={styles.possibleText}>반출입 가능</Text>
-                    // </View>
-    //             </View>
-
-    //             {/* talk */}
-                // <ScrollView style={styles.talkContainer}>
-                //     <View>
-                //         <Text style={styles.dateText}>{year}년 {month}월 {day}일</Text>
-                //     </View>
-                //     {
-                //         bubbles.map((bubble, index) => {
-                //             if (bubble.position == 'left') {
-                //                 return (
-                //                     <LeftBubble key={index} text={bubble.text} hour={bubble.hour} min={bubble.min} />
-                //                 )
-                //             }
-                //             else {
-                //                 return (
-                //                     <RightBubble key={index} text={bubble.text} hour={bubble.hour} min={bubble.min} />
-                //                 )
-                //             }
-                //         })
-                //     }
-                // </ScrollView>
-                
-                // <CustomModal title='예약변경' description='예약변경을 하시겠습니까?' modalVisible={reservationModalVisible} setModalVisible={setReservationModalVisible} onpress={resChange}/>
-                // <CustomModal title='출발취소' description='출발취소를 하시겠습니까?' modalVisible={departModalVisible} setModalVisible={setDepartModalVisible} onpress={departCancle} />
-                // <CustomModal title='게이트 진입요청' description='게이트 진입요청을 하시겠습니까?' modalVisible={gateModalVisible} setModalVisible={setGateModalVisible} onpress={entryRequest} />
-
-                // <BottomSheet
-                //     ref={bottomSheetRef}
-                //     index={1}
-                //     snapPoints={snapPoints}
-                //     onChange={handleSheetChanges}
-                //     detached
-                //     enableOverDrag
-                //     backgroundStyle={styles.bottomBackground}
-                // >
-                //     <View style={styles.bottomContainer}>
-                //         <TouchableOpacity
-                //             style={styles.bottomItemContainer}
-                //             onPress={() => getID(loadCongestion)}
-                //         >
-                //             <Text style={styles.bottomText}>목적지 혼잡도를 알려주세요.</Text>
-                //         </TouchableOpacity>
-                //         <TouchableOpacity
-                //             style={styles.bottomItemContainer}
-                //             onPress={() => getID(loadNumOfCar)}
-                //         >
-                //             <Text style={styles.bottomText}>부두 내 차량 대수를 알려주세요.</Text>
-                //         </TouchableOpacity>
-                //     </View>
-                // </BottomSheet>
-                
-    //         </SafeAreaView>
-    //     </GestureHandlerRootView>
-    // )
 
     return (
         <GestureHandlerRootView style={{flex:1}}>
@@ -401,20 +295,22 @@ const Transportation = ({ navigation }) => {
                         <View style={styles.talkText}>
                             <Text style={styles.dateText}>{year}년 {month}월 {day}일</Text>
                         </View>
-                        {
-                            bubbles.map((bubble, index) => {
-                                if (bubble.position == 'left') {
-                                    return (
-                                        <LeftBubble key={index} text={bubble.text} hour={bubble.hour} min={bubble.min} />
-                                    )
-                                }
-                                else {
-                                    return (
-                                        <RightBubble key={index} text={bubble.text} hour={bubble.hour} min={bubble.min} />
-                                    )
-                                }
-                            })
-                        }
+                        <View style={styles.chat}>
+                            {
+                                bubbles.map((bubble, index) => {
+                                    if(bubble.position == "left"){
+                                        return (
+                                            <LeftBubble key={index} text={bubble.text} hour={bubble.hour} min={bubble.min} />
+                                        )
+                                    }
+                                    else {
+                                        return (
+                                            <RightBubble key={index} text={bubble.text} hour={bubble.hour} min={bubble.min} />
+                                        )
+                                    }
+                                })
+                            }
+                        </View>
                     </ScrollView>
                     <BottomSheet
                         ref={bottomSheetRef}
@@ -529,6 +425,9 @@ const styles = StyleSheet.create({
     talkText: {
         alignItems: 'center'
     },
+    chat: {
+        flexDirection: 'column'
+    },
     timeText: {
         fontFamily: 'Pretendard-Medium',
         fontSize: 10,
@@ -579,151 +478,5 @@ const styles = StyleSheet.create({
         marginVertical: '2%'
     },
 })
-
-// const styles = StyleSheet.create({
-    // container: {
-    //     height: '100%',
-    //     backgroundColor: '#FFFFFF',
-    // },
-//     headerContainer: {
-//         flexDirection: 'row',
-//         alignItems: 'center',
-//         marginTop: 40,
-//         marginBottom: 8,
-//         paddingLeft: 20,
-        // borderBottomWidth: 1,
-        // borderColor: '#E9EBEC',
-//     },
-//     subHeaderContainer: {
-//         flexDirection: 'row',
-//         alignItems: 'center',
-//         marginLeft: 60,
-//     },
-//     buttonContainer: {
-//         flexDirection: 'row',
-//         alignItems: 'center',
-//     },
-    // possibleContainer: {
-    //     paddingHorizontal: 10,
-    //     marginBottom: 10,
-    // },
-//     boxContainer: {
-        // backgroundColor: '#00A8FF',
-        // height: 45,
-        // width: 45,
-        // alignItems: 'center',
-        // justifyContent: 'center',
-        // borderRadius: 10,
-        // marginLeft: 15,
-        // marginRight: 25,
-//     },
-    // boxText: {
-    //     fontFamily: 'Pretendard-Medium',
-    //     fontSize: 20,
-    //     color: '#FFFFFF',
-    // },
-    // icon: {
-    //     marginRight: 15,
-    // },
-    // button: {
-    //     flex: 1,
-    //     margin: 10,
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    //     borderWidth: 1,
-    //     borderColor: '#707070',
-    //     borderRadius: 8,
-    // },
-//     buttonText: {
-//         fontFamily: 'Pretendard-Medium',
-//         fontSize: 13,
-//         color: '#000000',
-//         marginHorizontal: 10,
-//         marginVertical: 13
-//     },
-    // leftBubbleContainer: {
-    //     flexDirection: 'row',
-    //     alignItems: 'flex-end',
-    //     margin: 10,
-    // },
-    // rightBubbleContainer: {
-    //     flexDirection: 'row',
-    //     alignItems: 'flex-end',
-    //     margin: 10,
-    //     alignSelf: 'flex-end'
-    // },
-    // talkContainer: {
-    //     flex: 1,
-    //     backgroundColor: '#ACACA9',
-    //     marginBottom: 30,
-    // },
-    // headerTitleText: {
-    //     fontFamily: 'Pretendard-Medium',
-    //     fontSize: 20,
-    //     color: '#000000',
-    // },
-    // headerDescriptionText: {
-    //     fontFamily: 'Pretendard-Medium',
-    //     fontSize: 13,
-    //     color: '#000000',
-    // },
-    // subHeaderText: {
-    //     fontFamily: 'Pretendard-Medium',
-    //     fontSize: 20,
-    //     color: '#000000',
-    // },
-    // possibleText: {
-    //     fontFamily: 'Pretendard-Medium',
-    //     fontSize: 15,
-    //     color: '#000000',
-    // },
-    // dateText: {
-    //     fontFamily: 'Pretendard-Medium',
-    //     fontSize: 10,
-    //     color: '#000000',
-    //     alignSelf: 'center',
-    //     marginTop: 10,
-    // },
-    // timeText: {
-    //     fontFamily: 'Pretendard-Medium',
-    //     fontSize: 10,
-    //     color: '#000000',
-    //     marginHorizontal: 10,
-    // },
-    // answerContainer: {
-    //     backgroundColor: '#FFFFFF',
-    //     borderRadius: 10,
-    //     paddingVertical: 10,
-    //     paddingHorizontal: 20,
-    // },
-    // questionContainer: {
-    //     backgroundColor: '#FFFFFF',
-    //     borderRadius: 10,
-    //     paddingVertical: 10,
-    //     paddingHorizontal: 20,
-    //     margin: 10,
-    // },
-//     talkText: {
-//         fontFamily: 'Pretendard-Light',
-//         fontSize: 15,
-//         color: '#000000',
-//     },
-    // bottomContainer: {
-    //     flex: 1,
-    // },
-    // bottomBackground: {
-    //     backgroundColor: '#E9EBEC',
-    // },
-    // bottomItemContainer: {
-    //     width: '100%',
-    //     marginLeft: 20,
-    //     paddingVertical: 15,
-    // },
-//     bottomText: {
-//         fontFamily: 'Pretendard-Medium',
-//         fontSize: 15,
-//         color: '#000000',
-//     },
-// })
 
 export default Transportation
