@@ -65,18 +65,34 @@ const Reservation = ({ navigation }) => {
         .catch((e) => console.error(e))
     }
     
+    // return (
+    //     <SafeAreaView style={styles.container}>
+    //         <LocalPicker local={data.location} />
+    //         <TerminalPicker terminal={data.terminal} />
+            
+            // <View style={styles.selectedTime}>
+            //     <Text style={styles.ampmText}>{data.ampm}</Text>
+            //     <Text style={styles.timeText}>{data.time}</Text>
+            // </View>
+        
+        // <ActiveButton onpress={() => navigation.navigate('Destination')} text='확인' />
+
+    //     </SafeAreaView>
+    // )
+
     return (
         <SafeAreaView style={styles.container}>
-            <LocalPicker local={data.location} />
-            <TerminalPicker terminal={data.terminal} />
-            
-            <View style={styles.selectedTime}>
-                <Text style={styles.ampmText}>{data.ampm}</Text>
-                <Text style={styles.timeText}>{data.time}</Text>
+            <View style={styles.info}>
+                <LocalPicker local={data.location} />
+                <TerminalPicker terminal={data.terminal}/>
+                <View style={styles.selectedTime}>
+                    <Text style={styles.ampmText}>{data.ampm}</Text>
+                    <Text style={styles.timeText}>{data.time}</Text>
+                </View>
             </View>
-        
-        <ActiveButton onpress={() => navigation.navigate('Destination')} text='확인' />
-
+            <View style={styles.button}>
+                <ActiveButton onpress={() => navigation.navigate('Destination')} text='확인' />
+            </View>
         </SafeAreaView>
     )
 }
@@ -85,18 +101,23 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFFFFF',
-        alignItems: 'center',
-        justifyContent: 'center',
+    },
+    info: {
+        flex: 1,
+        justifyContent: 'flex-start'
+    },
+    button: {
+        flex: 1,
+        justifyContent: 'flex-end',
     },
     pickerContainer: {
-        width: '90%',
         flexDirection: 'row',
         borderWidth: 1,
         borderColor: '#E3E6ED',
         borderRadius: 15,
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '4%',
+        padding: '7%',
         margin: '3%',
         backgroundColor: '#FFFFFF',
     },
@@ -110,8 +131,6 @@ const styles = StyleSheet.create({
         color: '#1A1A1A',
     },
     selectedTime: {
-        flex: 8,
-        width: '90%',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
@@ -120,15 +139,18 @@ const styles = StyleSheet.create({
         borderColor: '#00A8FF',
         borderRadius: 15,
         padding: "5%",
-        margin: "10%",
+        margin: "5%",
     },
     ampmText: {
+        flex: 1,
+        textAlign: 'center',
         fontFamily: 'Pretendard-Bold',
         fontSize: 20,
         color: '#1A1A1A',
-        marginRight: 50,
     },
     timeText: {
+        flex: 2,
+        textAlign: 'center',
         fontFamily: 'Pretendard-Medium',
         fontSize: 60,
         color: '#1A1A1A',

@@ -66,10 +66,51 @@ const TimePicker = ({ setAMPM, hour, setHour, minute, setMinute }) => {
         setIsAM(false)
         setAMPM('오후')
     }
+    // return (
+    //     <View style={styles.container}>
+    //         {/* 오전, 오후 */}
+    //         <View style={styles.itemContainer}>
+                // <TouchableOpacity onPress={() => clickedAM()}>
+                //     <Text style={ isAM ? styles.ampmText : styles.noneAmpmText }>오전</Text>
+                // </TouchableOpacity>
+                // <TouchableOpacity onPress={() => clickedPM()}>
+                //     <Text style={ isAM ? styles.noneAmpmText : styles.ampmText }>오후</Text>
+                // </TouchableOpacity>
+    //         </View>
+
+    //         {/* 시간 */}
+            // <View style={styles.itemContainer}>
+            //     <TouchableOpacity onPress={() => changeHour(true)}>
+            //         <Image style={styles.icon} source={require('assets/img/up.png')} />
+            //     </TouchableOpacity>
+
+            //     <Text style={styles.timeText}>{hour}</Text>
+
+            //     <TouchableOpacity onPress={() => changeHour(false)}>
+            //         <Image style={styles.icon} source={require('assets/img/down.png')} />
+            //     </TouchableOpacity>
+            // </View>
+
+            // <Text style={styles.timeText}>:</Text>
+
+            // {/* 분 */}
+            // <View style={styles.itemContainer}>
+            //     <TouchableOpacity onPress={() => changeMinute(true)}>
+            //         <Image style={styles.icon} source={require('assets/img/up.png')} />
+            //     </TouchableOpacity>
+
+            //     <Text style={styles.timeText}>{minute}</Text>
+                
+            //     <TouchableOpacity onPress={() => changeMinute(false)}>
+            //         <Image style={styles.icon} source={require('assets/img/down.png')} />
+            //     </TouchableOpacity>
+            // </View>
+    //     </View>
+    // )
+
     return (
         <View style={styles.container}>
-            {/* 오전, 오후 */}
-            <View style={styles.itemContainer}>
+            <View style={styles.ampm}>
                 <TouchableOpacity onPress={() => clickedAM()}>
                     <Text style={ isAM ? styles.ampmText : styles.noneAmpmText }>오전</Text>
                 </TouchableOpacity>
@@ -77,33 +118,33 @@ const TimePicker = ({ setAMPM, hour, setHour, minute, setMinute }) => {
                     <Text style={ isAM ? styles.noneAmpmText : styles.ampmText }>오후</Text>
                 </TouchableOpacity>
             </View>
+            <View style={styles.time}>
+                <View style={styles.itemContainer}>
+                    <TouchableOpacity onPress={() => changeHour(true)}>
+                        <Image style={styles.icon} source={require('assets/img/up.png')} />
+                    </TouchableOpacity>
 
-            {/* 시간 */}
-            <View style={styles.itemContainer}>
-                <TouchableOpacity onPress={() => changeHour(true)}>
-                    <Image style={styles.icon} source={require('assets/img/up.png')} />
-                </TouchableOpacity>
+                    <Text style={styles.timeText}>{hour}</Text>
 
-                <Text style={styles.timeText}>{hour}</Text>
+                    <TouchableOpacity onPress={() => changeHour(false)}>
+                        <Image style={styles.icon} source={require('assets/img/down.png')} />
+                    </TouchableOpacity>
+                </View>
 
-                <TouchableOpacity onPress={() => changeHour(false)}>
-                    <Image style={styles.icon} source={require('assets/img/down.png')} />
-                </TouchableOpacity>
-            </View>
+                <Text style={styles.timeText}>:</Text>
 
-            <Text style={styles.timeText}>:</Text>
+                {/* 분 */}
+                <View style={styles.itemContainer}>
+                    <TouchableOpacity onPress={() => changeMinute(true)}>
+                        <Image style={styles.icon} source={require('assets/img/up.png')} />
+                    </TouchableOpacity>
 
-            {/* 분 */}
-            <View style={styles.itemContainer}>
-                <TouchableOpacity onPress={() => changeMinute(true)}>
-                    <Image style={styles.icon} source={require('assets/img/up.png')} />
-                </TouchableOpacity>
-
-                <Text style={styles.timeText}>{minute}</Text>
-                
-                <TouchableOpacity onPress={() => changeMinute(false)}>
-                    <Image style={styles.icon} source={require('assets/img/down.png')} />
-                </TouchableOpacity>
+                    <Text style={styles.timeText}>{minute}</Text>
+                    
+                    <TouchableOpacity onPress={() => changeMinute(false)}>
+                        <Image style={styles.icon} source={require('assets/img/down.png')} />
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     )
@@ -112,47 +153,47 @@ const TimePicker = ({ setAMPM, hour, setHour, minute, setMinute }) => {
 const NoneSelected = () => {
     return (
         <View style={styles.container}>
-            <View>
+            <View style={styles.ampm}>
                 <Text style={styles.noneAmpmText}>오전</Text>
                 <Text style={styles.noneAmpmText}>오후</Text>
             </View>
-            <Text style={styles.noneTimeText}>00:00</Text>
+            <View style={styles.time}>
+                <Text style={styles.noneTimeText}>00:00</Text>
+            </View>
         </View>
     )
 }
 
-
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
         backgroundColor: '#F6F6F6',
         borderWidth: 2,
         borderColor: '#F6F6F6',
         borderRadius: 15,
-        padding: '10%',
     },
-    itemContainer: {
-        marginHorizontal: '5%',
-        alignItems: 'center',
+    ampm: {
+        flex: 1,
         justifyContent: 'center',
+        alignItems: 'center',
     },
-    icon: {
-        width: 50,
-        height: 50,
+    time: {
+        flex: 1,
+        flexDirection: 'row',
+        alignSelf: 'center',
+        alignItems: 'center',
     },
     ampmText: {
         fontFamily: 'Pretendard-Bold',
         fontSize: 20,
         color: '#1A1A1A',
-        marginVertical: '20%',
+        marginVertical: '5%'
     },
     noneAmpmText: {
         fontFamily: 'Pretendard-Bold',
         fontSize: 20,
         color: '#ACACA9',
-        marginVertical: '20%',
+        marginVertical: '5%'
     },
     timeText: {
         fontFamily: 'Pretendard-Medium',
@@ -165,6 +206,59 @@ const styles = StyleSheet.create({
         color: '#ACACA9',
         marginLeft: '10%',
     },
+    itemContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    icon: {
+        width: 50,
+        height: 50,
+    },
 })
+
+// const styles = StyleSheet.create({
+//     container: {
+//         flexDirection: 'row',
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//         backgroundColor: '#F6F6F6',
+//         borderWidth: 2,
+//         borderColor: '#F6F6F6',
+//         borderRadius: 15,
+//         padding: '10%',
+//     },
+    // itemContainer: {
+    //     marginHorizontal: '5%',
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+    // },
+    // icon: {
+    //     width: 50,
+    //     height: 50,
+    // },
+    // ampmText: {
+    //     fontFamily: 'Pretendard-Bold',
+    //     fontSize: 20,
+    //     color: '#1A1A1A',
+    //     marginVertical: '20%',
+    // },
+    // noneAmpmText: {
+    //     fontFamily: 'Pretendard-Bold',
+    //     fontSize: 20,
+    //     color: '#ACACA9',
+    //     marginVertical: '20%',
+    // },
+    // timeText: {
+    //     fontFamily: 'Pretendard-Medium',
+    //     fontSize: 60,
+    //     color: '#1A1A1A',
+    // },
+    // noneTimeText: {
+    //     fontFamily: 'Pretendard-Medium',
+    //     fontSize: 60,
+    //     color: '#ACACA9',
+    //     marginLeft: '10%',
+    // },
+// })
 
 export { TimePicker, NoneSelected }

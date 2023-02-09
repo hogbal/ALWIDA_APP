@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     timeContainer: {
         alignSelf: 'center',
         alignItems: 'center',
-        paddingVertical: '10%'
+        margin: '5%'
     },
     button: {
         flex: 1,
