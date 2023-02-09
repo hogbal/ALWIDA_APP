@@ -13,7 +13,7 @@ const App = () => {
 
     const permissionCheck = async () => {
         if(Platform.OS !== "ios" && Platform.OS !== "android") return
-        const platformPermissions = Platform.OS === "ios" ? PERMISSIONS.IOS.ACCESS_BACKGROUND_LOCATION : PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION
+        const platformPermissions = Platform.OS === "ios" ? PERMISSIONS.IOS.LOCATION_ALWAYS : PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION
         
         check(platformPermissions).then((statuses) => {
             if(statuses == RESULTS.GRANTED) {
