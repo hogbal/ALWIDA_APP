@@ -16,6 +16,7 @@ const App = () => {
         const platformPermissions = Platform.OS === "ios" ? PERMISSIONS.IOS.LOCATION_ALWAYS : PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION
         
         check(platformPermissions).then((statuses) => {
+            console.log(statuses)
             if(statuses == RESULTS.GRANTED) {
                 setCheckPermisson(true)
             }

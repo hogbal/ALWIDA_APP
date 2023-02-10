@@ -26,6 +26,7 @@ import DestLoading from 'pages/util/DestLoading'
 import ChangeLoading from 'pages/util/ChangeLoading'
 
 const Stack = createNativeStackNavigator()
+const StackPermission = createNativeStackNavigator()
 
 const StackNav = () => {
     return (
@@ -225,22 +226,22 @@ const StackNav = () => {
 
 const StackPermissonNav = () => {
     return (
-        <Stack.Navigator initialRouteName='Permission' >
-            <Stack.Screen
+        <StackPermission.Navigator initialRouteName='Permission' >
+            <StackPermission.Screen
                 name='Permission'
                 component={Permission}
                 options={{
                     headerShown: false,
                 }}
             />
-            <Stack.Screen
+            <StackPermission.Screen
                 name='Login'
                 component={Login}
                 options={{
                     headerShown: false
                 }}
             />
-            <Stack.Screen
+            <StackPermission.Screen
                 name='EnterMemberInfo'
                 component={EnterMemberInfo}
                 options={{
@@ -254,7 +255,7 @@ const StackPermissonNav = () => {
                     },
                 }}
             />
-            <Stack.Screen
+            <StackPermission.Screen
                 name='SignUp'
                 component={SignUp}
                 options={{
@@ -268,7 +269,7 @@ const StackPermissonNav = () => {
                     },
                 }}
             />
-            <Stack.Screen
+            <StackPermission.Screen
                 name="Destination"
                 component={Destination}
                 options={{
@@ -282,7 +283,7 @@ const StackPermissonNav = () => {
                     },
                 }}
             />
-            <Stack.Screen
+            <StackPermission.Screen
                 name='Order'
                 component={Order}
                 options={{
@@ -296,7 +297,7 @@ const StackPermissonNav = () => {
                     },
                 }}
             />
-            <Stack.Screen
+            <StackPermission.Screen
                 name='OrderTime'
                 component={OrderTime}
                 options={{
@@ -310,14 +311,14 @@ const StackPermissonNav = () => {
                     },
                 }}
             />
-            <Stack.Screen
+            <StackPermission.Screen
                 name='DestLoading'
                 component={DestLoading}
                 options={{
                     headerShown: false,
                 }}
             />
-            <Stack.Screen
+            <StackPermission.Screen
                 name='RecommendedTime'
                 component={RecommendedTime}
                 options={{
@@ -331,7 +332,7 @@ const StackPermissonNav = () => {
                     },
                 }}
             />
-            <Stack.Screen
+            <StackPermission.Screen
                 name='Reservation'
                 component={Reservation}
                 options={{
@@ -345,7 +346,7 @@ const StackPermissonNav = () => {
                     },
                 }}
             />
-            <Stack.Screen
+            <StackPermission.Screen
                 name='ChangeReservation'
                 component={ChangeReservation}
                 options={{
@@ -359,14 +360,14 @@ const StackPermissonNav = () => {
                     },
                 }}
             />
-            <Stack.Screen
+            <StackPermission.Screen
                 name='ChangeLoading'
                 component={ChangeLoading}
                 options={{
                     headerShown: false,
                 }}
             />
-            <Stack.Screen
+            <StackPermission.Screen
                 name="DA"
                 component={DA}
                 options={{
@@ -380,7 +381,7 @@ const StackPermissonNav = () => {
                     },
                 }}
             />
-            <Stack.Screen
+            <StackPermission.Screen
                 name="DAImage"
                 component={DAImage}
                 options={{
@@ -394,14 +395,14 @@ const StackPermissonNav = () => {
                     },
                 }}
             />
-            <Stack.Screen
+            <StackPermission.Screen
                 name="Transportation"
                 component={Transportation}
                 options={{
                     headerShown: false,
                 }}
             />
-            <Stack.Screen
+            <StackPermission.Screen
                 name="Examination"
                 component={Examination}
                 options={{
@@ -415,14 +416,14 @@ const StackPermissonNav = () => {
                     },
                 }}
             />
-            <Stack.Screen
+            <StackPermission.Screen
                 name="DrawerNav"
                 component={DrawerNav}
                 options={{
                     headerShown: false
                 }}
             />
-        </Stack.Navigator>
+        </StackPermission.Navigator>
     )
 }
 

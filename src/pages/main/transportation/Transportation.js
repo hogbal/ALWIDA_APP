@@ -7,6 +7,7 @@ import {
     Image,
     TouchableOpacity,
     StyleSheet,
+    Platform
 } from 'react-native'
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -15,6 +16,8 @@ import BottomSheet from '@gorhom/bottom-sheet'
 import { createPOSTObject } from 'api/API'
 import CustomModal from 'components/CustomModal'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import Geolocation from 'react-native-geolocation-service';
+
 
 const Transportation = ({ navigation }) => {
     const [info, setInfo] = useState('')
@@ -31,6 +34,21 @@ const Transportation = ({ navigation }) => {
     
 
     useEffect(() => {
+        if (Platform.OS === 'ios') {
+            Geolocation.requestAuthorization('always');
+        }
+
+        Geolocation.getCurrentPosition(
+            (position) => {
+                console.log(position);
+            },
+            (error) => {
+                // See error code charts below.
+                console.log(error.code, error.message);
+            },
+            { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+        );
+
         let date = new Date()
         setYear(date.getFullYear())
         setMonth(date.getMonth() + 1)

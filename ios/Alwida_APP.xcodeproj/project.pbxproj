@@ -16,8 +16,8 @@
 		2BCD1F7854C940C8A97C36B7 /* Pretendard-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AD58A72134A49F880257FE8 /* Pretendard-Thin.ttf */; };
 		4885E827299296F000673BA9 /* hermes.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4885E825299296DE00673BA9 /* hermes.xcframework */; };
 		4885E828299296F000673BA9 /* hermes.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4885E825299296DE00673BA9 /* hermes.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48CF34822995D69700D643EF /* Alwida_Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF34812995D69700D643EF /* Alwida_Swift.swift */; };
 		48D8D90C29928F3000D9F62A /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 48D8D90B29928F3000D9F62A /* Fonts */; };
-		48D8D90E2992904400D9F62A /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 48D8D90D2992904400D9F62A /* Fonts */; };
 		614E31F3081D4395A6056C6D /* Pretendard-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99788717295B4D3DB331B379 /* Pretendard-ExtraBold.ttf */; };
 		68B381B751AB41AD90FD3ACC /* Pretendard-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10948531A6DA4B42B51D055F /* Pretendard-ExtraLight.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-Alwida_APP-Alwida_APPTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Alwida_APP-Alwida_APPTests.a */; };
@@ -72,8 +72,9 @@
 		3145010BBFEB4AD1B2D8D908 /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-SemiBold.ttf"; path = "../src/assets/fonts/Pretendard-SemiBold.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-Alwida_APP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alwida_APP.debug.xcconfig"; path = "Target Support Files/Pods-Alwida_APP/Pods-Alwida_APP.debug.xcconfig"; sourceTree = "<group>"; };
 		4885E825299296DE00673BA9 /* hermes.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = hermes.xcframework; path = "Pods/hermes-engine/destroot/Library/Frameworks/universal/hermes.xcframework"; sourceTree = "<group>"; };
+		48CF34802995D69700D643EF /* Alwida_APP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Alwida_APP-Bridging-Header.h"; sourceTree = "<group>"; };
+		48CF34812995D69700D643EF /* Alwida_Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alwida_Swift.swift; sourceTree = "<group>"; };
 		48D8D90B29928F3000D9F62A /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
-		48D8D90D2992904400D9F62A /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Alwida_APP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alwida_APP.release.xcconfig"; path = "Target Support Files/Pods-Alwida_APP/Pods-Alwida_APP.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Alwida_APP-Alwida_APPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alwida_APP-Alwida_APPTests.debug.xcconfig"; path = "Target Support Files/Pods-Alwida_APP-Alwida_APPTests/Pods-Alwida_APP-Alwida_APPTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-Alwida_APP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Alwida_APP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +133,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				48CF34812995D69700D643EF /* Alwida_Swift.swift */,
+				48CF34802995D69700D643EF /* Alwida_APP-Bridging-Header.h */,
 			);
 			name = Alwida_APP;
 			sourceTree = "<group>";
@@ -158,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				48D8D90B29928F3000D9F62A /* Fonts */,
-				48D8D90D2992904400D9F62A /* Fonts */,
 				13B07FAE1A68108700A75B9A /* Alwida_APP */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* Alwida_APPTests */,
@@ -268,7 +270,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1420;
 					};
 				};
 			};
@@ -308,7 +310,6 @@
 				7DEB409613524E019D7AC994 /* Pretendard-Black.ttf in Resources */,
 				48D8D90C29928F3000D9F62A /* Fonts in Resources */,
 				9E4C48AF0E754788B41B9914 /* Pretendard-Bold.ttf in Resources */,
-				48D8D90E2992904400D9F62A /* Fonts in Resources */,
 				614E31F3081D4395A6056C6D /* Pretendard-ExtraBold.ttf in Resources */,
 				68B381B751AB41AD90FD3ACC /* Pretendard-ExtraLight.ttf in Resources */,
 				C35C7EE8F9884A9B81466A11 /* Pretendard-Light.ttf in Resources */,
@@ -485,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				48CF34822995D69700D643EF /* Alwida_Swift.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,6 +506,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-Alwida_APP-Alwida_APPTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = V84G4MVFJH;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -532,6 +535,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-Alwida_APP-Alwida_APPTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = V84G4MVFJH;
@@ -574,6 +578,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Alwida_APP;
+				SWIFT_OBJC_BRIDGING_HEADER = "Alwida_APP-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -600,6 +605,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Alwida_APP;
+				SWIFT_OBJC_BRIDGING_HEADER = "Alwida_APP-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

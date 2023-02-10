@@ -14,7 +14,7 @@ import { PERMISSIONS, RESULTS, request } from "react-native-permissions"
 const PermmisionModal = ({ navigation, modalVisible, setModalVisible }) => {
     const permissionCheck = async () => {
         if(Platform.OS !== "ios" && Platform.OS !== "android") return
-        const platformPermissions = Platform.OS === "ios" ? PERMISSIONS.IOS.ACCESS_BACKGROUND_LOCATION : PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION
+        const platformPermissions = Platform.OS === "ios" ? PERMISSIONS.IOS.LOCATION_ALWAYS : PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION
         
         request(platformPermissions).then((statuses) => {
             console.log('Location', statuses)
