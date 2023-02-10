@@ -38,11 +38,11 @@
 		</dict>
 	</dict>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>예 : 앱이 제공하는 '모든 혜택'을 누리시려면 '항상' 허용을 선택해 주세요.</string>
+	<string>예 : 앱이 제공하는 &apos;모든 혜택&apos;을 누리시려면 &apos;항상&apos; 허용을 선택해 주세요.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>예 : 앱이 제공하는 '모든 혜택'을 누리시려면 '항상' 허용을 선택해 주세요.</string>
+	<string>예 : 앱이 제공하는 &apos;모든 혜택&apos;을 누리시려면 &apos;항상&apos; 허용을 선택해 주세요.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>예 : 앱이 제공하는 혜택을 누리시려면 위치 정보를 '앱을 사용하는 동안'으로 선택하고 이후, '항상' 허용을 선택해주세요.</string>
+	<string>예 : 앱이 제공하는 혜택을 누리시려면 위치 정보를 &apos;앱을 사용하는 동안&apos;으로 선택하고 이후, &apos;항상&apos; 허용을 선택해주세요.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Pretendard-Black.ttf</string>
@@ -73,5 +73,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>카메라를 허용해 주세요.</string>
 </dict>
 </plist>
