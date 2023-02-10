@@ -63,11 +63,9 @@
 		<string>Pretendard-SemiBold.ttf</string>
 		<string>Pretendard-Thin.ttf</string>
 	</array>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>YOUR TEXT</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>YOUR TEXT</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-  	<string>YOUR TEXT</string>
+	<string>test</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>test</string>
 </dict>
 </plist>
