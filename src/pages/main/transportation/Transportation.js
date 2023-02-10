@@ -6,8 +6,7 @@ import {
     Text,
     Image,
     TouchableOpacity,
-    StyleSheet,
-    Platform
+    StyleSheet
 } from 'react-native'
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -17,7 +16,6 @@ import { createPOSTObject } from 'api/API'
 import CustomModal from 'components/CustomModal'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Geolocation from 'react-native-geolocation-service';
-import { err } from 'react-native-svg/lib/typescript/xml'
 
 const Transportation = ({ navigation }) => {
     const [info, setInfo] = useState('')
@@ -59,6 +57,7 @@ const Transportation = ({ navigation }) => {
             getDistance(userLocation.latitude, userLocation.longitude)
             .then((dist) => {
                 console.log('Distance : ',dist)
+                //dist가 2,000 --> 2km를 의미
                 setDistance(dist)
         })
         }
@@ -67,13 +66,13 @@ const Transportation = ({ navigation }) => {
     useEffect(() => {
         if(distance != 0) {
             if(distance <= 15000) {
-                console.log(distance)
+                getID(distanceRequest, '15km 구간 통과')
             }
             else if(distance <= 10000) {
-                console.log(distance)
+                getID(distanceRequest, '10km 구간 통과')
             }
             else if(distance <= 5000) {
-                console.log(distance)
+                getID(distanceRequest, '5km 구간 통과')
             }
         }
     }, [distance])
@@ -100,11 +99,11 @@ const Transportation = ({ navigation }) => {
     }
 
     // id 불러오기
-    const getID = async ( func ) => {
+    const getID = async ( func, msg=null) => {
         try {
             const value = await AsyncStorage.getItem('id')
             if (value !== null) {
-                return func(value)
+                return func(value, msg)
             }
         } catch (e) {
             console.error(e)
@@ -134,6 +133,24 @@ const Transportation = ({ navigation }) => {
         })
         .then((data) => {
             setBubbles(data)
+        })
+    }
+
+    // 경도위도
+    const coordinate = async (id) => {
+        let formdata = new FormData()
+        formdata.append('id', id)
+        await createPOSTObject('msg/coordinate', formdata)
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => {
+            setTerminalLatitude(data.latitude)
+            setTerminalLongitude(data.longitude)
+            console.log("Start watchPosition")
+            _watchId = Geolocation.watchPosition(position => {
+                setUserLocation({'latitude':position.coords.latitude, 'longitude':position.coords.longitude})
+            })
         })
     }
     
@@ -234,21 +251,19 @@ const Transportation = ({ navigation }) => {
         .catch((err) => console.error(err))
     }
 
-    // 경도위도
-    const coordinate = async (id) => {
+    const distanceRequest = async (id) => {
         let formdata = new FormData()
         formdata.append('id', id)
-        await createPOSTObject('msg/coordinate', formdata)
+        await createPOSTObject('msg/distance', formdata)
         .then((response) => {
             return response.json()
         })
         .then((data) => {
-            setTerminalLatitude(data.latitude)
-            setTerminalLongitude(data.longitude)
-            _watchId = Geolocation.watchPosition(position => {
-                setUserLocation({'latitude':position.coords.latitude, 'longitude':position.coords.longitude})
-            })
+            if (data.result === true) {
+                addBubble('left', '게이트 진입 요청 완료', hour, min)
+            }
         })
+        .catch((err) => console.error(err))
     }
 
     const addBubble = (position, text, hour, min) => {
@@ -288,11 +303,6 @@ const Transportation = ({ navigation }) => {
 
     // variables
     const snapPoints = useMemo(() => ['3%', '15%', '35%'], []);
-  
-    // // callbacks
-    // const handleSheetChanges = useCallback((index) => {
-    //   console.log('handleSheetChanges', index);
-    // }, []);
 
     return (
         <GestureHandlerRootView style={{flex:1}}>
