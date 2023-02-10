@@ -5,11 +5,32 @@ import SplashScreen from 'react-native-splash-screen'
 import { RecoilRoot } from 'recoil'
 import { NavigationContainer } from '@react-navigation/native'
 
-import { StackPermissonNav, StackNav } from 'navigation/StackNav'
+import { StackLoginNav, StackPermissonNav, StackNav } from 'navigation/StackNav'
 import { check, PERMISSIONS, RESULTS } from "react-native-permissions"
 
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 const App = () => {
+    const [checkLogin, setCheckLogin] = useState(false)
     const [checkPermisson, setCheckPermisson] = useState(false)
+
+    const loginCheck = async () => {
+        const keep = await AsyncStorage.getItem('loginKeep')
+        console.log(keep)
+        if (keep == "true") {
+            const id = await AsyncStorage.getItem('id')
+            console.log(id)
+            if (id !== null) {
+                setCheckLogin(true)
+            }
+            else {
+                setCheckLogin(false)
+            }   
+        }
+        else {
+            setCheckLogin(false)
+        }
+    }
 
     const permissionCheck = async () => {
         if(Platform.OS !== "ios" && Platform.OS !== "android") return
@@ -27,8 +48,9 @@ const App = () => {
     }
 
     useEffect(() => {
+        loginCheck()
+        permissionCheck()
         setTimeout(() => {
-            permissionCheck()
             SplashScreen.hide()
         }, 1000)
     }, [])
@@ -38,7 +60,7 @@ const App = () => {
             <NavigationContainer>
                 {
                     checkPermisson == true
-                    ? <StackNav />
+                    ? checkLogin == true ? <StackNav /> : <StackLoginNav />
                     : <StackPermissonNav />
                 }
             </NavigationContainer>

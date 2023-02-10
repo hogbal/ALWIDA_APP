@@ -60,7 +60,7 @@ const DrawerNav = () => {
             screenOptions={{
                 drawerPosition: 'right',
                 headerShadowVisible: false,
-                headerTitleAlign: 'center',
+                headerTitleAlign: 'firstRoute',
                 headerTitleStyle: {
                     fontFamily: 'Pretendard-Medium',
                     fontSize: 20,

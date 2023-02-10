@@ -9,7 +9,7 @@ import {
     TouchableOpacity,
     Alert,
     TouchableWithoutFeedback,
-    Keyboard
+    Keyboard,
 } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
@@ -53,17 +53,6 @@ const Login = ({ navigation }) => {
         }
     }
 
-    const getID = async () => {
-        try {
-            const id = await AsyncStorage.getItem('id')
-            if (id !== null) {
-                return id
-            }
-        } catch (e) {
-            console.error(e)
-        }
-    }
-
     /** 앱 실행 시 로그인 유지하기에 체크를 했을 경우 */
     useEffect(() => {
         console.log("App Start")
@@ -87,7 +76,7 @@ const Login = ({ navigation }) => {
                 storeID(id)
                 storeKeep(checked)
                 setLoginCheck(false)
-                navigation.navigate("DrawerNav")
+                // navigation.navigate("DrawerNav")
             } else {
                 setLoginCheck(true)
             }
@@ -156,7 +145,9 @@ const Login = ({ navigation }) => {
                         (id !== '' && pw !== '')
                         ?
                         <ActiveButton
-                            onpress={() => loginOnClick()}
+                            onpress={() => 
+                                loginOnClick()
+                            }
                             text="로그인"
                         />
                         : <InactiveButton text='로그인' />

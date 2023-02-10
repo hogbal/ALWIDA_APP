@@ -17,7 +17,7 @@ import { createPOSTObject } from 'api/API'
 import CustomModal from 'components/CustomModal'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Geolocation from 'react-native-geolocation-service';
-
+import { err } from 'react-native-svg/lib/typescript/xml'
 
 const Transportation = ({ navigation }) => {
     const [info, setInfo] = useState('')
@@ -28,27 +28,15 @@ const Transportation = ({ navigation }) => {
     const [departModalVisible, setDepartModalVisible] = useState(false)
     const [gateModalVisible, setGateModalVisible] = useState(false)
     const [bubbles, setBubbles] = useState([])
-    const [latitude, setLatitude] = useState(0)
-    const [longitude, setLongitude] = useState(0)
 
-    
+    const [distance, setDistance] = useState(0)
+    const [userLocation, setUserLocation] = useState({'latitude':0,'longitude':0})
+    const [terminalLatitude, setTerminalLatitude] = useState(0)
+    const [terminalLongitude, setTerminalLongitude] = useState(0)
+
+    let _watchId
 
     useEffect(() => {
-        if (Platform.OS === 'ios') {
-            Geolocation.requestAuthorization('always');
-        }
-
-        Geolocation.getCurrentPosition(
-            (position) => {
-                console.log(position);
-            },
-            (error) => {
-                // See error code charts below.
-                console.log(error.code, error.message);
-            },
-            { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
-        );
-
         let date = new Date()
         setYear(date.getFullYear())
         setMonth(date.getMonth() + 1)
@@ -57,7 +45,59 @@ const Transportation = ({ navigation }) => {
         getID(loadData)
         getID(coordinate)
         getID(loadChat)
+
+        return () => {
+            if (_watchId) {
+                console.log("clearWatch")
+                Geolocation.clearWatch(_watchId);
+            }
+          };
     }, [])
+
+    useEffect(() => {
+        if(userLocation.latitude != 0 && userLocation.longitude != 0 && terminalLatitude != 0 && terminalLongitude != 0) {
+            getDistance(userLocation.latitude, userLocation.longitude)
+            .then((dist) => {
+                console.log('Distance : ',dist)
+                setDistance(dist)
+        })
+        }
+    }, [userLocation])
+
+    useEffect(() => {
+        if(distance != 0) {
+            if(distance <= 15000) {
+                console.log(distance)
+            }
+            else if(distance <= 10000) {
+                console.log(distance)
+            }
+            else if(distance <= 5000) {
+                console.log(distance)
+            }
+        }
+    }, [distance])
+
+    const getDistance = async (userLatitude, userLongitude) => {
+        if ((userLatitude == terminalLatitude) && (userLongitude == terminalLongitude))
+            return 0;
+    
+        var raduserLatitude = Math.PI * userLatitude / 180;
+        var radterminalLatitude = Math.PI * terminalLatitude / 180;
+        var theta = userLongitude - terminalLongitude;
+        var radTheta = Math.PI * theta / 180;
+        var dist = Math.sin(raduserLatitude) * Math.sin(radterminalLatitude) + Math.cos(raduserLatitude) * Math.cos(radterminalLatitude) * Math.cos(radTheta);
+        if (dist > 1)
+            dist = 1;
+    
+        dist = Math.acos(dist);
+        dist = dist * 180 / Math.PI;
+        dist = dist * 60 * 1.1515 * 1.609344 * 1000;
+        if (dist < 100) dist = Math.round(dist / 10) * 10;
+        else dist = Math.round(dist / 100) * 100;
+    
+        return dist
+    }
 
     // id 불러오기
     const getID = async ( func ) => {
@@ -128,7 +168,6 @@ const Transportation = ({ navigation }) => {
             return response.json()
         })
         .then((data) => {
-            console.log(data)
             addBubble('left', data.description, data.hour, data.min)
         })
         .catch((err) => console.log(err))
@@ -147,9 +186,6 @@ const Transportation = ({ navigation }) => {
         })
         .then((data) => {
             navigation.navigate('ChangeReservation')
-            if (data.result === true) {
-                navigation.navigate('ChangeReservation')
-            }
         })
         .catch((err) => console.error(err))
     }
@@ -167,7 +203,6 @@ const Transportation = ({ navigation }) => {
             return response.json()
         })
         .then((data) => {
-            console.log(data)
             if (data.result === true) {
                 addBubble('left', '출발취소 승인완료', hour, min)
             }
@@ -187,10 +222,13 @@ const Transportation = ({ navigation }) => {
             return response.json()
         })
         .then((data) => {
-            console.log(data)
+            if(_watchId) {
+                console.log("clearWatch")
+                Geolocation.clearWatch(_watchId);
+            }
             addBubble('right', '게이트 진입요청', hour, min)
             if (data.result === true) {
-                addBubble('left', data.description, hour, min)
+                addBubble('left', '게이트 진입 요청 완료', hour, min)
             }
         })
         .catch((err) => console.error(err))
@@ -205,8 +243,11 @@ const Transportation = ({ navigation }) => {
             return response.json()
         })
         .then((data) => {
-            setLatitude(data.latitude)
-            setLongitude(data.longitude)
+            setTerminalLatitude(data.latitude)
+            setTerminalLongitude(data.longitude)
+            _watchId = Geolocation.watchPosition(position => {
+                setUserLocation({'latitude':position.coords.latitude, 'longitude':position.coords.longitude})
+            })
         })
     }
 
@@ -248,10 +289,10 @@ const Transportation = ({ navigation }) => {
     // variables
     const snapPoints = useMemo(() => ['3%', '15%', '35%'], []);
   
-    // callbacks
-    const handleSheetChanges = useCallback((index) => {
-      console.log('handleSheetChanges', index);
-    }, []);
+    // // callbacks
+    // const handleSheetChanges = useCallback((index) => {
+    //   console.log('handleSheetChanges', index);
+    // }, []);
 
     return (
         <GestureHandlerRootView style={{flex:1}}>
@@ -334,7 +375,7 @@ const Transportation = ({ navigation }) => {
                         ref={bottomSheetRef}
                         index={1}
                         snapPoints={snapPoints}
-                        onChange={handleSheetChanges}
+                        // onChange={handleSheetChanges}
                         detached
                         enableOverDrag
                         backgroundStyle={styles.bottomBackground}
