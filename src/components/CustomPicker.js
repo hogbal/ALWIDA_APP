@@ -8,7 +8,7 @@ import {
     Modal,
 } from 'react-native'
 
-const LocalPickerItem = ({ index, text, dataLength, setSelectedLocal, setSelectedTerminal, visible, setVisible, onPress, setPercentage, setColor, setStatus}) => {
+const LocalPickerItem = ({ index, text, dataLength, setSelectedLocal, setSelectedTerminal, visible, setVisible, setPercentage, setColor, setStatus}) => {
     return (
         <TouchableOpacity
             style={ styles.itemContainer }
@@ -21,7 +21,6 @@ const LocalPickerItem = ({ index, text, dataLength, setSelectedLocal, setSelecte
                     setColor('')
                     setStatus('')
                 }
-                onPress()
             }}
         >
             <Text style={styles.text}>{text}</Text>
@@ -29,14 +28,14 @@ const LocalPickerItem = ({ index, text, dataLength, setSelectedLocal, setSelecte
     )
 }
 
-const TerminalPickerItem = ({ index, text, dataLength, setSelected, visible, setVisible, onPress }) => {
+const TerminalPickerItem = ({ index, text, dataLength, setSelected, visible, setVisible, setCircle }) => {
     return (
         <TouchableOpacity
             style={ styles.itemContainer }
             onPress={() => {
                 setSelected(text)
                 setVisible(!visible)
-                onPress()
+                setCircle()
             }}
         >
             <Text style={styles.text}>{text}</Text>
@@ -70,7 +69,6 @@ const LocalPicker = ({ DATA, localVisible, setLocalVisible, selectedLocal, setSe
                                 setSelectedTerminal={setSelectedTerminal}
                                 visible={localVisible} 
                                 setVisible={setLocalVisible} 
-                                onPress={onPress}
                                 setPercentage={setPercentage}
                                 setColor={setColor}
                                 setStatus={setStatus}
@@ -132,7 +130,7 @@ const TerminalPicker = ({ DATA, terminalVisible, setTerminalVisible, selectedTer
                         if (value.local == selectedLocal) {
                             return (
                                 value['terminals'].map((item, index) => {
-                                    onPress = () => {
+                                    setCircle = () => {
                                         if (setPercentage !== null) {
                                             setPercentage(item.percentage)
                                             setColor(item.color)
@@ -146,7 +144,7 @@ const TerminalPicker = ({ DATA, terminalVisible, setTerminalVisible, selectedTer
                                             text={item.terminal} 
                                             dataLength={value['terminals'].length} 
                                             setSelected={setSelectedTerminal}
-                                            onPress={onPress}
+                                            setCircle={setCircle}
                                             visible={terminalVisible} setVisible={setTerminalVisible} 
                                         />
                                     )
