@@ -20,24 +20,26 @@ import { createImagePOSTObject } from 'api/API'
 
 const Examination = ({ navigation }) => {
     const [imageSource, setImageSource] = useState('')
+    const [image, setImage] = useState({
+        uri: '',
+        type: '',
+        name: '',
+    })
 
     const permissionCheck = async () => {
         if(Platform.OS !== "ios" && Platform.OS !== "android") return
         const platformPermissions = Platform.OS === "ios" ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA
-        
-        check(platformPermissions).then((statuses) => {
-            console.log(statuses)
-        })
 
-        // request(platformPermissions).then((statuses) => {
-        //     console.log('Camera', statuses)
-        //     if(statuses == RESULTS.GRANTED) {
-        //         return true
-        //     }
-        //     else {
-        //         Linking.openSettings()
-        //     }
-        // })
+        request(platformPermissions).then((statuses) => {
+            console.log('Camera', statuses)
+            if(statuses == RESULTS.GRANTED) {
+                return true
+            }
+            else {
+                Linking.openSettings()
+                return false
+            }
+        })
     }
 
     const options = {
@@ -46,38 +48,34 @@ const Examination = ({ navigation }) => {
             path: 'images',
         }
     }
-
-    const image = {
-        uri: '',
-        type: '',
-        name: '',
-    };
     
     const showCamera = () => {
         permissionCheck()
-        .then((result) => {
-            if(result == true) {
-                launchCamera(options, (res) => {
-                    // if (res.error) {
-                    //     console.log('LaunchCamera Error: ', res.error)
-                    // }
-                    // else if (res.didCancel == true) {
-                    //     console.log('None Img')
-                    // }
-                    // else {
-                    //     image.uri = Platform.OS === 'android' ? res.assets[0].uri : res.assets[0].uri.replace('file://', '')
-                    //     image.type = res.assets[0].type
-                    //     image.name = res.assets[0].fileName
-                    //     setImageSource(Platform.OS === 'android' ? res.assets[0].uri : res.assets[0].uri.replace('file://', ''))
-                    // }
-                    if (res.error) {
-                        console.log('LaunchCamera Error: ', res.error);
-                      }
-                    else {
-                    setImageSource(res.uri);
-                  }
-                })
-            }
+        .then(() => {
+            launchCamera(options, (res) => {
+                if(res.error) {
+                    console.log('LaunchCamera Error: ', res.error)
+                }
+                else if(res.didCancel) {
+                    console.log('Camera Cancel')
+                }
+                else {
+                    console.log(res)
+                    const localUri = res.assets[0].uri;
+                    const uriPath = localUri.split("//").pop();
+                    const imageName = localUri.split("/").pop();
+                    
+                    data = {
+                        name:imageName,
+                        type:"image/jpg",
+                        url:uriPath
+                        
+                    }
+                    
+                    setImage(data)
+                    setImageSource("file://"+uriPath);
+                }
+            })
         })
     }
 
@@ -97,6 +95,7 @@ const Examination = ({ navigation }) => {
         let formdata = new FormData()
         formdata.append('id', id)
         formdata.append('file', image)
+        console.log(image)
         console.log(formdata)
         console.log(formdata['_parts'][1])
         await createImagePOSTObject('check', formdata)
@@ -112,30 +111,24 @@ const Examination = ({ navigation }) => {
         .catch((err) => console.error(err))
     }
 
-    if (!imageSource) {
-        return (
-            <View style={styles.container}>
-                <TouchableOpacity onPress={showCamera}>
-                    <Image
-                        style={styles.cameraImg}
-                        source={require('assets/img/camera.png')}
-                    />
-                </TouchableOpacity>
-            </View>
-        )
-    }
+    useEffect(()=>{
+        showCamera()
+    },[])
+
     return (
         <SafeAreaView style={styles.container}>
-            <Image
-                style={styles.img}
-                source={{uri: imageSource}}
-            />
-            <TouchableOpacity
-                style={styles.button}
-                onPress={() => setImageSource(null)}
-            >
-                <Text style={styles.buttonText}>다시 촬영</Text>
-            </TouchableOpacity>
+            <View style={styles.info}>
+                <Image
+                    style={styles.img}
+                    source={{uri: imageSource ? imageSource : require('assets/img/camera.png')}}
+                />
+                <TouchableOpacity
+                    style={styles.inactiveButton}
+                    onPress={() => showCamera()}
+                >
+                    <Text style={styles.inactiveText}>다시 촬영</Text>
+                </TouchableOpacity>
+            </View>
             <ActiveButton onpress={() => onClickButton()} text='검사 요청' />
         </SafeAreaView>
     )
@@ -143,36 +136,35 @@ const Examination = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        height: '100%',
+        flex: 1,
         backgroundColor: '#FFFFFF',
-        padding: 20,
-        alignItems: 'center',
-        justifyContent: 'center'
     },
-    cameraImg: {
-        width: 120,
-        height: 120,
+    info: {
+        flex: 1,
+        justifyContent: 'flex-start',
     },
     img: {
         flex: 1,
-        width: '100%',
         borderRadius: 25,
-        marginVertical: 30,
+        margin: '5%'
     },
-    button: {
-        width: '100%',
+    inactiveButton: {
         backgroundColor: '#E9EBEC',
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        marginVertical: 30,
+        margin: '3%',
     },
-    buttonText: {
+    inactiveText: {
         fontFamily: 'Pretendard-Medium',
         fontSize: 15,
         color: '#ACACA9',
-        margin: 15,
+        margin: '4%',
     },
+    button: {
+        flex: 1,
+        justifyContent: 'flex-end'
+    }
 })
 
 export default Examination

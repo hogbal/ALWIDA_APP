@@ -29,7 +29,8 @@ const StackLogin = createNativeStackNavigator()
 const Stack = createNativeStackNavigator()
 const StackPermission = createNativeStackNavigator()
 
-const StackLoginNav = () => {
+const StackLoginNav = (props) => {
+    console.log("Check Nav",props)
     return (
         <StackLogin.Navigator initialRouteName='Login' >
             <StackLogin.Screen

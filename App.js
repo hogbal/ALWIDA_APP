@@ -58,7 +58,7 @@ const App = () => {
             <NavigationContainer>
                 {
                     checkPermisson == true
-                    ? checkLogin == false ? <StackNav /> : <StackLoginNav onCheck={setCheckLogin} />
+                    ? checkLogin == false ? <StackNav /> : <StackLoginNav onChangeLoginCheck={setCheckLogin} />
                     : <StackPermissonNav />
                 }
             </NavigationContainer>
