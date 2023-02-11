@@ -16,13 +16,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ActiveButton, InactiveButton } from 'components/CustomButton'
 import { createPOSTObject } from 'api/API'
 
-const Login = ({ navigation, props }) => {
+const Login = ({ navigation , props }) => {
     const [pw, onChangePw] = useState("")
     const [id, onChangeId] = useState("")
     const [checked, setChecked] = useState(false)
     const [loginCheck, setLoginCheck] = useState(false)
-
-    const [setCheckLogin, setCheckLoginFunc] = useState(()=>{})
 
     /** 로그인 유지하기 AsyncStorage */
     const storeKeep = async (value) => {
@@ -34,18 +32,6 @@ const Login = ({ navigation, props }) => {
         }
     }
 
-    const getKeep = async () => {
-        try {
-            const keep = await AsyncStorage.getItem('loginKeep')
-            if (keep !== null) {
-                setChecked(keep)
-                return keep
-            }
-        } catch (e) {
-            console.log(e)
-        }
-    }
-
     /** 아이디 저장 AsyncStorage */
     const storeID = async (value) => {
         try {
@@ -54,15 +40,6 @@ const Login = ({ navigation, props }) => {
             console.error(e)
         }
     }
-
-    /** 앱 실행 시 로그인 유지하기에 체크를 했을 경우 */
-    useEffect(() => {
-        console.log("App Start")
-        const keep = getKeep()
-        if (keep == 'true') {
-            navigation.navigate("DrawerNav")
-        }
-    }, [])
 
     /** 로그인 버튼 클릭 함수 */
     const loginOnClick = async () => {
@@ -78,7 +55,7 @@ const Login = ({ navigation, props }) => {
                 storeID(id)
                 storeKeep(checked)
                 setLoginCheck(false)
-                // navigation.navigate("DrawerNav")
+                props.onChangeLoginCheck(true)
             } else {
                 setLoginCheck(true)
             }

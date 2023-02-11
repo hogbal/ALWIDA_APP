@@ -30,16 +30,16 @@ const Stack = createNativeStackNavigator()
 const StackPermission = createNativeStackNavigator()
 
 const StackLoginNav = (props) => {
-    console.log("Check Nav",props)
     return (
         <StackLogin.Navigator initialRouteName='Login' >
             <StackLogin.Screen
                 name='Login'
-                component={Login}
                 options={{
                     headerShown: false,
                 }}
-            />
+            >
+                {() => <Login props={props}  />}
+            </StackLogin.Screen>
             <StackLogin.Screen
                 name='EnterMemberInfo'
                 component={EnterMemberInfo}
@@ -71,6 +71,22 @@ const StackLoginNav = (props) => {
         </StackLogin.Navigator>
     )
 }
+
+const StackPermissonNav = (props) => {
+    return (
+        <StackPermission.Navigator initialRouteName='Permission' >
+            <StackPermission.Screen
+                name='Permission'
+                options={{
+                    headerShown: false,
+                }}
+            >
+                {() => <Permission props={props}  />}
+            </StackPermission.Screen>
+        </StackPermission.Navigator>
+    )
+}
+
 
 const StackNav = () => {
     return (
@@ -230,20 +246,6 @@ const StackNav = () => {
                 }}
             />
         </Stack.Navigator>
-    )
-}
-
-const StackPermissonNav = () => {
-    return (
-        <StackPermission.Navigator initialRouteName='Permission' >
-            <StackPermission.Screen
-                name='Permission'
-                component={Permission}
-                options={{
-                    headerShown: false,
-                }}
-            />
-        </StackPermission.Navigator>
     )
 }
 

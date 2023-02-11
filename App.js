@@ -18,7 +18,6 @@ const App = () => {
         const keep = await AsyncStorage.getItem('loginKeep')
         if (keep == "true") {
             const id = await AsyncStorage.getItem('id')
-
             if (id !== null) {
                 setCheckLogin(true)
             }
@@ -58,8 +57,8 @@ const App = () => {
             <NavigationContainer>
                 {
                     checkPermisson == true
-                    ? checkLogin == false ? <StackNav /> : <StackLoginNav onChangeLoginCheck={setCheckLogin} />
-                    : <StackPermissonNav />
+                    ? checkLogin == true ? <StackNav /> : <StackLoginNav onChangeLoginCheck={setCheckLogin} />
+                    : <StackPermissonNav onChangePermissionCheck={setCheckPermisson} />
                 }
             </NavigationContainer>
         </RecoilRoot>
