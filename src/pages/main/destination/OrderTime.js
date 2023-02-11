@@ -3,6 +3,7 @@ import {
     SafeAreaView,
     View,
     StyleSheet,
+    Alert
 } from 'react-native'
 
 import { useRecoilState } from 'recoil'
@@ -62,6 +63,9 @@ const OrderTime = ({ navigation }) => {
             if (data.result === true) {
                 console.log(data)
                 navigation.navigate("DestLoading")
+            }
+            else {
+                Alert.alert("예약된 운송작업이 있습니다.")
             }
         })
         .catch((err) => console.log(err))
