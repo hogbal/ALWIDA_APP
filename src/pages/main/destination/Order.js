@@ -77,9 +77,14 @@ const Order = ({ navigation }) => {
             return response.json()
         })
         .then((data) => {
-            if (data.result !== "False") {
+            console.log(data)
+            if (data.result !== false) {
                 setContainerStatus(data.result)
                 setNext(true)
+            }
+            else {
+                setContainerStatus("존재하지 않는 컨테이너 입니다.")
+                setNext(false)
             }
         })
         .catch((e) => {
