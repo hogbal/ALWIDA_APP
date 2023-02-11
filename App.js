@@ -16,7 +16,6 @@ const App = () => {
 
     const loginCheck = async () => {
         const keep = await AsyncStorage.getItem('loginKeep')
-        console.log(keep)
         if (keep == "true") {
             const id = await AsyncStorage.getItem('id')
 
@@ -37,7 +36,6 @@ const App = () => {
         const platformPermissions = Platform.OS === "ios" ? PERMISSIONS.IOS.LOCATION_ALWAYS : PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION
         
         check(platformPermissions).then((statuses) => {
-            console.log(statuses)
             if(statuses == RESULTS.GRANTED) {
                 setCheckPermisson(true)
             }
@@ -60,7 +58,7 @@ const App = () => {
             <NavigationContainer>
                 {
                     checkPermisson == true
-                    ? checkLogin == true ? <StackNav /> : <StackLoginNav />
+                    ? checkLogin == false ? <StackNav /> : <StackLoginNav onCheck={setCheckLogin} />
                     : <StackPermissonNav />
                 }
             </NavigationContainer>

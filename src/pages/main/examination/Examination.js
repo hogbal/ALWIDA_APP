@@ -10,6 +10,8 @@ import {
     Linking
 } from 'react-native'
 
+import { PERMISSIONS, RESULTS, request, check } from "react-native-permissions"
+
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { launchCamera } from 'react-native-image-picker'
 
@@ -18,6 +20,25 @@ import { createImagePOSTObject } from 'api/API'
 
 const Examination = ({ navigation }) => {
     const [imageSource, setImageSource] = useState('')
+
+    const permissionCheck = async () => {
+        if(Platform.OS !== "ios" && Platform.OS !== "android") return
+        const platformPermissions = Platform.OS === "ios" ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA
+        
+        check(platformPermissions).then((statuses) => {
+            console.log(statuses)
+        })
+
+        // request(platformPermissions).then((statuses) => {
+        //     console.log('Camera', statuses)
+        //     if(statuses == RESULTS.GRANTED) {
+        //         return true
+        //     }
+        //     else {
+        //         Linking.openSettings()
+        //     }
+        // })
+    }
 
     const options = {
         storageOptions: {
@@ -33,18 +54,29 @@ const Examination = ({ navigation }) => {
     };
     
     const showCamera = () => {
-        launchCamera(options, (res) => {
-            if (res.error) {
-                console.log('LaunchCamera Error: ', res.error)
-            }
-            else if (res.didCancel == true) {
-                console.log('None Img')
-            }
-            else {
-                image.uri = Platform.OS === 'android' ? res.assets[0].uri : res.assets[0].uri.replace('file://', '')
-                image.type = res.assets[0].type
-                image.name = res.assets[0].fileName
-                setImageSource(Platform.OS === 'android' ? res.assets[0].uri : res.assets[0].uri.replace('file://', ''))
+        permissionCheck()
+        .then((result) => {
+            if(result == true) {
+                launchCamera(options, (res) => {
+                    // if (res.error) {
+                    //     console.log('LaunchCamera Error: ', res.error)
+                    // }
+                    // else if (res.didCancel == true) {
+                    //     console.log('None Img')
+                    // }
+                    // else {
+                    //     image.uri = Platform.OS === 'android' ? res.assets[0].uri : res.assets[0].uri.replace('file://', '')
+                    //     image.type = res.assets[0].type
+                    //     image.name = res.assets[0].fileName
+                    //     setImageSource(Platform.OS === 'android' ? res.assets[0].uri : res.assets[0].uri.replace('file://', ''))
+                    // }
+                    if (res.error) {
+                        console.log('LaunchCamera Error: ', res.error);
+                      }
+                    else {
+                    setImageSource(res.uri);
+                  }
+                })
             }
         })
     }

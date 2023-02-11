@@ -75,5 +75,11 @@
 	<false/>
 	<key>NSCameraUsageDescription</key>
 	<string>카메라를 허용해 주세요.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string></string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string></string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string></string>
 </dict>
 </plist>
