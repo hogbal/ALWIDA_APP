@@ -29,6 +29,7 @@ const ItemList = ({title, description}) => {
 }
 
 const DA = ({ navigation }) => {
+    const [publish, setPublish] = useState('')
     const [terminalName, setTerminalName] = useState('')
     const [issue, setIssue] = useState('')
     const [date, setDate] = useState('')
@@ -60,6 +61,7 @@ const DA = ({ navigation }) => {
             })
             .then((data) => {
                 console.log('data :', data)
+                setPublish(data.publish)
                 setTerminalName(data.terminalName)
                 setIssue(data.issue)
                 setDate(data.date)
@@ -79,23 +81,10 @@ const DA = ({ navigation }) => {
     
         useEffect(() => {
             // id 및 검사내역 불러오기 완료 시 리렌더링
-            console.log('reload')
-            setDate(date === null ? '발급 대기 중' : date)
+            setDate(publish === false ? '발급 대기 중' : date)
             setDeviceLocation(deviceLocation === null ? '-' : deviceLocation)
         }, [date, deviceLocation])
 
-    // const ready = 0
-
-    // if (ready) {
-    //     return (
-    //         <SafeAreaView style={styles.container}>
-    //             <View style={styles.readyTicketContainer}>
-    //                 <Text style={styles.readyText}>준비 중 입니다.</Text>
-    //             </View>
-    //             <View style={{flex: 1,}}></View>
-    //         </SafeAreaView>
-    //     )
-    // }
     if (issue) {
         return (
             <SafeAreaView style={styles.container}>

@@ -19,7 +19,7 @@ const App = () => {
         console.log(keep)
         if (keep == "true") {
             const id = await AsyncStorage.getItem('id')
-            console.log(id)
+
             if (id !== null) {
                 setCheckLogin(true)
             }

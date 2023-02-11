@@ -16,11 +16,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ActiveButton, InactiveButton } from 'components/CustomButton'
 import { createPOSTObject } from 'api/API'
 
-const Login = ({ navigation }) => {
+const Login = ({ navigation, props }) => {
     const [pw, onChangePw] = useState("")
     const [id, onChangeId] = useState("")
     const [checked, setChecked] = useState(false)
     const [loginCheck, setLoginCheck] = useState(false)
+
+    const [setCheckLogin, setCheckLoginFunc] = useState(()=>{})
 
     /** 로그인 유지하기 AsyncStorage */
     const storeKeep = async (value) => {

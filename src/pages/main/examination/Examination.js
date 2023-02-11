@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     SafeAreaView,
     View,
@@ -7,6 +7,7 @@ import {
     TouchableOpacity,
     Platform,
     StyleSheet,
+    Linking
 } from 'react-native'
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -17,6 +18,7 @@ import { createImagePOSTObject } from 'api/API'
 
 const Examination = ({ navigation }) => {
     const [imageSource, setImageSource] = useState('')
+
     const options = {
         storageOptions: {
             skipBackup: true,
