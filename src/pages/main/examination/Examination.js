@@ -68,7 +68,7 @@ const Examination = ({ navigation }) => {
                     data = {
                         name:imageName,
                         type:"image/jpg",
-                        url:uriPath
+                        uri:uriPath
                         
                     }
                     

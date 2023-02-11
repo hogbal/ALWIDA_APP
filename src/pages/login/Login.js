@@ -32,11 +32,6 @@ const Login = ({ navigation , props }) => {
         }
     }
 
-    useEffect(()=>{
-        console.log(navigation)
-        console.log(props)
-    },[])
-
     /** 아이디 저장 AsyncStorage */
     const storeID = async (value) => {
         try {
