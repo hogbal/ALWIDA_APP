@@ -32,6 +32,11 @@ const Login = ({ navigation , props }) => {
         }
     }
 
+    useEffect(()=>{
+        console.log(navigation)
+        console.log(props)
+    },[])
+
     /** 아이디 저장 AsyncStorage */
     const storeID = async (value) => {
         try {
@@ -149,7 +154,7 @@ const Login = ({ navigation , props }) => {
                     <Text style={styles.barText}> | </Text>
                     <TouchableOpacity
                         style={styles.touchableEtc}
-                        onPress={() => navigation.navigate('EnterMemberInfo')}
+                        onPress={() => navigation.navigation.navigate('EnterMemberInfo')}
                     >
                         <Text style={styles.text}>회원가입</Text>
                     </TouchableOpacity>

@@ -57,6 +57,7 @@ const DrawerNav = () => {
     return (
         <Drawer.Navigator
             initialRouteName='Main'
+            backBehavior='initialRouteName'
             screenOptions={{
                 drawerPosition: 'right',
                 headerShadowVisible: false,
@@ -123,6 +124,7 @@ const DrawerNav = () => {
                 component={VehicleRegistration}
                 options={{
                     title: '차량관리',
+                    headerTitleAlign: 'center',
                     headerLeft: () => null,
                 }}
             />
