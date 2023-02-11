@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     View,
     Text,
@@ -10,7 +10,7 @@ import {
 import { ActiveButton } from 'components/CustomButton'
 import PermissionModal from 'pages/permission-request/PermissionModal'
 
-const Permission = ({ navigation }) => {
+const Permission = ({ navigation, props }) => {
     const [modalVisible, setModalVisible] = useState(false)
 
     const toggleModal = () => {
@@ -41,7 +41,7 @@ const Permission = ({ navigation }) => {
             </View>
             <View style={styles.button}>
                 <ActiveButton onpress={() => toggleModal()} text='확인' />
-                <PermissionModal navigation={navigation} modalVisible={modalVisible} setModalVisible={setModalVisible} />
+                <PermissionModal navigation={navigation} modalVisible={modalVisible} setModalVisible={setModalVisible} props={props} />
             </View>
         </SafeAreaView>
     )

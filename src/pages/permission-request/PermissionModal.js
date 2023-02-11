@@ -11,15 +11,14 @@ import {
 
 import { PERMISSIONS, RESULTS, request } from "react-native-permissions"
 
-const PermmisionModal = ({ navigation, modalVisible, setModalVisible }) => {
+const PermmisionModal = ({ navigation, modalVisible, setModalVisible, props }) => {
     const permissionCheck = async () => {
         if(Platform.OS !== "ios" && Platform.OS !== "android") return
         const platformPermissions = Platform.OS === "ios" ? PERMISSIONS.IOS.LOCATION_ALWAYS : PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION
         
         request(platformPermissions).then((statuses) => {
-            console.log('Location', statuses)
             if(statuses == RESULTS.GRANTED) {
-                navigation.navigate('Login')
+                props.onChangePermissionCheck(true)
             }
             else {
                 Linking.openSettings()
