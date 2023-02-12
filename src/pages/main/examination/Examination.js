@@ -32,7 +32,6 @@ const Examination = ({ navigation }) => {
         const platformPermissions = Platform.OS === "ios" ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA
 
         request(platformPermissions).then((statuses) => {
-            console.log(statuses)
             if(statuses != RESULTS.GRANTED) {
                 Linking.openSettings()
                 navigation.navigate('Main')
@@ -123,7 +122,7 @@ const Examination = ({ navigation }) => {
             <View style={styles.info}>
                 <Image
                     style={styles.img}
-                    source={imageSource}
+                    source={imageSource ? {uri:imageSource} : require('assets/img/camera.png')}
                 />
                 <TouchableOpacity
                     style={styles.inactiveButton}
