@@ -143,7 +143,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#DCDEE6',
-        margin: '1%',
+        padding: '3%',
+        margin: '1%'
     },
     button: {
         flex: 1,
