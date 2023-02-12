@@ -94,7 +94,7 @@ const DrawerNav = ({navigation}) => {
                         </TouchableOpacity>
                         <TouchableOpacity
                             style={styles.itemContainer}
-                            onPress={() => navigation.navigate('InspectionHistory',{'navigation':navigation})}
+                            onPress={() => navigation.navigate('InspectionHistory')}
                         >
                             <Text style={styles.text}>검사내역</Text>
                         </TouchableOpacity>
