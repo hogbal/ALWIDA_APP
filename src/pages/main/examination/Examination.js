@@ -32,15 +32,14 @@ const Examination = ({ navigation }) => {
         const platformPermissions = Platform.OS === "ios" ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA
 
         request(platformPermissions).then((statuses) => {
-            console.log('Camera', statuses)
-            if(statuses == RESULTS.GRANTED) {
-                return true
-            }
-            else {
+            console.log(statuses)
+            if(statuses != RESULTS.GRANTED) {
                 Linking.openSettings()
-                return false
+                navigation.navigate('Main')
             }
         })
+
+        return true
     }
 
     const options = {
@@ -51,32 +50,28 @@ const Examination = ({ navigation }) => {
     }
     
     const showCamera = () => {
-        permissionCheck()
-        .then(() => {
-            launchCamera(options, (res) => {
-                if(res.error) {
-                    console.log('LaunchCamera Error: ', res.error)
-                }
-                else if(res.didCancel) {
-                    console.log('Camera Cancel')
-                }
-                else {
-                    console.log(res)
-                    const localUri = res.assets[0].uri;
-                    const uriPath = localUri.split("//").pop();
-                    const imageName = localUri.split("/").pop();
+        launchCamera(options, (res) => {
+            if(res.error) {
+                console.log('LaunchCamera Error: ', res.error)
+            }
+            else if(res.didCancel) {
+                console.log('Camera Cancel')
+            }
+            else {
+                const localUri = res.assets[0].uri;
+                const uriPath = localUri.split("//").pop();
+                const imageName = localUri.split("/").pop();
+                
+                data = {
+                    name:imageName,
+                    type:"image/jpg",
+                    uri:uriPath
                     
-                    data = {
-                        name:imageName,
-                        type:"image/jpg",
-                        uri:uriPath
-                        
-                    }
-                    
-                    setImage(data)
-                    setImageSource("file://"+uriPath);
                 }
-            })
+                
+                setImage(data)
+                setImageSource("file://"+uriPath);
+            }
         })
     }
 
@@ -96,9 +91,7 @@ const Examination = ({ navigation }) => {
         let formdata = new FormData()
         formdata.append('id', id)
         formdata.append('file', image)
-        console.log(image)
-        console.log(formdata)
-        console.log(formdata['_parts'][1])
+
         await createImagePOSTObject('check', formdata)
         .then((response) => {
             return response.json()
@@ -113,7 +106,12 @@ const Examination = ({ navigation }) => {
     }
 
     useEffect(()=>{
-        showCamera()
+        permissionCheck()
+        .then((status) => {
+            if(status == true) {
+                showCamera()
+            }
+        })
     },[])
 
     return (
@@ -121,7 +119,7 @@ const Examination = ({ navigation }) => {
             <View style={styles.info}>
                 <Image
                     style={styles.img}
-                    source={{uri: imageSource ? imageSource : require('assets/img/camera.png')}}
+                    source={imageSource ? imageSource : require('assets/img/camera.png')}
                 />
                 <TouchableOpacity
                     style={styles.inactiveButton}
