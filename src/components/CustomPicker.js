@@ -115,11 +115,7 @@ const TerminalPicker = ({ DATA, terminalVisible, setTerminalVisible, selectedTer
     }
     return (
         <TouchableOpacity
-            style={
-                terminalVisible == true
-                ? styles.visibleContainer
-                : styles.container
-            }
+            style={ styles.container }
             onPress={() => setTerminalVisible(!terminalVisible)}
         >
             <Image
@@ -127,6 +123,10 @@ const TerminalPicker = ({ DATA, terminalVisible, setTerminalVisible, selectedTer
                 source={require('assets/img/picker_marker.png')}
             />
             <Text style={styles.text}>{selectedTerminal}</Text>
+            <Image
+                style={styles.arrowImg}
+                source={require('assets/img/picker_arrow.png')}
+            />
             <Modal
                 animationType={"slide"}
                 transparent={true}
@@ -167,10 +167,6 @@ const TerminalPicker = ({ DATA, terminalVisible, setTerminalVisible, selectedTer
                     </ScrollView>
                 </SafeAreaView>
             </Modal>
-            <Image
-                style={styles.arrowImg}
-                source={require('assets/img/picker_arrow.png')}
-            />
         </TouchableOpacity>
     )
 }
