@@ -25,6 +25,8 @@ import Examination from 'pages/main/examination/Examination'
 import DestLoading from 'pages/util/DestLoading'
 import ChangeLoading from 'pages/util/ChangeLoading'
 
+import { Font } from 'api/Font'
+
 const StackLogin = createNativeStackNavigator()
 const Stack = createNativeStackNavigator()
 const StackPermission = createNativeStackNavigator()
@@ -107,7 +109,7 @@ const StackNav = () => {
                     headerTitleAlign: 'center',
                     headerTitleStyle: {
                         fontFamily: 'Pretendard-Medium',
-                        fontSize: 20,
+                        fontSize: Font.fontSizes.fontSizes20,
                         color: '#0C202B',
                     },
                 }}
@@ -121,7 +123,7 @@ const StackNav = () => {
                     headerTitleAlign: 'center',
                     headerTitleStyle: {
                         fontFamily: 'Pretendard-Medium',
-                        fontSize: 20,
+                        fontSize: Font.fontSizes.fontSizes20,
                         color: '#0C202B',
                     },
                 }}
@@ -135,7 +137,7 @@ const StackNav = () => {
                     headerTitleAlign: 'center',
                     headerTitleStyle: {
                         fontFamily: 'Pretendard-Medium',
-                        fontSize: 20,
+                        fontSize: Font.fontSizes.fontSizes20,
                         color: '#0C202B',
                     },
                 }}
@@ -156,7 +158,7 @@ const StackNav = () => {
                     headerTitleAlign: 'center',
                     headerTitleStyle: {
                         fontFamily: 'Pretendard-Medium',
-                        fontSize: 20,
+                        fontSize: Font.fontSizes.fontSizes20,
                         color: '#0C202B',
                     },
                 }}
@@ -170,7 +172,7 @@ const StackNav = () => {
                     headerTitleAlign: 'center',
                     headerTitleStyle: {
                         fontFamily: 'Pretendard-Medium',
-                        fontSize: 20,
+                        fontSize: Font.fontSizes.fontSizes20,
                         color: '#0C202B',
                     },
                 }}
@@ -184,7 +186,7 @@ const StackNav = () => {
                     headerTitleAlign: 'center',
                     headerTitleStyle: {
                         fontFamily: 'Pretendard-Medium',
-                        fontSize: 20,
+                        fontSize: Font.fontSizes.fontSizes20,
                         color: '#0C202B',
                     },
                 }}
@@ -205,7 +207,7 @@ const StackNav = () => {
                     headerTitleAlign: 'center',
                     headerTitleStyle: {
                         fontFamily: 'Pretendard-Medium',
-                        fontSize: 20,
+                        fontSize: Font.fontSizes.fontSizes20,
                         color: '#0C202B',
                     },
                 }}
@@ -219,7 +221,7 @@ const StackNav = () => {
                     headerTitleAlign: 'center',
                     headerTitleStyle: {
                         fontFamily: 'Pretendard-Medium',
-                        fontSize: 20,
+                        fontSize: Font.fontSizes.fontSizes20,
                         color: '#0C202B',
                     },
                 }}
@@ -240,7 +242,7 @@ const StackNav = () => {
                     headerTitleAlign: 'center',
                     headerTitleStyle: {
                         fontFamily: 'Pretendard-Medium',
-                        fontSize: 20,
+                        fontSize: Font.fontSizes.fontSizes20,
                         color: '#0C202B',
                     },
                 }}

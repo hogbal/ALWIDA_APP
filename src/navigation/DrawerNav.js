@@ -24,7 +24,7 @@ import InspectionHistory from 'pages/main/drawerNav/inspectionHistory/Inspection
 
 const Drawer = createDrawerNavigator()
 
-const DrawerNav = () => {
+const DrawerNav = ({navigation}) => {
     const [name, setName] = useState('') 
 
     const dataLoading = async (id) => {
@@ -125,7 +125,16 @@ const DrawerNav = () => {
                 options={{
                     title: '차량관리',
                     headerTitleAlign: 'center',
-                  
+                    headerLeft: () => (
+                        <TouchableOpacity
+                            style={styles.back}
+                            onPress = {() => { navigation.navigate('Main') }}
+                        >
+                            <Image
+                                source={require('assets/img/back_icon.png')}
+                            />
+                        </TouchableOpacity>
+                    ),
                 }}
             />
             <Drawer.Screen
@@ -135,6 +144,16 @@ const DrawerNav = () => {
                     title: '현금수납 내역',
                     headerTitle: '현금수납',
                     headerTitleAlign: 'center',
+                    headerLeft: () => (
+                        <TouchableOpacity
+                            style={styles.back}
+                            onPress = {() => { navigation.navigate('Main') }}
+                        >
+                            <Image
+                                source={require('assets/img/back_icon.png')}
+                            />
+                        </TouchableOpacity>
+                    ),
                 }}
             />
             <Drawer.Screen
@@ -146,6 +165,7 @@ const DrawerNav = () => {
                     headerLeft: () => (
                         <TouchableOpacity
                             style={styles.back}
+                            onPress = {() => { navigation.navigate('Main') }}
                         >
                             <Image
                                 source={require('assets/img/back_icon.png')}
