@@ -221,9 +221,10 @@ const Transportation = ({ navigation }) => {
             return response.json()
         })
         .then((data) => {
+            console.log(data)
             if (data.result === true) {
                 Alert.alert("예약이 취소되었습니다.")
-                navigation.navigate("DrawNav")
+                navigation.navigate("Main")
             }
         })
         .catch((err) => console.error(err))
