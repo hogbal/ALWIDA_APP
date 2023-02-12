@@ -59,11 +59,8 @@ const Examination = ({ navigation }) => {
             else if(res.assets) {
                 console.log(res)
                 const localUri = res.assets[0].uri;
-                console.log(localUri)
                 const uriPath = localUri.split("//").pop();
-                console.log(uriPath)
                 const imageName = localUri.split("/").pop();
-                console.log(imageName)
                 
                 data = {
                     name:imageName,
@@ -121,7 +118,8 @@ const Examination = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
             <View style={styles.info}>
                 <Image
-                    style={styles.img}
+                    style={ imageSource? styles.img : styles.tmpImg}
+                    resizeMode="conver"
                     source={imageSource ? {uri:imageSource} : require('assets/img/camera.png')}
                 />
                 <TouchableOpacity
@@ -149,6 +147,11 @@ const styles = StyleSheet.create({
         flex: 1,
         borderRadius: 25,
         margin: '5%'
+    },
+    tmpImg: {
+        flex: 1,
+        alignSelf: 'center',
+        width: '80%'
     },
     inactiveButton: {
         backgroundColor: '#E9EBEC',
