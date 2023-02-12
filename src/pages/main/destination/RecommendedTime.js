@@ -71,7 +71,7 @@ const RecommendedTime = ({ navigation }) => {
         .then((data) => {
             if (data.result == true) {
                 Alert.alert("예약이 확정되었습니다.")
-                navigation.navigate('Destination')
+                navigation.navigate('Main')
             }
         })
         .catch((e) => console.error(e))
