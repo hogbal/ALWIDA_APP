@@ -14,6 +14,7 @@ import { LocalPicker, TerminalPicker } from 'components/CustomPicker'
 
 import Donut from './Donut'
 import { createPOSTObject } from 'api/API'
+import { Font } from 'api/Font'
 
 const Destination = ({ navigation }) => {
     const [check, setCheck] = useState(false)
@@ -145,11 +146,11 @@ const styles = StyleSheet.create({
     },
     statusText: {
         fontFamily: 'Pretendard-Bold',
-        fontSize: 30,
+        fontSize: Font.fontSizes.fontSizes30,
     },
     infoText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         color: '#B6B6B6',
         margin: 10,
     },

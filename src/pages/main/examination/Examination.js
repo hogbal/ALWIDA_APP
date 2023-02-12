@@ -17,6 +17,7 @@ import { launchCamera } from 'react-native-image-picker'
 
 import { ActiveButton } from 'components/CustomButton'
 import { createImagePOSTObject } from 'api/API'
+import { Font } from 'api/Font'
 
 const Examination = ({ navigation }) => {
     const [imageSource, setImageSource] = useState('')
@@ -157,7 +158,7 @@ const styles = StyleSheet.create({
     },
     inactiveText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         color: '#ACACA9',
         margin: '4%',
     },

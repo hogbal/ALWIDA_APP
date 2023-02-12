@@ -12,6 +12,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { createPOSTObject } from 'api/API'
+import { Font } from 'api/Font'
 
 // 메인
 import Main from 'pages/main/Main'
@@ -176,7 +177,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         color: '#1A1A1A',
     },
     itemContainer: {
@@ -188,7 +189,7 @@ const styles = StyleSheet.create({
     },
     coText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 10,
+        fontSize: Font.fontSizes.fontSizes10,
         color: '#5A5A5A',
         alignSelf: 'center',
     },

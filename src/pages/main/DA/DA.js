@@ -10,6 +10,7 @@ import {
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { createPOSTObject } from 'api/API'
+import { Font } from 'api/Font'
 
 const ItemList = ({title, description}) => {
     return (
@@ -149,28 +150,28 @@ const styles = StyleSheet.create({
     },
     terminalText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         color: '#888888',
     },
     terminalNameText: {
         fontFamily: 'Pretendard-Bold',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes20,
         color: '#000000',
         marginBottom: "10%",
     },
     titleText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         color: '#888888',
     },
     descriptionText: {
         fontFamily: 'Pretendard-Bold',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         color: '#1A1A1A',
     },
     blueDescriptionText: {
         fontFamily: 'Pretendard-Bold',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         color: '#00A8FF',
     },
     readyTicketContainer: {
@@ -184,7 +185,7 @@ const styles = StyleSheet.create({
     },
     readyText: {
         fontFamily: 'Pretendard-Bold',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes20,
         color: '#00A8FF',
     }
 })

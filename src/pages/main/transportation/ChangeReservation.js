@@ -11,6 +11,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { createPOSTObject } from 'api/API'
 import { ActiveButton } from 'components/CustomButton'
 import { TimePicker } from 'components/CustomTimePicker'
+import { Font } from 'api/Font'
 
 const LocalPicker = ({ local }) => {
     return (
@@ -91,23 +92,6 @@ const ChangeReservation = ({ navigation }) => {
         .catch((err) => console.error(err))
     }
 
-    // return (
-    //     <SafeAreaView style={styles.container}>
-    //         <LocalPicker local={location} />
-    //         <TerminalPicker terminal={terminal} />
-            
-    //         {/* 시간 */}
-    //         <View style={styles.selectTimeContainer}>
-    //             <View style={styles.timeContainer}>
-    //                     <TimePicker setAMPM={setAMPM} hour={hour} setHour={setHour} minute={min} setMinute={setMin} />
-    //             </View>
-    //         </View>
-        
-    //         <ActiveButton onpress={() => getID(postData)} text='확인' />
-
-    //     </SafeAreaView>
-    // )
-
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.info}>
@@ -154,79 +138,9 @@ const styles = StyleSheet.create({
     },
     pickerText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes20,
         color: '#1A1A1A',
     },
 })
-
-// const styles = StyleSheet.create({
-//     container: {
-//         height: '100%',
-//         backgroundColor: '#FFFFFF',
-//         padding: 20,
-//     },
-//     pickerContainer: {
-//         width: '100%',
-//         flexDirection: 'row',
-//         borderWidth: 1,
-//         borderColor: '#E3E6ED',
-//         borderRadius: 15,
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//         padding: 20,
-//         backgroundColor: '#FFFFFF',
-//         marginBottom: 20,
-//     },
-//     markerImg: {
-//         position: 'absolute',
-//         left: '10%',
-//     },
-//     pickerText: {
-//         fontFamily: 'Pretendard-Medium',
-//         fontSize: 20,
-//         color: '#1A1A1A',
-//     },
-//     selectTimeContainer: {
-//         flex: 1,
-//         justifyContent: 'center',
-//     },
-//     timeContainer: {
-//         alignItems: 'center',
-//         marginVertical: 25,
-//     },
-//     time: {
-//         width: '100%',
-//         flexDirection: 'row',
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//         backgroundColor: '#F6F6F6',
-//         borderWidth: 2,
-//         borderColor: '#E3E6ED',
-//         borderRadius: 15,
-//         padding: 20,
-//     },
-//     selectedTime: {
-//         width: '100%',
-//         flexDirection: 'row',
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//         backgroundColor: '#F6F6F6',
-//         borderWidth: 2,
-//         borderColor: '#00A8FF',
-//         borderRadius: 15,
-//         padding: 20,
-//     },
-//     ampmText: {
-//         fontFamily: 'Pretendard-Bold',
-//         fontSize: 20,
-//         color: '#1A1A1A',
-//         marginRight: 50,
-//     },
-//     timeText: {
-//         fontFamily: 'Pretendard-Medium',
-//         fontSize: 60,
-//         color: '#1A1A1A',
-//     }
-// })
 
 export default ChangeReservation

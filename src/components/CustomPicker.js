@@ -8,6 +8,8 @@ import {
     Modal,
 } from 'react-native'
 
+import { Font } from 'api/Font'
+
 const LocalPickerItem = ({ index, text, dataLength, setSelectedLocal, setSelectedTerminal, visible, setVisible, setPercentage, setColor, setStatus}) => {
     return (
         <TouchableOpacity
@@ -186,7 +188,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes20,
         color: '#1A1A1A',
     },
     arrowImg: {

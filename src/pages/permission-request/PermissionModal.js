@@ -10,6 +10,7 @@ import {
 } from 'react-native'
 
 import { PERMISSIONS, RESULTS, request } from "react-native-permissions"
+import { Font } from "api/Font"
 
 const PermmisionModal = ({ navigation, modalVisible, setModalVisible, props }) => {
     const permissionCheck = async () => {
@@ -93,13 +94,13 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         color: '#000000',
         marginBottom: 20,
     },
     descriptionText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 10,
+        fontSize: Font.fontSizes.fontSizes10,
         color: '#000000',
     },
     buttonContainer: {
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         color: '#000000',
     }
 })

@@ -7,7 +7,7 @@ import {
     Dimensions
 } from 'react-native'
 import Svg, { G, Circle } from 'react-native-svg'
-
+import { Font } from 'api/Font'
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle)
 
@@ -97,12 +97,12 @@ const styles = StyleSheet.create({
     numText: {
         position: 'absolute',
         fontFamily: 'Pretendard-Medium',
-        fontSize: 50,
+        fontSize: Font.fontSizes.fontSizes50,
         color: '#1A1A1A'
     },
     text: {
         fontFamily: 'Pretendard-Bold',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes20,
         color: '#1A1A1A',
     },
 })

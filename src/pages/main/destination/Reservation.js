@@ -9,6 +9,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { createPOSTObject } from 'api/API'
 import { ActiveButton } from 'components/CustomButton'
+import { Font } from 'api/Font'
 
 const LocalPicker = ({ local }) => {
     return (
@@ -112,7 +113,7 @@ const styles = StyleSheet.create({
     },
     pickerText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes20,
         color: '#1A1A1A',
     },
     selectedTime: {
@@ -130,14 +131,14 @@ const styles = StyleSheet.create({
         flex: 1,
         textAlign: 'center',
         fontFamily: 'Pretendard-Bold',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes20,
         color: '#1A1A1A',
     },
     timeText: {
         flex: 2,
         textAlign: 'center',
         fontFamily: 'Pretendard-Medium',
-        fontSize: 60,
+        fontSize: Font.fontSizes.fontSizes60,
         color: '#1A1A1A',
     }
 })

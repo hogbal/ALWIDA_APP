@@ -15,6 +15,7 @@ import { useRecoilState } from 'recoil'
 import { orderInfo } from 'hooks/Atoms'
 import { ActiveButton, InactiveButton } from 'components/CustomButton'
 import { createPOSTObject } from 'api/API'
+import { Font } from 'api/Font'
 
 const Order = ({ navigation }) => {
     const [containerNum, onChangeContainerNum] = useState('')
@@ -161,24 +162,24 @@ const styles = StyleSheet.create({
     input: {
         width: "90%",
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#DCDEE6',
         marginVertical: "1%",
-        padding:'5%'
+        padding:'3%'
     },
     text: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes20,
         color: '#000000',
         marginLeft: "5%",
-        marginTop: "7%",
+        marginTop: "5%",
         marginBottom: "1%",
     },
     redText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         color: '#FF4D4D',
         marginLeft: "5%"
     },

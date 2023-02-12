@@ -9,6 +9,7 @@ import {
 
 import { ActiveButton } from 'components/CustomButton'
 import PermissionModal from 'pages/permission-request/PermissionModal'
+import { Font } from 'api/Font'
 
 const Permission = ({ navigation, props }) => {
     const [modalVisible, setModalVisible] = useState(false)
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
     },
     imgText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes20,
         color: '#000000',
     },
     titleText: {
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     },
     descriptionText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 10,
+        fontSize: Font.fontSizes.fontSizes10,
         color: '#9D9D9D',
     },
 })

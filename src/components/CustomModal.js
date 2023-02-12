@@ -7,6 +7,7 @@ import {
     StyleSheet,
 } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Font } from 'api/Font'
 
 const CustomModal = ({ title, description, modalVisible, setModalVisible, onpress }) => {
 
@@ -82,13 +83,13 @@ const styles = StyleSheet.create({
     },
     titleText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes20,
         color: '#000000',
         marginBottom: 20,
     },
     descriptionText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         color: '#000000',
     },
     buttonContainer: {
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         color: '#00A8FF',
     },
 })

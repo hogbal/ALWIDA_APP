@@ -13,7 +13,7 @@ import {
 import { createPOSTObject } from 'api/API'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ActiveButton, InactiveButton } from 'components/CustomButton'
-import { ToastMessage } from 'components/ToastMessage'
+import { Font } from 'api/Font'
 
 const VehicleRegistration = ({ navigation }) => {
     const [info, setInfo] = useState({})
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes20,
         marginTop: "10%",
         marginLeft: "5%",
         marginBottom: "1%",
@@ -174,12 +174,12 @@ const styles = StyleSheet.create({
     input: {
         width:'90%',
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#DCDEE6',
         marginVertical: "1%",
-        padding:'5%'
+        padding:'2%'
     },
     button: {
         flex: 1,

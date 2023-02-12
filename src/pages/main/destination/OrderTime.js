@@ -13,6 +13,7 @@ import { createPOSTObject } from 'api/API'
 import { LocalPicker, TerminalPicker } from 'components/CustomPicker'
 import { ActiveButton, InactiveButton } from 'components/CustomButton'
 import { TimePicker, NoneSelected } from 'components/CustomTimePicker'
+import { Font } from 'api/Font'
 
 const OrderTime = ({ navigation }) => {
     const [DATA, setData] = useState('')

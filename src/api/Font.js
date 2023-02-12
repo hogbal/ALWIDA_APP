@@ -28,6 +28,8 @@ const fontSizes = Platform.OS == "ios" ? {
   fontSizes28: width * 28,
   fontSizes30: width * 30,
   fontSizes32: width * 32,
+  fontSizes50: width * 50,
+  fontSizes60: width * 60,
 }
 :
 {
@@ -43,6 +45,8 @@ const fontSizes = Platform.OS == "ios" ? {
   fontSizes28: width * 28 - 2,
   fontSizes30: width * 30 - 2,
   fontSizes32: width * 32 - 2,
+  fontSizes50: width * 50 - 2,
+  fontSizes60: width * 60 - 2,
 }
 
 const Font = {

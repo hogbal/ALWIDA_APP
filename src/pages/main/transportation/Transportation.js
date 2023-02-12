@@ -17,6 +17,7 @@ import { createPOSTObject } from 'api/API'
 import CustomModal from 'components/CustomModal'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Geolocation from 'react-native-geolocation-service';
+import { Font } from 'api/Font'
 
 const Transportation = ({ navigation }) => {
     const [info, setInfo] = useState('')
@@ -457,22 +458,22 @@ const styles = StyleSheet.create({
     },
     boxText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes20,
         color: '#FFFFFF',
     },
     headerTitleText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes20,
         color: '#000000',
     },
     headerDescriptionText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 13,
+        fontSize: Font.fontSizes.fontSizes12,
         color: '#000000',
     },
     subHeaderText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes20,
         color: '#000000',
     },
     icon: {
@@ -491,7 +492,7 @@ const styles = StyleSheet.create({
     },
     possibleText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         color: '#000000',
     },
     talkText: {
@@ -502,13 +503,13 @@ const styles = StyleSheet.create({
     },
     timeText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 10,
+        fontSize: Font.fontSizes.fontSizes10,
         color: '#000000',
         marginHorizontal: '2%',
     },
     dateText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 10,
+        fontSize: Font.fontSizes.fontSizes10,
         color: '#000000',
         marginTop: '2%'
     },

@@ -7,6 +7,8 @@ import {
     Image,
 } from 'react-native'
 
+import { Font } from 'api/Font'
+
 const TimePicker = ({ setAMPM, hour, setHour, minute, setMinute }) => {
     const [_hour, _setHour] = useState('01')
     const [_minute, _setMinute] = useState('00')
@@ -66,47 +68,6 @@ const TimePicker = ({ setAMPM, hour, setHour, minute, setMinute }) => {
         setIsAM(false)
         setAMPM('오후')
     }
-    // return (
-    //     <View style={styles.container}>
-    //         {/* 오전, 오후 */}
-    //         <View style={styles.itemContainer}>
-                // <TouchableOpacity onPress={() => clickedAM()}>
-                //     <Text style={ isAM ? styles.ampmText : styles.noneAmpmText }>오전</Text>
-                // </TouchableOpacity>
-                // <TouchableOpacity onPress={() => clickedPM()}>
-                //     <Text style={ isAM ? styles.noneAmpmText : styles.ampmText }>오후</Text>
-                // </TouchableOpacity>
-    //         </View>
-
-    //         {/* 시간 */}
-            // <View style={styles.itemContainer}>
-            //     <TouchableOpacity onPress={() => changeHour(true)}>
-            //         <Image style={styles.icon} source={require('assets/img/up.png')} />
-            //     </TouchableOpacity>
-
-            //     <Text style={styles.timeText}>{hour}</Text>
-
-            //     <TouchableOpacity onPress={() => changeHour(false)}>
-            //         <Image style={styles.icon} source={require('assets/img/down.png')} />
-            //     </TouchableOpacity>
-            // </View>
-
-            // <Text style={styles.timeText}>:</Text>
-
-            // {/* 분 */}
-            // <View style={styles.itemContainer}>
-            //     <TouchableOpacity onPress={() => changeMinute(true)}>
-            //         <Image style={styles.icon} source={require('assets/img/up.png')} />
-            //     </TouchableOpacity>
-
-            //     <Text style={styles.timeText}>{minute}</Text>
-                
-            //     <TouchableOpacity onPress={() => changeMinute(false)}>
-            //         <Image style={styles.icon} source={require('assets/img/down.png')} />
-            //     </TouchableOpacity>
-            // </View>
-    //     </View>
-    // )
 
     return (
         <View style={styles.container}>
@@ -178,31 +139,31 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     time: {
-        flex: 1,
+        flex: 2,
         flexDirection: 'row',
-        alignSelf: 'center',
         alignItems: 'center',
+        justifyContent: 'center',
     },
     ampmText: {
         fontFamily: 'Pretendard-Bold',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes20,
         color: '#1A1A1A',
         marginVertical: '5%'
     },
     noneAmpmText: {
         fontFamily: 'Pretendard-Bold',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes20,
         color: '#ACACA9',
         marginVertical: '5%'
     },
     timeText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 60,
+        fontSize: Font.fontSizes.fontSizes60,
         color: '#1A1A1A',
     },
     noneTimeText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 60,
+        fontSize: Font.fontSizes.fontSizes60,
         color: '#ACACA9',
         marginLeft: '10%',
     },
@@ -215,50 +176,5 @@ const styles = StyleSheet.create({
         height: 50,
     },
 })
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flexDirection: 'row',
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//         backgroundColor: '#F6F6F6',
-//         borderWidth: 2,
-//         borderColor: '#F6F6F6',
-//         borderRadius: 15,
-//         padding: '10%',
-//     },
-    // itemContainer: {
-    //     marginHorizontal: '5%',
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    // },
-    // icon: {
-    //     width: 50,
-    //     height: 50,
-    // },
-    // ampmText: {
-    //     fontFamily: 'Pretendard-Bold',
-    //     fontSize: 20,
-    //     color: '#1A1A1A',
-    //     marginVertical: '20%',
-    // },
-    // noneAmpmText: {
-    //     fontFamily: 'Pretendard-Bold',
-    //     fontSize: 20,
-    //     color: '#ACACA9',
-    //     marginVertical: '20%',
-    // },
-    // timeText: {
-    //     fontFamily: 'Pretendard-Medium',
-    //     fontSize: 60,
-    //     color: '#1A1A1A',
-    // },
-    // noneTimeText: {
-    //     fontFamily: 'Pretendard-Medium',
-    //     fontSize: 60,
-    //     color: '#ACACA9',
-    //     marginLeft: '10%',
-    // },
-// })
 
 export { TimePicker, NoneSelected }

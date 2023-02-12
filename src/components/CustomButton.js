@@ -6,6 +6,8 @@ import {
     StyleSheet,
 } from 'react-native'
 
+import { Font } from 'api/Font'
+
 const ActiveButton = ({ onpress, text }) => {
     return (
         <TouchableOpacity
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
     },
     activeText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         color: '#FFFFFF',
         margin: '4%',
     },
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
     },
     inactiveText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         color: '#ACACA9',
         margin: '4%',
     },

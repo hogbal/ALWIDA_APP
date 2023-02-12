@@ -9,6 +9,7 @@ import {
 
 import { createPOSTObject } from 'api/API'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Font } from 'api/Font'
 
 const Item = ({ id, date, receiver, result }) => {
     return (
@@ -114,22 +115,22 @@ const styles = StyleSheet.create({
     },
     titleText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes14,
         color: '#888888',
     },
     itemText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes14,
         color: '#1A1A1A',
     },
     itemResultText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes14,
         color: '#00A8FF',
     },
     itemResultFailText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes14,
         color: '#E85B5B',
     }
 })
