@@ -6,7 +6,8 @@ import {
     Text,
     Image,
     TouchableOpacity,
-    StyleSheet
+    StyleSheet,
+    Alert
 } from 'react-native'
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -221,7 +222,8 @@ const Transportation = ({ navigation }) => {
         })
         .then((data) => {
             if (data.result === true) {
-                addBubble('left', '출발취소 승인완료', hour, min)
+                Alert.alert("예약이 취소되었습니다.")
+                navigation.navigate("DrawNav")
             }
         })
         .catch((err) => console.error(err))

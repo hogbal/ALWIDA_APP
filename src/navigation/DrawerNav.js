@@ -57,7 +57,6 @@ const DrawerNav = () => {
     return (
         <Drawer.Navigator
             initialRouteName='Main'
-            backBehavior='initialRouteName'
             screenOptions={{
                 drawerPosition: 'right',
                 headerShadowVisible: false,
@@ -94,7 +93,7 @@ const DrawerNav = () => {
                         </TouchableOpacity>
                         <TouchableOpacity
                             style={styles.itemContainer}
-                            onPress={() => navigation.navigate('InspectionHistory')}
+                            onPress={() => navigation.navigate('InspectionHistory',{'navigation':navigation})}
                         >
                             <Text style={styles.text}>검사내역</Text>
                         </TouchableOpacity>
@@ -125,7 +124,7 @@ const DrawerNav = () => {
                 options={{
                     title: '차량관리',
                     headerTitleAlign: 'center',
-                    headerLeft: () => null,
+                  
                 }}
             />
             <Drawer.Screen
@@ -134,7 +133,7 @@ const DrawerNav = () => {
                 options={{
                     title: '현금수납 내역',
                     headerTitle: '현금수납',
-                    headerLeft: () => null,
+                    headerTitleAlign: 'center',
                 }}
             />
             <Drawer.Screen
@@ -142,7 +141,16 @@ const DrawerNav = () => {
                 component={InspectionHistory}
                 options={{
                     title: '검사내역',
-                    headerLeft: () => null,
+                    headerTitleAlign: 'center',
+                    headerLeft: () => (
+                        <TouchableOpacity
+                            style={styles.back}
+                        >
+                            <Image
+                                source={require('assets/img/back_icon.png')}
+                            />
+                        </TouchableOpacity>
+                    ),
                 }}
             />
         </Drawer.Navigator>
@@ -184,6 +192,9 @@ const styles = StyleSheet.create({
         color: '#5A5A5A',
         alignSelf: 'center',
     },
+    back: {
+        marginLeft:'10%'
+    }
 })
 
 export default DrawerNav

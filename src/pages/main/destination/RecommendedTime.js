@@ -6,6 +6,7 @@ import {
     Image,
     StyleSheet,
     TouchableOpacity,
+    Alert
 } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useRecoilState } from 'recoil'
@@ -35,11 +36,15 @@ const RecommendedTime = ({ navigation }) => {
         getID()
     }, [])
 
+    useEffect(() => {
+        console.log(selectedTime)
+    },[selectedTime])
+
     // POST 요청 (데이터 로딩)
     const loadingData = async (id) => {
         let formdata = new FormData()
         formdata.append("id", id)
-        console.log(formdata)
+
         await createPOSTObject('dest/recommend', formdata)
         .then((response) => {
             return response.json()
@@ -47,7 +52,6 @@ const RecommendedTime = ({ navigation }) => {
         .then((data) => {
             if (data.result !== false && data.result !== "error") {
                 setData(data)
-                console.log(data)
             }
         })
         .catch((e) => console.error(e))
@@ -66,6 +70,7 @@ const RecommendedTime = ({ navigation }) => {
         })
         .then((data) => {
             if (data.result == true) {
+                Alert.alert("예약이 확정되었습니다.")
                 navigation.navigate('Destination')
             }
         })
@@ -75,7 +80,6 @@ const RecommendedTime = ({ navigation }) => {
 
     const onClickButton = () => {
         postTime()
-        navigation.navigate('Main')
     }
 
     const TerminalPicker = ({ terminal }) => {
