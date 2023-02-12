@@ -15,6 +15,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import { ActiveButton, InactiveButton } from 'components/CustomButton'
 import { createPOSTObject } from 'api/API'
+import { Font } from 'api/Font'
 
 const Login = ({ navigation , props }) => {
     const [pw, onChangePw] = useState("")
@@ -187,16 +188,16 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5F5F5',
         borderRadius: 10,
         marginTop: "3%",
-        paddingHorizontal: "3%",
-        paddingVertical: "3%",
     },
     inputText: {
+        width: '90%',
         fontFamily: 'Pretendard-Medium',
-        fontSize: 20,
+        fontSize: Font.fontSizes.fontSizes20,
+        margin:'2%'
     },
     redInputText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 10,
+        fontSize: Font.fontSizes.fontSizes10,
         color: '#F63232',
     },
     checkImg: {
@@ -205,12 +206,12 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes12,
         color: '#000000',
     },
     barText: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: 15,
+        fontSize: Font.fontSizes.fontSizes16,
         color: '#EAEAEA',
         marginHorizontal: "3%",
     }

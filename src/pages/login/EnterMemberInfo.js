@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: Font.fontSizes.fontSizes18,
+        fontSize: Font.fontSizes.fontSizes24,
         marginLeft: "5%",
         marginTop: "10%",
         marginBottom: "1%",
@@ -139,12 +139,12 @@ const styles = StyleSheet.create({
     input: {
         width: "90%",
         fontFamily: 'Pretendard-Medium',
-        fontSize: Font.fontSizes.fontSizes12,
+        fontSize: Font.fontSizes.fontSizes20,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#DCDEE6',
-        marginVertical: "1%",
-        padding:'4%'
+        padding: '3%',
+        margin: '1%'
     },
     button: {
         flex: 1,

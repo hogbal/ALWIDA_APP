@@ -24,6 +24,10 @@ const fontSizes = {
   fontSizes20: width * 20,
   fontSizes22: width * 22,
   fontSizes24: width * 24,
+  fontSizes26: width * 26,
+  fontSizes28: width * 28,
+  fontSizes30: width * 30,
+  fontSizes32: width * 32,
 };
 
 const Font = {

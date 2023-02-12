@@ -197,12 +197,12 @@ const SignUp = ({ navigation }) => {
                         </View>
                         <View style={styles.authNum}>
                             <TextInput
-                            style={styles.inputBtn}
-                            placeholder='인증 번호'
-                            placeholderTextColor="#E0E0E0"
-                            onChangeText={onChangeCertificationNum}
-                            value={certificationNum}
-                            keyboardType='numeric'
+                                style={styles.inputBtn}
+                                placeholder='인증 번호'
+                                placeholderTextColor="#E0E0E0"
+                                onChangeText={onChangeCertificationNum}
+                                value={certificationNum}
+                                keyboardType='numeric'
                             />
                             {
                                 (certificationNum != "")
@@ -289,7 +289,7 @@ const styles = StyleSheet.create({
     },
     authPhone: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     authNum: {
         flexDirection: 'row',
@@ -309,21 +309,11 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: Font.fontSizes.fontSizes18,
+        fontSize: Font.fontSizes.fontSizes24,
         marginLeft: "5%",
         marginTop: "7%",
         marginBottom: "1%",
         color: '#000000',
-    },
-    input: {
-        width: "90%",
-        fontFamily: 'Pretendard-Medium',
-        fontSize: Font.fontSizes.fontSizes14,
-        borderRadius: 10,
-        borderWidth: 1,
-        borderColor: '#DCDEE6',
-        marginVertical: "1%",
-        padding:'5%'
     },
     inputBtn: {
         width: "65%",
@@ -332,9 +322,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#DCDEE6',
-        marginVertical: "1%",
         marginLeft: "5%",
-        padding:'5%'
+        padding:'3%'
     },
     redInput: {
         width: "65%",
@@ -344,9 +333,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#F63232',
         backgroundColor: '#FFF1F1',
-        marginVertical: "1%",
         marginLeft: "5%",
-        padding:'5%'
+        padding:'3%'
     },
     inputText: {
         fontFamily: 'Pretendard-Medium',
@@ -367,12 +355,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 10,
         margin: '2%',
-        padding: '5%'
+        padding: '3%'
     },
     smallButtonText: {
         fontFamily: 'Pretendard-Medium',
         fontSize: Font.fontSizes.fontSizes14,
         color: '#FFFFFF',
+        padding: '3%',
     },
     inActiveSmallButton: {
         flex: 1,
@@ -381,12 +370,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 10,
         margin: '2%',
-        padding: '5%'
+        padding: '3%'
     },
     inActiveSmallText: {
         fontFamily: 'Pretendard-Medium',
         fontSize: Font.fontSizes.fontSizes14,
         color: '#ACACA9',
+        padding: '3%'
     },
     pwInput: {
         width: '90%',
@@ -396,7 +386,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#DCDEE6',
         marginVertical: "1%",
-        padding:'5%'
+        padding:'3%'
     },
     redPwInput: {
         width: '90%',
@@ -407,7 +397,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#F63232',
         marginVertical: "1%",
-        padding:'5%'
+        padding:'3%'
     },
     modalText: {
         fontFamily: 'Pretendard-Medium',
