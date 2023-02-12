@@ -6,9 +6,11 @@ import {
     Image,
     StyleSheet,
     Modal,
+    SafeAreaView
 } from 'react-native'
 
 import { Font } from 'api/Font'
+import { ScrollView } from 'react-native-gesture-handler'
 
 const LocalPickerItem = ({ index, text, dataLength, setSelectedLocal, setSelectedTerminal, visible, setVisible, setPercentage, setColor, setStatus}) => {
     return (
@@ -52,37 +54,42 @@ const LocalPicker = ({ DATA, localVisible, setLocalVisible, selectedLocal, setSe
             onPress={() => setLocalVisible(!localVisible)}
         >
             <Text style={styles.text}>{selectedLocal}</Text>
-            <Modal
-                animationType={"slide"}
-                visible={localVisible}
-                presentationStyle={"formSheet"}
-                onRequestClose={() => setLocalVisible(!localVisible)}
-            >
-                {
-                    localVisible &&
-                    DATA.map((value, index) => {
-                        return (
-                            <LocalPickerItem 
-                                key={value.index} 
-                                index={index} 
-                                text={value.local} 
-                                dataLength={DATA.length} 
-                                setSelectedLocal={setSelectedLocal} 
-                                setSelectedTerminal={setSelectedTerminal}
-                                visible={localVisible} 
-                                setVisible={setLocalVisible} 
-                                setPercentage={setPercentage}
-                                setColor={setColor}
-                                setStatus={setStatus}
-                            />
-                        )
-                    })
-                }
-            </Modal>
             <Image
                 style={styles.arrowImg}
                 source={require('assets/img/picker_arrow.png')}
             />
+            
+            <Modal
+                animationType={"slide"}
+                transparent={true}
+                visible={localVisible}
+                onRequestClose={() => setLocalVisible(!localVisible)}
+            >
+                <SafeAreaView style={styles.modal}>
+                    <ScrollView style={styles.modalScroll}>
+                        {
+                            localVisible &&
+                            DATA.map((value, index) => {
+                                return (
+                                    <LocalPickerItem 
+                                        key={value.index} 
+                                        index={index} 
+                                        text={value.local} 
+                                        dataLength={DATA.length} 
+                                        setSelectedLocal={setSelectedLocal} 
+                                        setSelectedTerminal={setSelectedTerminal}
+                                        visible={localVisible} 
+                                        setVisible={setLocalVisible} 
+                                        setPercentage={setPercentage}
+                                        setColor={setColor}
+                                        setStatus={setStatus}
+                                    />
+                                )
+                            })
+                        }
+                    </ScrollView>
+                </SafeAreaView>
+            </Modal>
         </TouchableOpacity>
     )
 }
@@ -121,40 +128,44 @@ const TerminalPicker = ({ DATA, terminalVisible, setTerminalVisible, selectedTer
             />
             <Text style={styles.text}>{selectedTerminal}</Text>
             <Modal
-                animationType={"overFullScreen"}
+                animationType={"slide"}
+                transparent={true}
                 visible={terminalVisible}
-                presentationStyle={"formSheet"}
                 onRequestClose={() => setTerminalVisible(!terminalVisible)}
             >
-                {
-                    terminalVisible &&
-                    DATA.map((value, valueIndex) => {
-                        if (value.local == selectedLocal) {
-                            return (
-                                value['terminals'].map((item, index) => {
-                                    setCircle = () => {
-                                        if (setPercentage !== null) {
-                                            setPercentage(item.percentage)
-                                            setColor(item.color)
-                                            setStatus(item.status)
-                                        }
-                                    }
+                <SafeAreaView style={styles.modal}>
+                    <ScrollView style={styles.modalScroll}>
+                        {
+                            terminalVisible &&
+                            DATA.map((value, valueIndex) => {
+                                if (value.local == selectedLocal) {
                                     return (
-                                        <TerminalPickerItem 
-                                            key={item.index} 
-                                            index={index} 
-                                            text={item.terminal} 
-                                            dataLength={value['terminals'].length} 
-                                            setSelected={setSelectedTerminal}
-                                            setCircle={setCircle}
-                                            visible={terminalVisible} setVisible={setTerminalVisible} 
-                                        />
+                                        value['terminals'].map((item, index) => {
+                                            setCircle = () => {
+                                                if (setPercentage !== null) {
+                                                    setPercentage(item.percentage)
+                                                    setColor(item.color)
+                                                    setStatus(item.status)
+                                                }
+                                            }
+                                            return (
+                                                <TerminalPickerItem 
+                                                    key={item.index} 
+                                                    index={index} 
+                                                    text={item.terminal} 
+                                                    dataLength={value['terminals'].length} 
+                                                    setSelected={setSelectedTerminal}
+                                                    setCircle={setCircle}
+                                                    visible={terminalVisible} setVisible={setTerminalVisible} 
+                                                />
+                                            )
+                                        })
                                     )
-                                })
-                            )
+                                }
+                            })
                         }
-                    })
-                }
+                    </ScrollView>
+                </SafeAreaView>
             </Modal>
             <Image
                 style={styles.arrowImg}
@@ -179,11 +190,11 @@ const styles = StyleSheet.create({
     itemContainer: {
         flexDirection: 'row',
         borderWidth: 1,
+        borderRadius: 15,
         borderColor: '#E3E6ED',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '3%',
-        marginHorizontal: '5%',
+        padding: "7%",
         backgroundColor: '#FFFFFF',
     },
     text: {
@@ -199,6 +210,14 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: '5%',
     },
+    modal: {
+        flex:1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    modalScroll: {
+        width:'95%'
+    }
 })
 
 export { LocalPicker, TerminalPicker }
