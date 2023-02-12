@@ -60,7 +60,7 @@ const LocalPicker = ({ DATA, localVisible, setLocalVisible, selectedLocal, setSe
             />
             
             <Modal
-                animationType={"slide"}
+                animationType={"fade"}
                 transparent={true}
                 visible={localVisible}
                 onRequestClose={() => setLocalVisible(!localVisible)}
@@ -128,7 +128,7 @@ const TerminalPicker = ({ DATA, terminalVisible, setTerminalVisible, selectedTer
                 source={require('assets/img/picker_arrow.png')}
             />
             <Modal
-                animationType={"slide"}
+                animationType={"fade"}
                 transparent={true}
                 visible={terminalVisible}
                 onRequestClose={() => setTerminalVisible(!terminalVisible)}
@@ -212,7 +212,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     modalScroll: {
-        width:'95%'
+        width:'95%',
+        marginTop:'10%'
     }
 })
 

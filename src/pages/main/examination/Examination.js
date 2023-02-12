@@ -57,10 +57,14 @@ const Examination = ({ navigation }) => {
             else if(res.didCancel) {
                 console.log('Camera Cancel')
             }
-            else {
+            else if(res.assets) {
+                console.log(res)
                 const localUri = res.assets[0].uri;
+                console.log(localUri)
                 const uriPath = localUri.split("//").pop();
+                console.log(uriPath)
                 const imageName = localUri.split("/").pop();
+                console.log(imageName)
                 
                 data = {
                     name:imageName,
@@ -70,7 +74,7 @@ const Examination = ({ navigation }) => {
                 }
 
                 setImage(data)
-                setImageSource("file://"+uriPath)
+                setImageSource(localUri)
             }
         })
     }
