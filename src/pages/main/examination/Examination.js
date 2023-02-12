@@ -68,9 +68,9 @@ const Examination = ({ navigation }) => {
                     uri:uriPath
                     
                 }
-                
+
                 setImage(data)
-                setImageSource("file://"+uriPath);
+                setImageSource("file://"+uriPath)
             }
         })
     }
@@ -119,7 +119,7 @@ const Examination = ({ navigation }) => {
             <View style={styles.info}>
                 <Image
                     style={styles.img}
-                    source={imageSource ? imageSource : require('assets/img/camera.png')}
+                    source={imageSource}
                 />
                 <TouchableOpacity
                     style={styles.inactiveButton}
