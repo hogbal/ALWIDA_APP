@@ -153,14 +153,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
     },
     info: {
-        flex: 1,
+        flex: 9,
         justifyContent: 'flex-start'
     },
     timeContainer: {
         alignItems: 'center',
     },
     button: {
-        flex: 1,
+        flex:1,
         justifyContent: 'flex-end',
     },
     pickerContainer: {
