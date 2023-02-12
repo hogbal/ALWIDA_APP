@@ -188,12 +188,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5F5F5',
         borderRadius: 10,
         marginTop: "3%",
+        paddingLeft: "3%"
     },
     inputText: {
         width: '90%',
         fontFamily: 'Pretendard-Medium',
         fontSize: Font.fontSizes.fontSizes20,
-        margin:'2%'
     },
     redInputText: {
         fontFamily: 'Pretendard-Medium',

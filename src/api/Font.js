@@ -1,4 +1,4 @@
-import {Dimensions} from 'react-native';
+import {Dimensions, Platform} from 'react-native';
 
 const basicDimensions = {
   width: 360,
@@ -15,7 +15,7 @@ const height = (
   (1 / basicDimensions.height)
 ).toFixed(2);
 
-const fontSizes = {
+const fontSizes = Platform.OS == "ios" ? {
   fontSizes10: width * 10,
   fontSizes12: width * 12,
   fontSizes14: width * 14,
@@ -28,7 +28,22 @@ const fontSizes = {
   fontSizes28: width * 28,
   fontSizes30: width * 30,
   fontSizes32: width * 32,
-};
+}
+:
+{
+  fontSizes10: width * 10 - 2,
+  fontSizes12: width * 12 - 2,
+  fontSizes14: width * 14 - 2,
+  fontSizes16: width * 16 - 2,
+  fontSizes18: width * 18 - 2,
+  fontSizes20: width * 20 - 2,
+  fontSizes22: width * 22 - 2,
+  fontSizes24: width * 24 - 2,
+  fontSizes26: width * 26 - 2,
+  fontSizes28: width * 28 - 2,
+  fontSizes30: width * 30 - 2,
+  fontSizes32: width * 32 - 2,
+}
 
 const Font = {
   fontSizes,

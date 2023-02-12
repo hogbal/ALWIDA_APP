@@ -309,9 +309,9 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'Pretendard-Medium',
-        fontSize: Font.fontSizes.fontSizes24,
+        fontSize: Font.fontSizes.fontSizes20,
         marginLeft: "5%",
-        marginTop: "7%",
+        marginTop: "5%",
         marginBottom: "1%",
         color: '#000000',
     },
@@ -323,7 +323,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#DCDEE6',
         marginLeft: "5%",
-        padding:'3%'
+
     },
     redInput: {
         width: "65%",
@@ -334,7 +334,6 @@ const styles = StyleSheet.create({
         borderColor: '#F63232',
         backgroundColor: '#FFF1F1',
         marginLeft: "5%",
-        padding:'3%'
     },
     inputText: {
         fontFamily: 'Pretendard-Medium',
@@ -386,7 +385,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#DCDEE6',
         marginVertical: "1%",
-        padding:'3%'
     },
     redPwInput: {
         width: '90%',
@@ -397,7 +395,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#F63232',
         marginVertical: "1%",
-        padding:'3%'
     },
     modalText: {
         fontFamily: 'Pretendard-Medium',
