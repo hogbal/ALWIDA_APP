@@ -10,17 +10,19 @@ import {
     Keyboard
 } from 'react-native'
 
+import { useIsFocused } from '@react-navigation/native'
 import { createPOSTObject } from 'api/API'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ActiveButton, InactiveButton } from 'components/CustomButton'
 import { Font } from 'api/Font'
 
-const VehicleRegistration = ({ navigation }) => {
+const VehicleRegistration = () => {
     const [info, setInfo] = useState({})
     const [name, onChangeName] = useState('')
     const [phoneNum, onChangePhoneNum] = useState('')
     const [address, onChangeAddress] = useState('')
     const [carNum, onChangeCarNum] = useState('')
+    const isFocuesd = useIsFocused()
 
     // id 불러오기
     const getInfoID = async () => {
@@ -62,7 +64,7 @@ const VehicleRegistration = ({ navigation }) => {
     // 페이지 실행 시 id 및 차량정보 불러오기
     useEffect(() => {
         getInfoID()
-    }, [])
+    }, [isFocuesd])
 
     // info 변경 시 리렌더링
     useEffect(() => {

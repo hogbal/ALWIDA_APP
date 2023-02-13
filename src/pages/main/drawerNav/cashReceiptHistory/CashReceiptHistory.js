@@ -7,6 +7,7 @@ import {
     StyleSheet,
 } from 'react-native'
 
+import { useIsFocused } from '@react-navigation/native'
 import { createPOSTObject } from 'api/API'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Font } from 'api/Font'
@@ -41,7 +42,7 @@ const Item = ({ id, date, receiver, result }) => {
 
 const CashReceiptHistory = () => {
     const [info, setInfo] = useState([])
-    const [id, setID] = useState('')
+    const isFocuesd = useIsFocused()
 
     // id 불러오기
     const getID = async () => {
@@ -64,16 +65,14 @@ const CashReceiptHistory = () => {
             return response.json()
         })
         .then((data) => {
-            console.log(data)
             setInfo(data)
         })
         .catch((err) => console.error(err))
     }
 
-    // 페이지 실행 시 id 및 현금수납 내역 정보 불러오기
     useEffect(() => {
         getID()
-    }, [])
+    }, [isFocuesd])
 
     const renderItem = ({ item }) => (
         <Item ket={item.id} id={item.id} date={item.date} receiver={item.receiver} result={item.result} />

@@ -7,6 +7,7 @@ import {
     StyleSheet,
 } from 'react-native'
 
+import { useIsFocused } from '@react-navigation/native'
 import { createPOSTObject } from 'api/API'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Font } from 'api/Font'
@@ -38,6 +39,7 @@ const Item = ({ id, date, receiver, result }) => {
 
 const InspectionHistory = () => {
     const [info, setInfo] = useState([])
+    const isFocuesd = useIsFocused()
 
     // id 불러오기
     const getID = async () => {
@@ -68,7 +70,7 @@ const InspectionHistory = () => {
     // 페이지 실행 시 id 및 검사내역 정보 불러오기
     useEffect(() => {
         getID()
-    }, [])
+    }, [isFocuesd])
 
     const renderItem = ({ item }) => (
         <Item id={item.id} date={item.date} receiver={item.receiver} result={item.result} />

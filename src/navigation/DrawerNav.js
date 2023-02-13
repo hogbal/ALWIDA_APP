@@ -24,7 +24,7 @@ import InspectionHistory from 'pages/main/drawerNav/inspectionHistory/Inspection
 
 const Drawer = createDrawerNavigator()
 
-const DrawerNav = ({navigation}) => {
+const DrawerNav = () => {
     const [name, setName] = useState('') 
 
     const dataLoading = async (id) => {
@@ -122,7 +122,7 @@ const DrawerNav = ({navigation}) => {
             <Drawer.Screen
                 name='VehicleRegistration'
                 component={VehicleRegistration}
-                options={{
+                options={({navigation,route}) => ({
                     title: '차량관리',
                     headerTitleAlign: 'center',
                     headerLeft: () => (
@@ -135,12 +135,12 @@ const DrawerNav = ({navigation}) => {
                             />
                         </TouchableOpacity>
                     ),
-                }}
+                })}
             />
             <Drawer.Screen
                 name='CashReceiptHistory'
                 component={CashReceiptHistory}
-                options={{
+                options={({navigation,route}) => ({
                     title: '현금수납 내역',
                     headerTitle: '현금수납',
                     headerTitleAlign: 'center',
@@ -154,12 +154,12 @@ const DrawerNav = ({navigation}) => {
                             />
                         </TouchableOpacity>
                     ),
-                }}
+                })}
             />
             <Drawer.Screen
                 name='InspectionHistory'
                 component={InspectionHistory}
-                options={{
+                options={({navigation,route}) => ({
                     title: '검사내역',
                     headerTitleAlign: 'center',
                     headerLeft: () => (
@@ -172,7 +172,7 @@ const DrawerNav = ({navigation}) => {
                             />
                         </TouchableOpacity>
                     ),
-                }}
+                })}
             />
         </Drawer.Navigator>
     )
