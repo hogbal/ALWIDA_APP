@@ -64,6 +64,7 @@ const CashReceiptHistory = () => {
             return response.json()
         })
         .then((data) => {
+            console.log(data)
             setInfo(data)
         })
         .catch((err) => console.error(err))

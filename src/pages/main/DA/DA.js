@@ -61,7 +61,6 @@ const DA = ({ navigation }) => {
                 return response.json()
             })
             .then((data) => {
-                console.log('data :', data)
                 setPublish(data.publish)
                 setTerminalName(data.terminalName)
                 setIssue(data.issue)

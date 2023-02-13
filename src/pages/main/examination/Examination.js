@@ -15,7 +15,7 @@ import { PERMISSIONS, RESULTS, request, check } from "react-native-permissions"
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { launchCamera } from 'react-native-image-picker'
 
-import { ActiveButton } from 'components/CustomButton'
+import { ActiveButton, InactiveButton } from 'components/CustomButton'
 import { createImagePOSTObject } from 'api/API'
 import { Font } from 'api/Font'
 
@@ -57,7 +57,6 @@ const Examination = ({ navigation }) => {
                 console.log('Camera Cancel')
             }
             else if(res.assets) {
-                console.log(res)
                 const localUri = res.assets[0].uri;
                 const uriPath = localUri.split("//").pop();
                 const imageName = localUri.split("/").pop();
@@ -117,11 +116,17 @@ const Examination = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.info}>
-                <Image
-                    style={ imageSource? styles.img : styles.tmpImg}
-                    resizeMode="conver"
-                    source={imageSource ? {uri:imageSource} : require('assets/img/camera.png')}
-                />
+                {
+                    imageSource ? 
+                    <Image
+                        style={ imageSource? styles.img : styles.tmpImg}
+                        source={imageSource ? {uri:imageSource} : require('assets/img/camera.png')}
+                    />
+                    :
+                    <View style={styles.tmpImg}>
+                        <Text style={styles.tmpText}>사진이 없습니다!</Text>
+                    </View>
+                }
                 <TouchableOpacity
                     style={styles.inactiveButton}
                     onPress={() => showCamera()}
@@ -129,7 +134,11 @@ const Examination = ({ navigation }) => {
                     <Text style={styles.inactiveText}>다시 촬영</Text>
                 </TouchableOpacity>
             </View>
-            <ActiveButton onpress={() => onClickButton()} text='검사 요청' />
+            {
+                imageSource?
+                <ActiveButton onpress={() => onClickButton()} text='검사 요청' />
+                : <InactiveButton text="검사 요청" />
+            }
         </SafeAreaView>
     )
 }
@@ -151,7 +160,11 @@ const styles = StyleSheet.create({
     tmpImg: {
         flex: 1,
         alignSelf: 'center',
-        width: '80%'
+        justifyContent: 'center'
+    },
+    tmpText: {
+        fontFamily: 'Pretendard-Medium',
+        fontSize: Font.fontSizes.fontSizes16,
     },
     inactiveButton: {
         backgroundColor: '#E9EBEC',
