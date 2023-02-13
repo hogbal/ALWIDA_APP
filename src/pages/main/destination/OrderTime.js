@@ -55,14 +55,13 @@ const OrderTime = ({ navigation }) => {
         formdata.append("ampm", ampm)
         formdata.append("hour", hour)
         formdata.append("minute", minute)
-        console.log(formdata)
+
         await createPOSTObject('dest/reservation', formdata)
         .then((response) => {
             return response.json()
         })
         .then((data) => {
             if (data.result === true) {
-                console.log(data)
                 navigation.navigate("DestLoading")
             }
             else {

@@ -45,7 +45,7 @@ const RecommendedTime = ({ navigation, route }) => {
     }
 
     useEffect(() => {
-        storeState("recommend")
+        storeState("recommendChange")
         getID()
     }, [])
 

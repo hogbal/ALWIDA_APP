@@ -58,7 +58,6 @@ const Destination = ({ navigation }) => {
 
     /** 지역 및 터미널 피커 데이터 로딩 */
     const dataLoading = async () => {
-        console.log("check :", check)
         await createPOSTObject('dest')
         .then((response) => {
             return response.json()

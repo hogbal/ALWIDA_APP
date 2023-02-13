@@ -14,6 +14,7 @@ import Destination from 'pages/main/destination/Destination'
 import Order from 'pages/main/destination/Order'
 import OrderTime from 'pages/main/destination/OrderTime'
 import RecommendedTime from 'pages/main/destination/RecommendedTime'
+import RecommendedTimeChange from 'pages/main/destination/RecommendedTimeChange'
 import Reservation from '/pages/main/destination/Reservation'
 import DA from 'pages/main/DA/DA'
 import DAImage from 'pages/main/DA/DAImage'
@@ -152,6 +153,20 @@ const StackNav = () => {
             <Stack.Screen
                 name='RecommendedTime'
                 component={RecommendedTime}
+                options={{
+                    title: '추천 시간',
+                    headerShadowVisible: false,
+                    headerTitleAlign: 'center',
+                    headerTitleStyle: {
+                        fontFamily: 'Pretendard-Medium',
+                        fontSize: Font.fontSizes.fontSizes20,
+                        color: '#0C202B',
+                    },
+                }}
+            />
+            <Stack.Screen
+                name='RecommendedTimeChange'
+                component={RecommendedTimeChange}
                 options={{
                     title: '추천 시간',
                     headerShadowVisible: false,

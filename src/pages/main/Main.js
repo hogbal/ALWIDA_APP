@@ -7,7 +7,49 @@ import {
     StyleSheet
 } from 'react-native'
 
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 const Main = ({ navigation }) => {
+
+    const getState = async () => {
+        try {
+            const value = await AsyncStorage.getItem('state')
+            return value
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    const destinationOnPress = () => {
+        getState()
+        .then((state) => {
+            if(state == "loading") {
+                navigation.navigate('DestLoading')
+            }
+            else if(state == "recommend") {
+                navigation.navigate('RecommendedTime')
+            }
+            else {
+                navigation.navigate('Destination')
+            }
+        })
+    }
+
+    const transportationOnPress = () => {
+        getState()
+        .then((state) => {
+            if(state == "loadingChange") {
+                navigation.navigate('ChangeLoading')
+            }
+            else if(state == "recommendChange") {
+                navigation.navigate('RecommendedTimeChange')
+            }
+            else {
+                navigation.navigate('Transportation')
+            }
+        })
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
@@ -35,7 +77,7 @@ const Main = ({ navigation }) => {
                     {/* 목적지 */}
                     <TouchableOpacity
                         style={styles.touchableButtonContainer}
-                        onPress={() => navigation.navigate('Destination')}
+                        onPress={ () => destinationOnPress() }
                     >
                         <Image
                             style={styles.buttonImg}
@@ -60,7 +102,7 @@ const Main = ({ navigation }) => {
                     {/* 운송현황 */}
                     <TouchableOpacity
                         style={styles.touchableButtonContainer}
-                        onPress={() => navigation.navigate('Transportation')}
+                        onPress={() => transportationOnPress() }
                     >
                         <Image
                             style={styles.buttonImg}

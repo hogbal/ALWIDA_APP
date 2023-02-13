@@ -79,6 +79,15 @@ const Transportation = ({ navigation }) => {
         }
     }, [distance])
 
+    const storeState = async (value) => {
+        const strCheck = value.toString()
+        try {
+            await AsyncStorage.setItem('state', strCheck)
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
     const getDistance = async (userLatitude, userLongitude) => {
         if ((userLatitude == terminalLatitude) && (userLongitude == terminalLongitude))
             return 0;
@@ -225,6 +234,7 @@ const Transportation = ({ navigation }) => {
             console.log(data)
             if (data.result === true) {
                 Alert.alert("예약이 취소되었습니다.")
+                storeState("start")
                 navigation.navigate("Main")
             }
         })

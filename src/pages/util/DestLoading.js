@@ -17,6 +17,15 @@ const DestLoading = ({ navigation }) => {
     const [check, setCheck] = useState(false)
     const [data, setData] = useState([{"ampm": "-", "hour": "00", "minute": "00"}, {"ampm": "-", "hour": "00", "minute": "00"}, {"ampm": "-", "hour": "00", "minute": "00"}])
 
+    const storeState = async (value) => {
+        const strCheck = value.toString()
+        try {
+            await AsyncStorage.setItem('state', strCheck)
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
     const getID = async () => {
         try {
             const value = await AsyncStorage.getItem('id')
@@ -46,6 +55,7 @@ const DestLoading = ({ navigation }) => {
     }
 
     useEffect(() => {
+        storeState("loading")
         getID()
     }, [])
 

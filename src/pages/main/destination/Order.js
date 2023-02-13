@@ -78,7 +78,6 @@ const Order = ({ navigation }) => {
             return response.json()
         })
         .then((data) => {
-            console.log(data)
             if (data.result !== false) {
                 setContainerStatus(data.result)
                 setNext(true)
