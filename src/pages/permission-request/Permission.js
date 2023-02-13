@@ -4,7 +4,8 @@ import {
     Text,
     Image,
     StyleSheet,
-    SafeAreaView
+    SafeAreaView,
+    Dimensions
 } from 'react-native'
 
 import { ActiveButton } from 'components/CustomButton'
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
         marginTop: '10%',
         fontFamily: 'Pretendard-Medium',
         color: '#000000',
-        fontSize: 8,
+        fontSize: Font.fontSizes.fontSizes10,
         marginBottom: 5
     },
     descriptionText: {
@@ -91,42 +92,5 @@ const styles = StyleSheet.create({
         color: '#9D9D9D',
     },
 })
-
-// const styles = StyleSheet.create({
-//     container: {
-//         height: '100%',
-//         backgroundColor: '#FFFFFF',
-//     },
-//     imgContainer: {
-//         flex: 6,
-//         borderBottomWidth: 1,
-//         borderColor: '#707070',
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//     },
-    // imgText: {
-    //     fontFamily: 'Pretendard-Medium',
-    //     fontSize: 20,
-    //     color: '#000000',
-    // },
-//     textContainer: {
-//         flex: 5,
-//         alignItems: 'center',
-//     },
-    // titleText: {
-    //     fontFamily: 'Pretendard-Medium',
-    //     color: '#000000',
-    //     fontSize: 8,
-    //     marginBottom: 5
-    // },
-    // descriptionText: {
-    //     fontFamily: 'Pretendard-Medium',
-    //     fontSize: 10,
-    //     color: '#9D9D9D',
-    // },
-//     buttonContainer: {
-//         padding: 20,
-//     }
-// })
 
 export default Permission

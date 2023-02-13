@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Pretendard-Medium',
         fontSize: Font.fontSizes.fontSizes16,
         color: '#B6B6B6',
-        margin: 10,
+        margin: '3%',
     },
     button: {
         flex: 1,

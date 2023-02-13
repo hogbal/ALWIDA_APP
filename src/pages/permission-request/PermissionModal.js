@@ -89,14 +89,14 @@ const styles = StyleSheet.create({
     contentsContainer: {
         alignItems: 'center',
         justifyContent: 'center',
-        paddingVertical: 30,
-        paddingHorizontal: 10,
+        paddingVertical: '5%',
+        paddingHorizontal: '3%',
     },
     text: {
         fontFamily: 'Pretendard-Medium',
         fontSize: Font.fontSizes.fontSizes16,
         color: '#000000',
-        marginBottom: 20,
+        marginBottom: '5%',
     },
     descriptionText: {
         fontFamily: 'Pretendard-Medium',
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     },
     button: {
         flex: 1,
-        padding: 15,
+        padding: '4%',
         alignItems: 'center',
         justifyContent: 'center',
     },

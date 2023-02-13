@@ -1,8 +1,11 @@
 import {Dimensions, Platform} from 'react-native';
 
 const basicDimensions = {
-  width: 360,
-  height: 800,
+  // width: 360,
+  // height: 800,
+  // iphone 14 pro max 기준
+  width: 430,
+  height: 932
 };
 
 const width = (
