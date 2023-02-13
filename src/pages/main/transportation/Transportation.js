@@ -490,6 +490,10 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         padding : '4%'
     },
+    buttonText: {
+        fontFamily: 'Pretendard-Medium',
+        fontSize: Font.fontSizes.fontSizes14,
+    },
     possibleText: {
         fontFamily: 'Pretendard-Medium',
         fontSize: Font.fontSizes.fontSizes16,
