@@ -20,6 +20,7 @@ const RecommendedTime = ({ navigation, route }) => {
     const [id, setId] = useState('')
     const [tn, setTn] = useState('')
     const [selectedTime, setSelectedTime] = useState(-1)
+    const [len, setLen] = useState(0)
     const [data, setData] = useState([{"ampm": "-", "hour": "00", "minute": "00"}, {"ampm": "-", "hour": "00", "minute": "00"}, {"ampm": "-", "hour": "00", "minute": "00"}])
     const [orderData, setOrderData] = useRecoilState(orderInfo)
 
@@ -63,6 +64,7 @@ const RecommendedTime = ({ navigation, route }) => {
                 setId(id)
                 setTn(data.tn)
                 setData(data.time)
+                setLen(data.time.length)
             }
         })
         .catch((e) => console.error(e))
@@ -113,39 +115,48 @@ const RecommendedTime = ({ navigation, route }) => {
             <View style={styles.info}>
                 <TerminalPicker terminal={tn} />
                 <View style={styles.timeContainer}>
-                    <TouchableOpacity
-                        style={
-                            (selectedTime == 0)
-                            ? styles.selectedTime
-                            : styles.time
-                        }
-                        onPress={() => setSelectedTime(0)}
-                    >
-                        <Text style={styles.ampmText}>{data[0].ampm}</Text>
-                        <Text style={styles.timeText}>{data[0].hour}:{data[0].minute}</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={
-                            (selectedTime == 1)
-                            ? styles.selectedTime
-                            : styles.time
-                        }
-                        onPress={() => setSelectedTime(1)}
-                    >
-                        <Text style={styles.ampmText}>{data[1].ampm}</Text>
-                        <Text style={styles.timeText}>{data[1].hour}:{data[1].minute}</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={
-                            (selectedTime == 2)
-                            ? styles.selectedTime
-                            : styles.time
-                        }
-                        onPress={() => setSelectedTime(2)}
-                    >
-                        <Text style={styles.ampmText}>{data[2].ampm}</Text>
-                        <Text style={styles.timeText}>{data[2].hour}:{data[2].minute}</Text>
-                    </TouchableOpacity>
+                    {
+                        len >= 1 &&
+                        <TouchableOpacity
+                            style={
+                                (selectedTime == 0)
+                                ? styles.selectedTime
+                                : styles.time
+                            }
+                            onPress={() => setSelectedTime(0)}
+                        >
+                            <Text style={styles.ampmText}>{data[0].ampm}</Text>
+                            <Text style={styles.timeText}>{data[0].hour}:{data[0].minute}</Text>
+                        </TouchableOpacity>
+                    }
+                    {
+                        len >= 2 &&
+                        <TouchableOpacity
+                            style={
+                                (selectedTime == 1)
+                                ? styles.selectedTime
+                                : styles.time
+                            }
+                            onPress={() => setSelectedTime(1)}
+                        >
+                            <Text style={styles.ampmText}>{data[1].ampm}</Text>
+                            <Text style={styles.timeText}>{data[1].hour}:{data[1].minute}</Text>
+                        </TouchableOpacity>
+                    }
+                    {
+                        len >= 3 &&
+                        <TouchableOpacity
+                            style={
+                                (selectedTime == 2)
+                                ? styles.selectedTime
+                                : styles.time
+                            }
+                            onPress={() => setSelectedTime(2)}
+                        >
+                            <Text style={styles.ampmText}>{data[2].ampm}</Text>
+                            <Text style={styles.timeText}>{data[2].hour}:{data[2].minute}</Text>
+                        </TouchableOpacity>
+                    }
                 </View>
             </View>
             <View style={styles.button}>
