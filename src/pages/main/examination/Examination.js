@@ -42,6 +42,8 @@ const Examination = ({ navigation }) => {
     }
 
     const options = {
+        maxWidth:600,
+        maxHeight: 800,
         storageOptions: {
             skipBackup: true,
             path: 'images',
@@ -97,7 +99,6 @@ const Examination = ({ navigation }) => {
         })
         .then((data) => {
             if (data.result === true) {
-                console.log(data.result)
                 navigation.navigate('InspectionHistory')
             }
         })
