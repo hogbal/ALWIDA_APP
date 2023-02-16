@@ -58,7 +58,6 @@ const LocalPicker = ({ DATA, localVisible, setLocalVisible, selectedLocal, setSe
                 style={styles.arrowImg}
                 source={require('assets/img/picker_arrow.png')}
             />
-            
             <Modal
                 animationType={"fade"}
                 transparent={true}
@@ -66,7 +65,7 @@ const LocalPicker = ({ DATA, localVisible, setLocalVisible, selectedLocal, setSe
                 onRequestClose={() => setLocalVisible(!localVisible)}
             >
                 <SafeAreaView style={styles.modal}>
-                    <ScrollView style={styles.modalScroll}>
+                    <ScrollView style={styles.modalScrollLocal}>
                         {
                             localVisible &&
                             DATA.map((value, index) => {
@@ -134,7 +133,7 @@ const TerminalPicker = ({ DATA, terminalVisible, setTerminalVisible, selectedTer
                 onRequestClose={() => setTerminalVisible(!terminalVisible)}
             >
                 <SafeAreaView style={styles.modal}>
-                    <ScrollView style={styles.modalScroll}>
+                    <ScrollView style={styles.modalScrollTerminal}>
                         {
                             terminalVisible &&
                             DATA.map((value, valueIndex) => {
@@ -207,13 +206,15 @@ const styles = StyleSheet.create({
         left: '5%',
     },
     modal: {
-        flex:1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
     },
-    modalScroll: {
+    modalScrollLocal: {
         width:'95%',
-        marginTop:'10%'
+        marginTop: '35%'
+    },
+    modalScrollTerminal: {
+        width:'95%',
+        marginTop: '60%'
     }
 })
 
