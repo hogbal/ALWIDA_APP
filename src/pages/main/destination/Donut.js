@@ -6,85 +6,33 @@ import {
     StyleSheet,
     Dimensions
 } from 'react-native'
-import Svg, { G, Circle } from 'react-native-svg'
 import { Font } from 'api/Font'
-
-const AnimatedCircle = Animated.createAnimatedComponent(Circle)
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
+// import { round } from 'react-native-reanimated';
 
 const Donut = ({
     percentage = 0,
     radius = Dimensions.get('window').width/3,
     strokeWidth = radius/10,
-    duration = 800,
     color,
-    max = 100
 }) => {
-    const animatedValue = React.useRef(new Animated.Value(0)).current
-    const circleRef = React.useRef()
-    const halfCircle = radius + strokeWidth
-    const circleCircumference = 2 * Math.PI * radius
-
-    const animation = (toValue) => {
-        return Animated.timing(animatedValue, {
-            toValue,
-            duration,
-            delay: 500,
-            useNativeDriver: true,
-        }).start()
-    }
-    
-    React.useEffect(() => {
-        animation(percentage)
-        
-        animatedValue.addListener(v => {
-            if (circleRef?.current) {
-                const maxPerc = 100 * v.value / max
-                const strokeDashoffset = circleCircumference - (circleCircumference * maxPerc) / 100
-                circleRef.current.setNativeProps({
-                    strokeDashoffset,
-                })
-            }
-        })
-    })
-
     return (
-        <View style={styles.circle}>
-            <Svg
-                width={radius * 2}
-                height={radius * 2}
-                viewBox={`0 0 ${halfCircle * 2} ${halfCircle * 2}`}
-            >
-                <G rotation={90} origin={`${halfCircle}, ${halfCircle}`}>
-                    <Circle
-                        cx='50%'
-                        cy='50%'
-                        stroke={'#ECECEC'}
-                        strokeWidth={strokeWidth}
-                        r={radius}
-                        fill='transparent'
-                        strokeLinecap='round'
-                    />
-                    <AnimatedCircle
-                        ref={circleRef}
-                        cx='50%'
-                        cy='50%'
-                        stroke={color}
-                        strokeWidth={strokeWidth}
-                        r={radius}
-                        fill='transparent'
-                        strokeDasharray={circleCircumference}
-                        strokeDashoffset={circleCircumference}
-                        strokeLinecap='round'
-                    />
-                </G>
-            </Svg>
-            <Text style={[styles.numText]}>
-                {
-                    percentage == 0 ? '00' : percentage
-                }
-                <Text style={styles.text}>대</Text>
-            </Text>
-        </View>
+        <AnimatedCircularProgress
+            size={radius * 2}
+            width={strokeWidth}
+            fill={percentage}
+            rotation={215}
+            arcSweepAngle={290}
+            backgroundColor="#ECECEC"
+            tintColor={color}
+            lineCap="round"
+        >
+            {
+                (percentage) => (
+                    <Text style={styles.text}>{parseInt(percentage)}대</Text>
+                )
+            }
+        </AnimatedCircularProgress>
     )
 }
 
@@ -102,7 +50,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'Pretendard-Bold',
-        fontSize: Font.fontSizes.fontSizes20,
+        fontSize: Font.fontSizes.fontSizes32,
         color: '#1A1A1A',
     },
 })
