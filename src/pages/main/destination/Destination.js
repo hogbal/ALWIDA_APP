@@ -139,6 +139,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   chart: {
+    marginTop: '10%',
     alignItems: 'center',
   },
   statusInfoContainer: {
@@ -147,11 +148,11 @@ const styles = StyleSheet.create({
   },
   statusText: {
     fontFamily: 'Pretendard-Bold',
-    fontSize: Font.fontSizes.fontSizes30,
+    fontSize: Font.fontSizes.fontSizes26,
   },
   infoText: {
     fontFamily: 'Pretendard-Medium',
-    fontSize: Font.fontSizes.fontSizes16,
+    fontSize: Font.fontSizes.fontSizes14,
     color: '#B6B6B6',
     margin: '3%',
   },
