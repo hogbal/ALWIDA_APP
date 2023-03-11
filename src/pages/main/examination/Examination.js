@@ -10,8 +10,6 @@ import {
   Linking,
 } from 'react-native';
 
-import axios from 'axios';
-
 import {PERMISSIONS, RESULTS, request, check} from 'react-native-permissions';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
