@@ -10,13 +10,15 @@ import {
   Linking,
 } from 'react-native';
 
+import axios from 'axios';
+
 import {PERMISSIONS, RESULTS, request, check} from 'react-native-permissions';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {launchCamera} from 'react-native-image-picker';
 
 import {ActiveButton, InactiveButton} from 'components/CustomButton';
-import {createImagePOSTObject} from 'api/API';
+import {createImagePOSTObject, createPOSTObject} from 'api/API';
 import {Font} from 'api/Font';
 
 const Examination = ({navigation}) => {
@@ -67,7 +69,10 @@ const Examination = ({navigation}) => {
         data = {
           name: imageName,
           type: 'image/jpg',
-          uri: uriPath,
+          uri:
+            Platform.OS === 'android'
+              ? res.assets[0].uri
+              : res.assets[0].uri.replace('file://', ''),
         };
 
         setImage(data);
@@ -92,8 +97,9 @@ const Examination = ({navigation}) => {
     let formdata = new FormData();
     formdata.append('id', id);
     formdata.append('file', image);
-
-    await createImagePOSTObject('check', formdata)
+    console.log(image);
+    console.log(formdata);
+    createImagePOSTObject('check', formdata)
       .then(response => {
         return response.json();
       })
