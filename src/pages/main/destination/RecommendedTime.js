@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
     flex: 2,
     textAlign: 'center',
     fontFamily: 'Pretendard-Medium',
-    fontSize: Font.fontSizes.fontSizes60,
+    fontSize: Font.fontSizes.fontSizes50,
     color: '#1A1A1A',
   },
 });

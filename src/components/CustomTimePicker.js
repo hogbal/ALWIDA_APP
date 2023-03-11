@@ -158,12 +158,12 @@ const styles = StyleSheet.create({
   },
   timeText: {
     fontFamily: 'Pretendard-Medium',
-    fontSize: Font.fontSizes.fontSizes60,
+    fontSize: Font.fontSizes.fontSizes50,
     color: '#1A1A1A',
   },
   noneTimeText: {
     fontFamily: 'Pretendard-Medium',
-    fontSize: Font.fontSizes.fontSizes60,
+    fontSize: Font.fontSizes.fontSizes50,
     color: '#ACACA9',
     marginLeft: '10%',
   },

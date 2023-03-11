@@ -61,7 +61,6 @@ const Examination = ({navigation}) => {
         console.log('Camera Cancel');
       } else if (res.assets) {
         const localUri = res.assets[0].uri;
-        const uriPath = localUri.split('//').pop();
         const imageName = localUri.split('/').pop();
 
         data = {
@@ -95,8 +94,7 @@ const Examination = ({navigation}) => {
     let formdata = new FormData();
     formdata.append('id', id);
     formdata.append('file', image);
-    console.log(image);
-    console.log(formdata);
+
     createImagePOSTObject('check', formdata)
       .then(response => {
         return response.json();
